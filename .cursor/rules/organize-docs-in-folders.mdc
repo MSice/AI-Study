@@ -1,0 +1,55 @@
+---
+description: 确保所有生成的文档都归类到合理的文件夹中，不直接放在根目录
+alwaysApply: true
+---
+
+# 文档必须分类存放，禁止直接放在根目录
+
+当用户提问并需要整理成文档时，必须将文件存放到合理的主题文件夹中，而非项目根目录。
+
+## 规则
+
+1. **禁止在根目录创建文档文件**（README.md 除外）
+2. **`prompt-engineering/` 仅存放提示词**，不存放提示词生成的结果文档
+3. 提示词生成的结果文档应放到对应主题的文件夹中
+4. 每个主题创建独立文件夹，文件夹内可包含：
+   - 生成的文档（最终输出）
+   - 目录文件（index.md，汇总该主题下的内容）
+5. 根据文档主题选择或创建合适的上级分类目录，例如：
+   - LLM 学习相关 → `LLM学习计划/` 下对应子目录
+   - 生活/消费类咨询 → `生活/主题名/`
+   - 技术笔记 → `笔记/` 或对应项目目录
+6. **代码文件统一放到 `Tool/` 目录下**，需要运行代码时也在该路径下调用
+7. 如果没有现成的合适文件夹，**主动创建一个语义清晰的文件夹**再存放文件
+
+## 示例
+
+```
+# ❌ 错误：提示词的生成结果放在 prompt-engineering 下
+prompt-engineering/03-templates/doc/travel-plan-result.md
+
+# ✅ 正确：提示词放 prompt-engineering，生成结果按主题归类
+prompt-engineering/03-templates/travel-planner-prompt.md   # 提示词
+生活/旅行规划/travel-plan-result.md                         # 生成的结果
+
+# ❌ 错误：直接放根目录
+/二手车购买指南.md
+/电脑配置顾问.md
+
+# ✅ 正确：按主题建立独立文件夹
+生活/二手车购买指南/
+├── 二手车购买指南.md    # 生成的文档
+└── index.md           # 目录/概述
+
+生活/电脑配置/
+├── 电脑配置顾问.md
+└── index.md
+
+# ❌ 错误：代码文件散落在各处
+prompt-engineering/04-chains/generate.js
+生活/二手车购买指南/scraper.py
+
+# ✅ 正确：代码统一放 Tool/ 下，按功能组织
+Tool/doc-generation/generate.js
+Tool/scraper/scraper.py
+```
