@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 2（提示词工程）
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 ## 知识模块
@@ -30,6 +32,7 @@
   - 📖 必读：[LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) — Lilian Weng 的经典 Agent 综述（英文）
   - 🎬 推荐：[ReAct 原始论文](https://arxiv.org/abs/2210.03629) — 理解 ReAct 模式的学术来源（英文）
   - 🛠️ 工具：OpenAI Function Calling、LangChain Agents
+  - 💡 **中文解读**：[推荐资源深度总结 - 3.1 & 3.2 节](./resources-digest.md#31-lilian-wengllm-驱动的自主-agent)
 
 - **检验标准**：
   - Agent 和普通的 LLM 对话有什么本质区别？
@@ -59,6 +62,7 @@
   - 📖 必读：[OpenAI Function Calling 文档](https://platform.openai.com/docs/guides/function-calling) — 官方 Function Calling 使用指南（英文）
   - 📖 补充：[Anthropic Tool Use 文档](https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview) — Claude 的工具调用方式（英文）
   - 🛠️ 工具：Python `openai` 库、`anthropic` 库
+  - 💡 **中文解读**：[推荐资源深度总结 - 3.3 & 3.4 节](./resources-digest.md#33-openai-function-calling-文档)
 
 - **检验标准**：
   - Function Calling 的工作流程是怎样的？（定义工具 → 模型选择 → 执行 → 返回结果）
@@ -88,6 +92,7 @@
   - 📖 必读：[LangGraph 官方教程](https://langchain-ai.github.io/langgraph/tutorials/introduction/) — 从零构建 Agent 的最佳教程（英文）
   - 📖 补充：[LangChain 官方文档](https://python.langchain.com/docs/introduction/) — LangChain 全面参考（英文）
   - 🛠️ 工具：LangChain、LangGraph、LangSmith（调试追踪）
+  - 💡 **中文解读**：[推荐资源深度总结 - 3.5 & 3.6 节](./resources-digest.md#35-langgraph-官方教程)
 
 - **检验标准**：
   - LangChain 和 LangGraph 的核心区别是什么？
@@ -133,4 +138,4 @@
 
 ---
 
-**下一步** → [阶段 4：RAG 检索增强生成](./04-rag.md)（如果还没学的话）或 [阶段 5：MCP 协议](./05-mcp.md)
+**下一步** → [阶段 4：RAG 检索增强生成](../04-rag/index.md)（如果还没学的话）或 [阶段 5：MCP 协议](../05-mcp/index.md)

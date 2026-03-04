@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 3（AI Agent）和阶段 4（RAG）
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 ## 知识模块
@@ -31,6 +33,7 @@
   - 📖 必读：[MCP 官方文档](https://modelcontextprotocol.io/introduction) — 协议的权威说明（英文）
   - 📖 补充：[MCP 协议规范](https://modelcontextprotocol.io/specification) — 技术细节参考（英文）
   - 🛠️ 工具：Claude Desktop、Cursor IDE、`@modelcontextprotocol/sdk`
+  - 💡 **中文解读**：[推荐资源深度总结 - 5.1 节](./resources-digest.md#51-mcp-协议概述)
 
 - **检验标准**：
   - MCP 解决了什么问题？和直接用 Function Calling 有什么区别？
@@ -61,6 +64,7 @@
   - 📖 必读：[MCP Server 开发快速入门](https://modelcontextprotocol.io/quickstart/server) — 官方 Server 开发教程（英文）
   - 📖 补充：[MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk) / [Python SDK](https://github.com/modelcontextprotocol/python-sdk) — SDK 源码和示例
   - 🛠️ 工具：Node.js 18+、Python 3.10+、Claude Desktop
+  - 💡 **中文解读**：[推荐资源深度总结 - 5.2 节](./resources-digest.md#52-mcp-server-开发)
 
 - **检验标准**：
   - 一个 MCP Server 的基本代码结构是怎样的？
@@ -90,6 +94,7 @@
   - 📖 必读：[MCP Client 开发快速入门](https://modelcontextprotocol.io/quickstart/client) — 官方 Client 开发教程（英文）
   - 📖 补充：[MCP 官方示例项目](https://github.com/modelcontextprotocol/servers) — 各种 MCP Server 实现参考
   - 🛠️ 工具：MCP SDK、MCP Inspector（调试工具）
+  - 💡 **中文解读**：[推荐资源深度总结 - 5.3 节](./resources-digest.md#53-mcp-client-开发与集成)
 
 - **检验标准**：
   - MCP Client 的核心职责是什么？
@@ -142,4 +147,4 @@
 
 ---
 
-**下一步** → [阶段 6：LLM 应用开发实战](./06-llm-app-dev.md)
+**下一步** → [阶段 6：LLM 应用开发实战](../06-llm-app-dev/index.md)

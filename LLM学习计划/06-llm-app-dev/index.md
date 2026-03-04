@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 1-5
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 ## 知识模块
@@ -30,6 +32,7 @@
   - 📖 必读：[Building LLM Applications for Production](https://huyenchip.com/2023/04/11/llm-engineering.html) — Chip Huyen 的经典文章，讲 LLM 应用的工程挑战（英文）
   - 📖 补充：[LiteLLM](https://github.com/BerriAI/litellm) — 统一多 LLM 调用的开源网关
   - 🛠️ 工具：LiteLLM、Redis、Docker
+  - 💡 **中文解读**：[推荐资源深度总结 - 6.1 节](./resources-digest.md#61-llm-应用架构设计)
 
 - **检验标准**：
   - 一个生产级 LLM 应用的典型架构包含哪些层？
@@ -59,6 +62,7 @@
 - **推荐资源**：
   - 📖 必读：[Vercel AI SDK 文档](https://sdk.vercel.ai/docs/introduction) — 构建 AI 聊天界面的最佳实践（英文）
   - 🛠️ 工具：Vercel AI SDK、Streamlit、Gradio
+  - 💡 **中文解读**：[推荐资源深度总结 - 6.2 节](./resources-digest.md#62-对话管理与用户体验)
 
 - **检验标准**：
   - 对话历史过长时有哪些处理策略？各有什么优缺点？
@@ -89,6 +93,7 @@
   - 📖 必读：[OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) — LLM 应用安全 Top 10 风险（英文）
   - 📖 补充：[Anthropic 安全最佳实践](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/mitigate-misuse) — Claude 官方安全指南（英文）
   - 🛠️ 工具：Guardrails AI、NeMo Guardrails
+  - 💡 **中文解读**：[推荐资源深度总结 - 6.3 节](./resources-digest.md#63-安全与合规)
 
 - **检验标准**：
   - 什么是提示词注入？举 2 个攻击示例
@@ -119,6 +124,7 @@
   - 📖 必读：[LangSmith 文档](https://docs.smith.langchain.com/) — LLM 应用可观测性平台（英文）
   - 📖 补充：[Langfuse](https://langfuse.com/docs) — 开源的 LLM 可观测性方案（英文）
   - 🛠️ 工具：LangSmith、Langfuse、Ragas（RAG 评估框架）
+  - 💡 **中文解读**：[推荐资源深度总结 - 6.4 节](./resources-digest.md#64-测试与监控)
 
 - **检验标准**：
   - 如何评估 LLM 应用的输出质量？
@@ -168,4 +174,4 @@
 
 ---
 
-**下一步** → [阶段 7：进阶方向](./07-advanced.md)
+**下一步** → [阶段 7：进阶方向](../07-advanced/index.md)

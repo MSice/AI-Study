@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 1（LLM 基础认知）
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 ## 知识模块
@@ -29,6 +31,7 @@
   - 📖 必读：[Anthropic Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) — Anthropic 官方提示词工程指南，系统全面（英文）
   - 🎬 推荐：[OpenAI Prompt Engineering Best Practices](https://platform.openai.com/docs/guides/prompt-engineering) — OpenAI 官方最佳实践（英文）
   - 🛠️ 工具：ChatGPT / Claude 对话界面、Cursor IDE
+  - 💡 **中文解读**：[推荐资源深度总结 - 2.1 & 2.2 节](./resources-digest.md#21-anthropic-提示词工程指南)
 
 - **检验标准**：
   - 一个好的提示词应该包含哪几个要素？
@@ -59,6 +62,7 @@
   - 📖 必读：[Prompt Engineering Guide](https://www.promptingguide.ai/zh) — 社区维护的提示词工程百科全书，有中文版
   - 🎬 推荐：[Chain-of-Thought Prompting 原始论文](https://arxiv.org/abs/2201.11903) — 理解 CoT 的学术来源（英文）
   - 🛠️ 工具：LangSmith（提示词调试和追踪）
+  - 💡 **中文解读**：[推荐资源深度总结 - 2.3 & 2.4 节](./resources-digest.md#23-prompt-engineering-guide提示工程指南)
 
 - **检验标准**：
   - Few-shot 和 Zero-shot 的区别是什么？各适合什么场景？
@@ -87,6 +91,7 @@
 - **推荐资源**：
   - 📖 必读：[LangChain Prompt Templates 文档](https://python.langchain.com/docs/concepts/prompt_templates/) — 工程化管理提示词模板的标准方式（英文）
   - 🛠️ 工具：LangChain、Jinja2 模板引擎
+  - 💡 **中文解读**：[推荐资源深度总结 - 2.5 节](./resources-digest.md#25-langchain-prompt-templates-文档)
 
 - **检验标准**：
   - 如何设计一个可复用的提示词模板？
@@ -126,4 +131,4 @@
 
 ---
 
-**下一步** → [阶段 3：AI Agent](./03-ai-agent.md)（可与阶段 4 并行学习）
+**下一步** → [阶段 3：AI Agent](../03-ai-agent/index.md)（可与阶段 4 并行学习）

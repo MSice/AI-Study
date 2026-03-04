@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 2（提示词工程）；可与阶段 3（AI Agent）并行学习
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 ## 知识模块
@@ -30,6 +32,7 @@
   - 📖 必读：[RAG from Scratch (LangChain)](https://github.com/langchain-ai/rag-from-scratch) — 从零实现 RAG 的系列教程（英文）
   - 🎬 推荐：[What is Retrieval-Augmented Generation (RAG)?](https://www.youtube.com/watch?v=T-D1OfcDW1M) — IBM 的 RAG 科普视频（英文）
   - 🛠️ 工具：OpenAI Embedding API、Pinecone / Qdrant / ChromaDB
+  - 💡 **中文解读**：[推荐资源深度总结 - 4.1 & 4.2 节](./resources-digest.md#41-rag-from-scratch从零实现-rag)
 
 - **检验标准**：
   - RAG 解决了 LLM 的什么问题？
@@ -59,6 +62,7 @@
 - **推荐资源**：
   - 📖 必读：[Chunking Strategies for LLM Applications](https://www.pinecone.io/learn/chunking-strategies/) — Pinecone 的分块策略详解（英文）
   - 🛠️ 工具：LangChain Document Loaders、Unstructured.io
+  - 💡 **中文解读**：[推荐资源深度总结 - 4.3 节](./resources-digest.md#43-pinecone-分块策略详解)
 
 - **检验标准**：
   - 为什么分块策略对 RAG 质量影响很大？
@@ -89,6 +93,7 @@
   - 📖 必读：[ChromaDB 官方文档](https://docs.trychroma.com/) — 最简单的向量数据库入门（英文）
   - 📖 补充：[Qdrant 官方文档](https://qdrant.tech/documentation/) — 生产级向量数据库（英文）
   - 🛠️ 工具：ChromaDB、Qdrant、FAISS
+  - 💡 **中文解读**：[推荐资源深度总结 - 4.4 & 4.5 节](./resources-digest.md#44-chromadb最简单的向量数据库)
 
 - **检验标准**：
   - 向量数据库和传统数据库的核心区别是什么？
@@ -118,6 +123,7 @@
 - **推荐资源**：
   - 📖 必读：[Advanced RAG Techniques](https://www.llamaindex.ai/blog/a-cheat-sheet-and-some-recipes-for-building-advanced-rag) — LlamaIndex 的高级 RAG 技巧汇总（英文）
   - 🛠️ 工具：LangChain、LlamaIndex
+  - 💡 **中文解读**：[推荐资源深度总结 - 4.6 节](./resources-digest.md#46-llamaindex-高级-rag-技巧)
 
 - **检验标准**：
   - 基础 RAG 常见的问题有哪些？
@@ -160,4 +166,4 @@
 
 ---
 
-**下一步** → [阶段 5：MCP 协议](./05-mcp.md)
+**下一步** → [阶段 5：MCP 协议](../05-mcp/index.md)

@@ -4,6 +4,8 @@
 
 **前置要求**：完成阶段 6（LLM 应用开发实战）
 
+> 📚 本阶段配套阅读：[推荐资源深度总结](./resources-digest.md) — 将本阶段所有推荐资源的核心内容提炼为一篇通俗易懂的中文解读，帮助你快速建立全局认知。
+
 ---
 
 > 💡 **本阶段说明**：进阶方向内容广泛，不要求全部掌握。建议通读所有方向的概述，然后选择 1-2 个最感兴趣或最贴合工作需求的方向深入学习。
@@ -34,6 +36,7 @@
   - 📖 必读：[OpenAI Fine-tuning 文档](https://platform.openai.com/docs/guides/fine-tuning) — 最简单的微调入门（英文）
   - 📖 补充：[Unsloth](https://github.com/unslothai/unsloth) — 高效本地微调工具，速度快、显存省
   - 🛠️ 工具：OpenAI Fine-tuning API、Unsloth、LLaMA-Factory、Hugging Face Transformers
+  - 💡 **中文解读**：[推荐资源深度总结 - 7.1 节](./resources-digest.md#71-模型微调fine-tuning)
 
 - **检验标准**：
   - 什么时候该用微调而不是提示词工程或 RAG？
@@ -64,6 +67,7 @@
   - 📖 必读：[Ragas 文档](https://docs.ragas.io/) — RAG 评估框架（英文）
   - 📖 补充：[LMSYS Chatbot Arena](https://chat.lmsys.org/) — 基于人类偏好的模型评估平台
   - 🛠️ 工具：Ragas、OpenAI Evals、LangSmith Evaluation
+  - 💡 **中文解读**：[推荐资源深度总结 - 7.2 节](./resources-digest.md#72-模型评估与基准测试)
 
 - **检验标准**：
   - 常见的 LLM 评估基准有哪些？各测试什么能力？
@@ -94,6 +98,7 @@
   - 📖 必读：[vLLM 官方文档](https://docs.vllm.ai/) — 最流行的高性能推理引擎（英文）
   - 📖 补充：[Ollama 文档](https://github.com/ollama/ollama/blob/main/docs/README.md) — 最简单的本地部署方案
   - 🛠️ 工具：vLLM、Ollama、Docker、NVIDIA GPU
+  - 💡 **中文解读**：[推荐资源深度总结 - 7.3 节](./resources-digest.md#73-模型部署与推理优化)
 
 - **检验标准**：
   - vLLM 和 Ollama 各适合什么场景？
@@ -124,6 +129,7 @@
   - 📖 必读：[OpenAI Vision 文档](https://platform.openai.com/docs/guides/vision) — 多模态 API 使用指南（英文）
   - 📖 补充：[CrewAI 文档](https://docs.crewai.com/) — 多 Agent 协作框架（英文）
   - 🛠️ 工具：OpenAI Vision API、Whisper、CrewAI、Stable Diffusion
+  - 💡 **中文解读**：[推荐资源深度总结 - 7.4 节](./resources-digest.md#74-多模态与前沿方向)
 
 - **检验标准**：
   - 多模态模型能处理哪些类型的输入？
@@ -173,4 +179,4 @@
 
 ---
 
-**下一步** → [资源汇总 + 毕业项目 + 学习建议](./08-resources-and-graduation.md)
+**下一步** → [资源汇总 + 毕业项目 + 学习建议](../08-resources-and-graduation/index.md)

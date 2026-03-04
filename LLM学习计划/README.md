@@ -47,13 +47,13 @@ graph TD
 | 文件 | 内容 |
 |------|------|
 | [01-llm-fundamentals](./01-llm-fundamentals/index.md) | 阶段1：LLM 基础认知（第1-2周） |
-| [02-prompt-engineering.md](./02-prompt-engineering.md) | 阶段2：提示词工程（第3-4周） |
-| [03-ai-agent.md](./03-ai-agent.md) | 阶段3：AI Agent（第5-7周） |
-| [04-rag.md](./04-rag.md) | 阶段4：RAG 检索增强生成（第8-10周） |
-| [05-mcp.md](./05-mcp.md) | 阶段5：MCP 协议（第11-12周） |
-| [06-llm-app-dev.md](./06-llm-app-dev.md) | 阶段6：LLM 应用开发实战（第13-15周） |
-| [07-advanced.md](./07-advanced.md) | 阶段7：进阶方向（第16-18周） |
-| [08-resources-and-graduation.md](./08-resources-and-graduation.md) | 资源汇总 + 毕业项目 + 学习建议 |
+| [02-prompt-engineering](./02-prompt-engineering/index.md) | 阶段2：提示词工程（第3-4周） |
+| [03-ai-agent](./03-ai-agent/index.md) | 阶段3：AI Agent（第5-7周） |
+| [04-rag](./04-rag/index.md) | 阶段4：RAG 检索增强生成（第8-10周） |
+| [05-mcp](./05-mcp/index.md) | 阶段5：MCP 协议（第11-12周） |
+| [06-llm-app-dev](./06-llm-app-dev/index.md) | 阶段6：LLM 应用开发实战（第13-15周） |
+| [07-advanced](./07-advanced/index.md) | 阶段7：进阶方向（第16-18周） |
+| [08-resources-and-graduation](./08-resources-and-graduation/index.md) | 资源汇总 + 毕业项目 + 学习建议 |
 | [mcp-quickstart-typescript.md](./mcp-quickstart-typescript.md) | MCP Server 快速搭建详解（TypeScript 版） |
 | [mcp-quickstart-python.md](./mcp-quickstart-python.md) | MCP Server 快速搭建详解（Python 版） |
 
@@ -105,4 +105,4 @@ graph TD
 周日：休息或自由探索
 ```
 
-**现在就从 [阶段1：LLM 基础认知](./01-llm-fundamentals/index.md) 开始吧！**
+**现在就从 [阶段 1：LLM 基础认知](./01-llm-fundamentals/index.md) 开始吧！**

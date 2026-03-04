@@ -1,5 +1,7 @@
 # 资源汇总 + 毕业项目 + 学习建议
 
+> 💡 以下所有推荐资源的详细中文解读，已分散在各阶段的 `resources-digest.md` 中。点击对应阶段即可查看。
+
 ---
 
 ## 三、学习资源汇总
@@ -19,14 +21,14 @@
 
 ### 精选教程
 
-| 资源 | 说明 | 语言 |
-|------|------|------|
-| [Prompt Engineering Guide](https://www.promptingguide.ai/zh) | 提示词工程百科全书 | 中文/英文 |
-| [RAG from Scratch](https://github.com/langchain-ai/rag-from-scratch) | 从零实现 RAG 系列教程 | 英文 |
-| [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) | Agent 技术综述 | 英文 |
-| [Building LLM Apps for Production](https://huyenchip.com/2023/04/11/llm-engineering.html) | LLM 应用工程化 | 英文 |
-| [What Is ChatGPT Doing](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/) | LLM 原理直觉解释 | 英文 |
-| [3Blue1Brown - But what is a GPT?](https://www.youtube.com/watch?v=wjZofJX0v4M) | Transformer 可视化讲解 | 英文（有中文字幕） |
+| 资源 | 说明 | 语言 | 中文解读 |
+|------|------|------|---------|
+| [Prompt Engineering Guide](https://www.promptingguide.ai/zh) | 提示词工程百科全书 | 中文/英文 | [阶段 2 解读](../02-prompt-engineering/resources-digest.md) |
+| [RAG from Scratch](https://github.com/langchain-ai/rag-from-scratch) | 从零实现 RAG 系列教程 | 英文 | [阶段 4 解读](../04-rag/resources-digest.md) |
+| [LLM Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) | Agent 技术综述 | 英文 | [阶段 3 解读](../03-ai-agent/resources-digest.md) |
+| [Building LLM Apps for Production](https://huyenchip.com/2023/04/11/llm-engineering.html) | LLM 应用工程化 | 英文 | [阶段 6 解读](../06-llm-app-dev/resources-digest.md) |
+| [What Is ChatGPT Doing](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/) | LLM 原理直觉解释 | 英文 | [阶段 1 解读](../01-llm-fundamentals/resources-digest.md) |
+| [3Blue1Brown - But what is a GPT?](https://www.youtube.com/watch?v=wjZofJX0v4M) | Transformer 可视化讲解 | 英文（有中文字幕） | [阶段 1 解读](../01-llm-fundamentals/resources-digest.md) |
 
 ### 开源项目（学习参考）
 
