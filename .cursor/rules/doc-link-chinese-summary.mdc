@@ -1,0 +1,35 @@
+---
+description: 文档中推荐链接必须附带详细中文摘要
+globs: **/*.md
+alwaysApply: false
+---
+
+# 推荐链接中文摘要规则
+
+在生成文档时，所有附带的推荐链接（外部文章、教程、论文、工具等）都必须提供**详细且通俗易懂的中文总结**，方便不熟悉英文的读者理解链接内容。
+
+## 格式要求
+
+每个链接必须包含：
+1. 链接标题（保留原文标题）
+2. 中文摘要（3-5 句话，说清楚这个资源讲了什么、为什么值得看）
+
+```markdown
+<!-- ❌ 错误：只放链接，没有中文说明 -->
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+- [Hugging Face Transformers](https://huggingface.co/docs/transformers)
+
+<!-- ✅ 正确：每个链接附带详细中文摘要 -->
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+  这篇论文提出了 Transformer 架构，是当前所有大语言模型的基础。核心思想是用"注意力机制"替代传统的循环神经网络，让模型能同时看到输入的所有部分，大幅提升了训练速度和翻译质量。如果你想理解 GPT、BERT 等模型为什么这么强，这篇是必读的起点。
+
+- [Hugging Face Transformers 文档](https://huggingface.co/docs/transformers)
+  Hugging Face 是目前最流行的 AI 模型平台，Transformers 是他们的核心库。这份文档教你如何用几行 Python 代码加载和使用各种预训练模型（如文本生成、翻译、情感分析等）。适合想动手实践但不想从零搭建模型的开发者。
+```
+
+## 摘要写作要求
+
+- 用**大白话**解释，避免堆砌专业术语
+- 如果涉及专业概念，用括号补充简短解释
+- 说明这个资源**解决什么问题**、**适合谁看**
+- 如果是英文资源，明确指出"该资源为英文"
