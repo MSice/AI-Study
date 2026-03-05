@@ -360,4 +360,4 @@ IT 部门可以接单处理。
 
 ### 方式三：使用主控提示（推荐）
 
-参见 `master-prompt.md`，一个提示搞定一切。
+参见 [`master-prompt.md`](./master-prompt.md)，一个提示搞定一切。
