@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>丽江婚礼后·蜜月旅行方案全集</title>
+<style>
+:root {
+  --coral: #FF6B6B;
+  --sky: #4ECDC4;
+  --warm: #FFE66D;
+  --dark: #2C3E50;
+  --light: #F8F9FA;
+  --gray: #6C757D;
+  --white: #FFFFFF;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: var(--light); color: var(--dark); line-height: 1.7; }
+.header { background: linear-gradient(135deg, var(--coral), #ee5a6f, var(--sky)); color: white; padding: 50px 20px 40px; text-align: center; position: relative; overflow: hidden; }
+.header::after { content: ''; position: absolute; bottom: -30px; left: 0; right: 0; height: 60px; background: var(--light); border-radius: 50% 50% 0 0; }
+.header h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.header p { font-size: 1.1em; opacity: 0.95; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+.info-bar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0 30px; }
+.info-tag { background: white; padding: 8px 18px; border-radius: 30px; font-size: 0.9em; box-shadow: var(--shadow); display: flex; align-items: center; gap: 6px; }
+
+/* Tabs */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; justify-content: center; position: sticky; top: 0; z-index: 100; background: var(--light); padding: 16px 0; }
+.tab-btn { padding: 10px 20px; border: 2px solid #ddd; border-radius: 30px; background: white; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; white-space: nowrap; }
+.tab-btn:hover { border-color: var(--coral); color: var(--coral); }
+.tab-btn.active { background: var(--coral); color: white; border-color: var(--coral); }
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Cards */
+.card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 24px; overflow: hidden; }
+.card-header { padding: 24px 28px 16px; border-bottom: 1px solid #f0f0f0; }
+.card-header h2 { font-size: 1.5em; display: flex; align-items: center; gap: 10px; }
+.card-header .subtitle { color: var(--gray); font-size: 0.9em; margin-top: 6px; }
+.card-body { padding: 20px 28px 28px; }
+
+/* Overview grid */
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.overview-item { text-align: center; padding: 16px 10px; background: var(--light); border-radius: 12px; }
+.overview-item .label { font-size: 0.8em; color: var(--gray); margin-bottom: 4px; }
+.overview-item .value { font-size: 1.1em; font-weight: 700; }
+
+/* Pros & Cons */
+.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+.pros, .cons { padding: 20px; border-radius: 12px; }
+.pros { background: #E8F8F5; }
+.cons { background: #FDEDEC; }
+.pros h3 { color: #27AE60; margin-bottom: 12px; }
+.cons h3 { color: #E74C3C; margin-bottom: 12px; }
+.pros li, .cons li { margin-bottom: 8px; font-size: 0.92em; line-height: 1.6; }
+
+/* Schedule table */
+.schedule-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; }
+.schedule-table th { background: linear-gradient(135deg, var(--coral), #ee5a6f); color: white; padding: 12px 16px; text-align: left; font-size: 0.88em; }
+.schedule-table th:first-child { border-radius: 10px 0 0 0; }
+.schedule-table th:last-child { border-radius: 0 10px 0 0; text-align: right; }
+.schedule-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.9em; }
+.schedule-table td:last-child { text-align: right; font-weight: 600; color: var(--coral); }
+.schedule-table tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+.schedule-table tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+.schedule-table tr:hover td { background: #FFF5F5; }
+
+/* Booking table */
+.booking-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; }
+.booking-table th { background: var(--sky); color: white; padding: 12px 16px; text-align: left; font-size: 0.85em; }
+.booking-table th:first-child { border-radius: 10px 0 0 0; }
+.booking-table th:last-child { border-radius: 0 10px 0 0; }
+.booking-table td { padding: 12px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.88em; vertical-align: middle; }
+.booking-table tr:last-child td:first-child { border-radius: 0 0 0 10px; }
+.booking-table tr:last-child td:last-child { border-radius: 0 0 10px 0; }
+.booking-table tr:hover td { background: #E8F8F5; }
+.booking-table a { color: var(--sky); text-decoration: none; font-weight: 600; }
+.booking-table a:hover { text-decoration: underline; color: #3BAFA6; }
+.price { color: var(--coral); font-weight: 700; }
+
+/* Compare table */
+.compare-section { overflow-x: auto; margin: 20px 0; }
+.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 900px; }
+.compare-table th { background: var(--dark); color: white; padding: 12px 14px; font-size: 0.82em; text-align: center; position: sticky; top: 70px; }
+.compare-table th:first-child { text-align: left; border-radius: 10px 0 0 0; }
+.compare-table th:last-child { border-radius: 0 10px 0 0; }
+.compare-table td { padding: 10px 14px; border-bottom: 1px solid #f0f0f0; font-size: 0.85em; text-align: center; }
+.compare-table td:first-child { text-align: left; font-weight: 600; background: #f8f9fa; }
+.compare-table tr:hover td { background: #FFF5F5; }
+.highlight-col { background: #FFF3E0 !important; }
+
+/* Budget bar */
+.budget-bar-container { margin: 16px 0; }
+.budget-bar { height: 28px; background: #eee; border-radius: 14px; overflow: hidden; position: relative; }
+.budget-fill { height: 100%; border-radius: 14px; background: linear-gradient(90deg, var(--sky), var(--coral)); display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; color: white; font-size: 0.8em; font-weight: 700; transition: width 0.8s ease; }
+.budget-label { display: flex; justify-content: space-between; font-size: 0.82em; color: var(--gray); margin-top: 6px; }
+
+/* Section title */
+.section-title { font-size: 1.3em; font-weight: 700; margin: 36px 0 16px; padding-left: 14px; border-left: 4px solid var(--coral); }
+
+/* Links section */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
+.link-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--shadow); transition: transform 0.2s; }
+.link-card:hover { transform: translateY(-3px); }
+.link-card h4 { margin-bottom: 10px; font-size: 1em; }
+.link-card a { color: var(--sky); text-decoration: none; font-size: 0.9em; display: block; margin-bottom: 4px; }
+.link-card a:hover { text-decoration: underline; }
+.link-card .desc { color: var(--gray); font-size: 0.82em; }
+
+/* Collapsible */
+.collapsible { cursor: pointer; user-select: none; }
+.collapsible::after { content: ' ▼'; font-size: 0.7em; }
+.collapsible.open::after { content: ' ▲'; }
+.collapse-body { display: none; }
+.collapse-body.open { display: block; }
+
+/* Footer */
+.footer { text-align: center; padding: 40px 20px; color: var(--gray); font-size: 0.85em; }
+
+/* Print */
+@media print {
+  .tabs, .tab-btn, .header::after { display: none; }
+  .tab-content { display: block !important; page-break-inside: avoid; }
+  .header { padding: 20px; }
+  body { background: white; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.6em; }
+  .pros-cons { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: repeat(2, 1fr); }
+  .tabs { gap: 6px; }
+  .tab-btn { padding: 8px 14px; font-size: 0.8em; }
+  .card-body, .card-header { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌏 丽江婚礼后 · 蜜月旅行方案全集</h1>
+  <p>7套差异化方案 · 优缺点对比 · 一键预订链接</p>
+</div>
+
+<div class="container">
+
+<div class="info-bar">
+  <span class="info-tag">📅 婚礼：2026.5.14-5.16</span>
+  <span class="info-tag">👥 情侣2人</span>
+  <span class="info-tag">💰 3k-5.5k/人</span>
+  <span class="info-tag">❤️ 自然·人文·休闲·出片·美食</span>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('compare')">📊 总览对比</button>
+  <button class="tab-btn" onclick="showTab('plan1')">① 大理慢时光</button>
+  <button class="tab-btn" onclick="showTab('plan2')">② 泸沽湖秘境</button>
+  <button class="tab-btn" onclick="showTab('plan3')">③ 香格里拉</button>
+  <button class="tab-btn" onclick="showTab('plan4')">④ 全景环线</button>
+  <button class="tab-btn" onclick="showTab('plan5')">⑤ 云贵桂原版</button>
+  <button class="tab-btn" onclick="showTab('plan6')">⑥ 云贵桂实探</button>
+  <button class="tab-btn" onclick="showTab('plan7')">⑦ 省钱版</button>
+  <button class="tab-btn" onclick="showTab('links')">🔗 预订链接</button>
+</div>
+
+<!-- ==================== 总览对比 ==================== -->
+<div id="compare" class="tab-content active">
+<div class="card">
+  <div class="card-header"><h2>📊 七套方案终极对比</h2></div>
+  <div class="card-body">
+    <div class="compare-section">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>维度</th><th>① 大理慢时光</th><th>② 泸沽湖秘境</th><th>③ 香格里拉</th><th>④ 全景环线</th><th>⑤ 云贵桂原版</th><th>⑥ 云贵桂实探</th><th class="highlight-col">⑦ 省钱版</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>天数</td><td>5天</td><td>5天</td><td>5天</td><td>5天</td><td>8-9天</td><td>9天</td><td class="highlight-col">9天</td></tr>
+        <tr><td>城市数</td><td>2</td><td>2</td><td>2</td><td>3</td><td>5</td><td>6</td><td class="highlight-col">6</td></tr>
+        <tr><td>体力评级</td><td>⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐+</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td class="highlight-col">⭐⭐⭐+</td></tr>
+        <tr><td>游玩预算/人</td><td>2,200-2,800</td><td>2,600-3,400</td><td>2,500-3,500</td><td>2,400-3,500</td><td>3,200-3,800</td><td>3,540-4,070</td><td class="highlight-col"><b>2,342</b></td></tr>
+        <tr><td>含交通总计</td><td>~3,000</td><td>~3,200</td><td>~3,300</td><td>~3,300</td><td>~6,000</td><td>~5,800</td><td class="highlight-col"><b>~4,594</b></td></tr>
+        <tr><td>美食指数</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td class="highlight-col">⭐⭐⭐⭐</td></tr>
+        <tr><td>出片指数</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td class="highlight-col">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>地貌多样性</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td class="highlight-col">⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>蜜月浪漫度</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐</td><td class="highlight-col">⭐⭐⭐</td></tr>
+        <tr><td>赶路程度</td><td>低</td><td>中</td><td>中高</td><td>高</td><td>高</td><td>中高</td><td class="highlight-col">中高</td></tr>
+        <tr><td>适合人群</td><td>想彻底放松</td><td>极致湖景蜜月</td><td>人文+壮阔自然</td><td>不留遗憾型</td><td>假期长精力足</td><td>假期长想深度</td><td class="highlight-col">预算有限不缩水</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案一 ==================== -->
+<div id="plan1" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>① 风花雪月 · 大理慢时光</h2>
+    <div class="subtitle">苍山洱海边发呆，古镇里吃喝逛拍，婚礼后最佳"回血"方案</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐ 小趴菜</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">¥2,200-2,800</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">5天4晚</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">🚗 租车自驾</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">丽江+大理</div></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">📅 行程概要</h3>
+    <div class="collapse-body">
+    <table class="schedule-table">
+      <thead><tr><th>日期</th><th>行程</th><th>花费/人</th></tr></thead>
+      <tbody>
+        <tr><td>Day1 5.17</td><td>丽江 → 喜洲古镇 → 洱海边入住</td><td>~¥440</td></tr>
+        <tr><td>Day2 5.18</td><td>环洱海东线（双廊→小普陀→文笔村S弯）</td><td>~¥430</td></tr>
+        <tr><td>Day3 5.19</td><td>苍山感通索道 → 寂照庵 → 大理古城</td><td>~¥410</td></tr>
+        <tr><td>Day4 5.20</td><td>沙溪古镇（茶马古道古集市）</td><td>~¥310</td></tr>
+        <tr><td>Day5 5.21</td><td>大理 → 丽江还车 → 返程</td><td>~¥150</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>体力消耗最低，婚礼后最适合回血</li>
+        <li>美食指数最高（白族菜系丰富）</li>
+        <li>出片稳定，洱海/喜洲/苍山都是成熟拍摄点</li>
+        <li>预算最低，5天2,200起</li>
+        <li>自驾环洱海体验极佳</li>
+        <li>沙溪古镇商业化极低，非常出片</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>地貌单一，全程大理州内</li>
+        <li>没有瀑布/雪山等视觉冲击</li>
+        <li>丽江-大理路线太经典，缺乏新鲜感</li>
+        <li>需要租车5天</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>🚗 丽江租车（经济型5天）</td><td>5.17-5.21</td><td class="price">~¥60-75/天</td><td><a href="https://car.ctrip.com/zanche/lijiang" target="_blank">携程租车</a> · <a href="https://www.1hai.cn/" target="_blank">一嗨租车</a></td></tr>
+        <tr><td>2</td><td>🏨 洱海边民宿（2晚）</td><td>5.17-5.18</td><td class="price">~¥250/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/dali31" target="_blank">携程·大理</a> · <a href="https://m.ctrip.com/html5/hotel/hoteldetail/131705006.html" target="_blank">一月泊心海景</a></td></tr>
+        <tr><td>3</td><td>🏨 大理古城客栈（1晚）</td><td>5.19</td><td class="price">~¥200/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/dali31" target="_blank">携程·大理古城</a></td></tr>
+        <tr><td>4</td><td>🏨 沙溪古镇民宿（1晚）</td><td>5.20</td><td class="price">~¥150/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/jianchuan2498" target="_blank">携程·沙溪</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案二 ==================== -->
+<div id="plan2" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>② 秘境泸沽湖 · 神仙眷侣</h2>
+    <div class="subtitle">高原明珠泸沽湖+摩梭文化，蓝到失真的水面是天然婚纱背景板</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐ 普通人</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">¥2,600-3,400</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">5天4晚</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">🚗 租车自驾</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">丽江+泸沽湖</div></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">📅 行程概要</h3>
+    <div class="collapse-body">
+    <table class="schedule-table">
+      <thead><tr><th>日期</th><th>行程</th><th>花费/人</th></tr></thead>
+      <tbody>
+        <tr><td>Day1 5.17</td><td>丽江 → 泸沽湖（自驾4h）</td><td>~¥530</td></tr>
+        <tr><td>Day2 5.18</td><td>环湖自驾（情人滩→草海走婚桥→猪槽船）</td><td>~¥470</td></tr>
+        <tr><td>Day3 5.19</td><td>泸沽湖深度（皮划艇+摩梭篝火晚会）</td><td>~¥460</td></tr>
+        <tr><td>Day4 5.20</td><td>泸沽湖 → 丽江 → 白沙古镇/束河</td><td>~¥390</td></tr>
+        <tr><td>Day5 5.21</td><td>玉龙雪山 或 拉市海 → 返程</td><td>~¥210-340</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>出片指数最高，5月湖水最蓝</li>
+        <li>摩梭文化独特（走婚桥/篝火晚会）</li>
+        <li>蜜月氛围满分，高原湖泊+星空</li>
+        <li>白沙古镇加分，比大研安静10倍</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>山路弯多，丽江到泸沽湖4h易晕车</li>
+        <li>来回8h在路上，两天基本赶路</li>
+        <li>餐饮选择少，以摩梭家常菜为主</li>
+        <li>海拔2,690m，婚礼后疲劳可能加重不适</li>
+        <li>必须租车，公共交通不便</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>🚗 丽江租车（经济型5天）</td><td>5.17-5.21</td><td class="price">~¥60-75/天</td><td><a href="https://car.ctrip.com/zanche/lijiang" target="_blank">携程租车</a> · <a href="https://www.1hai.cn/" target="_blank">一嗨租车</a></td></tr>
+        <tr><td>2</td><td>🏨 泸沽湖湖景民宿（3晚）</td><td>5.17-5.19</td><td class="price">~¥250-350/晚</td><td><a href="https://hotels.ctrip.com/hotels/8677123.html" target="_blank">牧云山庄·里格</a> · <a href="https://hotels.ctrip.com/hotels/1349000.html" target="_blank">次第花开·大落水</a> · <a href="https://hotels.ctrip.com/hotels/807655.html" target="_blank">江南雅居</a></td></tr>
+        <tr><td>3</td><td>🏨 丽江古城/束河客栈（1晚）</td><td>5.20</td><td class="price">~¥150-200/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/lijiang22/zone12060" target="_blank">携程·丽江古城</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案三 ==================== -->
+<div id="plan3" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>③ 香格里拉 · 人间净土探秘</h2>
+    <div class="subtitle">虎跳峡的壮阔+普达措的仙境+藏族文化的震撼</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐⭐ 暴走达人</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">¥2,500-3,500</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">5天4晚</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">🚗 租车自驾</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">丽江+香格里拉</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>视觉冲击力最强（虎跳峡+普达措+松赞林寺）</li>
+        <li>人文深度最好（藏传佛教+纳西东巴文化）</li>
+        <li>5月杜鹃花海，普达措漫山遍野紫红色</li>
+        <li>白水台极小众，中国版"棉花堡"</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>体力消耗最大，婚礼后可能吃不消</li>
+        <li>高原风险，香格里拉3,300m有高反可能</li>
+        <li>温差极大（5-20°C），行李负担重</li>
+        <li>需要租车或包车，景点分散</li>
+        <li>藏区物资运输成本高，餐饮偏贵</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>🚗 丽江租车（经济型5天）</td><td>5.17-5.21</td><td class="price">~¥60-75/天</td><td><a href="https://car.ctrip.com/zanche/lijiang" target="_blank">携程租车</a></td></tr>
+        <tr><td>2</td><td>🏨 香格里拉古城客栈（3晚）</td><td>5.17-5.19</td><td class="price">~¥200-300/晚</td><td><a href="https://hotels.ctrip.com/hotel/107215749.html" target="_blank">云牧客栈</a> · <a href="https://hotels.ctrip.com/hotels/16899855.html" target="_blank">如是寒舍</a> · <a href="https://hotels.ctrip.com/hotels/6890483.html" target="_blank">小扣柴扉</a></td></tr>
+        <tr><td>3</td><td>🏨 丽江古城客栈（1晚）</td><td>5.20</td><td class="price">~¥150-200/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/lijiang22/zone12060" target="_blank">携程·丽江</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案四 ==================== -->
+<div id="plan4" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>④ 大理+沙溪+泸沽湖 · 全景环线</h2>
+    <div class="subtitle">一次打卡三大经典，洱海的柔+沙溪的古+泸沽湖的蓝</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐+ 普通人偏上</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">¥2,400-3,500</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">5天4晚</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">🚗 租车自驾</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">丽江+大理+泸沽湖</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>三大经典一网打尽，不留遗憾</li>
+        <li>风格跨度大（白族→茶马古道→摩梭）</li>
+        <li>沙溪性价比极高（住宿100-200）</li>
+        <li>出片多样性强</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>Day4赶路严重（大理→丽江→泸沽湖约6h）</li>
+        <li>每个地方都浅尝辄止</li>
+        <li>驾驶强度最高（5天总驾驶约15h+）</li>
+        <li>泸沽湖只有1晚，太匆忙</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>🚗 丽江租车（5天）</td><td>5.17-5.21</td><td class="price">~¥60-75/天</td><td><a href="https://car.ctrip.com/zanche/lijiang" target="_blank">携程租车</a></td></tr>
+        <tr><td>2</td><td>🏨 沙溪古镇民宿（1晚）</td><td>5.17</td><td class="price">~¥150/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/jianchuan2498" target="_blank">携程·沙溪</a></td></tr>
+        <tr><td>3</td><td>🏨 大理洱海边民宿（2晚）</td><td>5.18-5.19</td><td class="price">~¥250/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/dali31" target="_blank">携程·大理</a> · <a href="https://mm.ctrip.com/html5/hotel/hoteldetail/133328811.html" target="_blank">如是小院</a></td></tr>
+        <tr><td>4</td><td>🏨 泸沽湖湖景民宿（1晚）</td><td>5.20</td><td class="price">~¥250-350/晚</td><td><a href="https://hotels.ctrip.com/hotels/8677123.html" target="_blank">牧云山庄</a> · <a href="https://hotels.ctrip.com/hotels/1349000.html" target="_blank">次第花开</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案五 ==================== -->
+<div id="plan5" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>⑤ 云贵桂 · 蜜月万里环游记（原版）</h2>
+    <div class="subtitle">5城跨越云贵桂，地貌全集邮，美食大满贯</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐⭐ 暴走达人</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">~¥6,000（含交通）</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">8-9天</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">✈️🚄 飞机+高铁</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">5城</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>城市数量最多（5城）</li>
+        <li>地貌多样性强（高原→喀斯特→海岛→山水）</li>
+        <li>美食大满贯（藏餐→黔菜→琼菜→桂菜）</li>
+        <li>海口转机白捡一天</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>节奏偏赶，每1-2天换城市</li>
+        <li>缺少深度，走马观花</li>
+        <li>没有黄果树/德天等重磅景点</li>
+        <li>预算偏高，加大交通超6,000</li>
+        <li>信息基于经验估算，未经验证</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒（12项）</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>✈️ 北京→丽江</td><td>5.14</td><td class="price">¥700+</td><td><a href="https://flights.ctrip.com/booking/BJS-LJG-day-1.html" target="_blank">携程</a> · <a href="https://flight.qunar.com" target="_blank">去哪儿</a></td></tr>
+        <tr><td>2</td><td>🚄 丽江→香格里拉</td><td>5.17</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>3</td><td>🏨 香格里拉古城（2晚）</td><td>5.17-5.18</td><td class="price">¥200-300/晚</td><td><a href="https://hotels.ctrip.com/hotel/107215749.html" target="_blank">云牧客栈</a> · <a href="https://hotels.ctrip.com/hotels/16899855.html" target="_blank">如是寒舍</a></td></tr>
+        <tr><td>4</td><td>🚄 香格里拉→丽江</td><td>5.19</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>5</td><td>✈️ 丽江→贵阳</td><td>5.19</td><td class="price">¥400+</td><td><a href="https://flights.ctrip.com/booking/LJG-KWE-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>6</td><td>🏨 贵阳甲秀楼附近（2晚）</td><td>5.19-5.20</td><td class="price">¥150-200/晚</td><td><a href="https://hotels.ctrip.com/hotels/29193967.html" target="_blank">一花一宿</a> · <a href="https://hotels.ctrip.com/hotels/18012568.html" target="_blank">燕舍民宿</a></td></tr>
+        <tr><td>7</td><td>✈️ 贵阳→南宁（经海口32h转机）</td><td>5.21</td><td class="price">¥800+</td><td><a href="https://flights.ctrip.com/booking/KWE-NNG-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>8</td><td>🏨 海口（航司免费）</td><td>5.21</td><td class="price">¥0</td><td>购票时确认</td></tr>
+        <tr><td>9</td><td>🏨 南宁住宿（1晚）</td><td>5.22</td><td class="price">¥150-200/晚</td><td><a href="https://m.ctrip.com/webapp/hotel/nanning25" target="_blank">携程·南宁</a></td></tr>
+        <tr><td>10</td><td>🚄 南宁→桂林</td><td>5.23</td><td class="price">¥112</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>11</td><td>🏨 桂林市中心（2晚）</td><td>5.23-5.24</td><td class="price">¥150-250/晚</td><td><a href="https://hotels.ctrip.com/hotels/443798.html" target="_blank">汉庭优佳</a></td></tr>
+        <tr><td>12</td><td>✈️ 桂林→北京</td><td>5.25</td><td class="price">¥500+</td><td><a href="https://m.ctrip.com/html5/flight/kwl-bjs-day-1.html" target="_blank">携程</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案六 ==================== -->
+<div id="plan6" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>⑥ 云贵桂 · 蜜月万里环线（全网实探版）</h2>
+    <div class="subtitle">两大瀑布（黄果树+德天）+ 6城5省 + 全网实时数据验证</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐⭐ 暴走达人</div></div>
+      <div class="overview-item"><div class="label">人均预算</div><div class="value price">~¥5,500-6,000（含交通）</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">9天</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">✈️🚄🚌 飞机+高铁+大巴</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">6城5省</div></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>两大瀑布加持（黄果树+德天），视觉震撼</li>
+        <li>全网实时数据验证，信息准确</li>
+        <li>6城5省，地貌集邮最完整</li>
+        <li>赶路日与休闲日交替，节奏合理</li>
+        <li>海口白捡一天，全程花费最低</li>
+        <li>出片多样性拉满</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>总预算最高（~5,500-6,000/人）</li>
+        <li>Day7赶路严重（德天→南宁→桂林）</li>
+        <li>行李问题（冬装→夏装温差25°C+）</li>
+        <li>德天瀑布交通不便（南宁到大新3h）</li>
+        <li>天数较长（共10天假期）</li>
+        <li>每个城市仍然偏浅</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒（12项）</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>✈️ 北京→丽江</td><td>5.14</td><td class="price">¥700+</td><td><a href="https://flights.ctrip.com/booking/BJS-LJG-day-1.html" target="_blank">携程</a> · <a href="https://flight.qunar.com" target="_blank">去哪儿</a></td></tr>
+        <tr><td>2</td><td>🚄 丽江→香格里拉</td><td>5.17</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>3</td><td>🏨 香格里拉古城（2晚）</td><td>5.17-5.18</td><td class="price">¥200-300/晚</td><td><a href="https://hotels.ctrip.com/hotel/107215749.html" target="_blank">云牧客栈</a> · <a href="https://hotels.ctrip.com/hotels/16899855.html" target="_blank">如是寒舍</a> · <a href="https://hotels.ctrip.com/hotels/6890483.html" target="_blank">小扣柴扉</a></td></tr>
+        <tr><td>4</td><td>🚄 香格里拉→丽江</td><td>5.19</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>5</td><td>✈️ 丽江→贵阳</td><td>5.19</td><td class="price">¥400+</td><td><a href="https://flights.ctrip.com/booking/LJG-KWE-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>6</td><td>🏨 贵阳甲秀楼附近（2晚）</td><td>5.19-5.20</td><td class="price">¥150-250/晚</td><td><a href="https://hotels.ctrip.com/hotels/29193967.html" target="_blank">一花一宿</a> · <a href="https://hotels.ctrip.com/hotels/437432.html" target="_blank">峰润喀斯特</a></td></tr>
+        <tr><td>7</td><td>✈️ 贵阳→南宁（经海口32h转机）</td><td>5.21</td><td class="price">¥800+</td><td><a href="https://flights.ctrip.com/booking/KWE-NNG-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>8</td><td>🏨 海口（航司免费）</td><td>5.21</td><td class="price">¥0</td><td>购票时确认</td></tr>
+        <tr><td>9</td><td>🏨 大新/德天瀑布附近（1晚）</td><td>5.22</td><td class="price">¥100-200/晚</td><td><a href="https://m.ctrip.com/html5/hotel/hoteldetail/125315849.html" target="_blank">澜舟阁</a> · <a href="https://mm.ctrip.com/html5/hotel/hoteldetail/111566159.html" target="_blank">山茶民宿</a></td></tr>
+        <tr><td>10</td><td>🚄 南宁→桂林</td><td>5.23</td><td class="price">¥112</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>11</td><td>🏨 桂林市中心（2晚）</td><td>5.23-5.24</td><td class="price">¥150-250/晚</td><td><a href="https://hotels.ctrip.com/hotels/443798.html" target="_blank">汉庭优佳</a> · <a href="https://www.ihg.com/holidayinnexpress/hotels/cn/zh/guilin/kwlcc/hoteldetail" target="_blank">智选假日</a></td></tr>
+        <tr><td>12</td><td>✈️ 桂林→北京</td><td>5.25</td><td class="price">¥500+</td><td><a href="https://m.ctrip.com/html5/flight/kwl-bjs-day-1.html" target="_blank">携程</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 方案七 ==================== -->
+<div id="plan7" class="tab-content">
+<div class="card">
+  <div class="card-header">
+    <h2>⑦ 云贵桂 · 蜜月环线（精打细算版）</h2>
+    <div class="subtitle">6城不缩水，预算5,500以内，漓江徒步替代竹筏更深度</div>
+  </div>
+  <div class="card-body">
+    <div class="overview-grid">
+      <div class="overview-item"><div class="label">体力评级</div><div class="value">⭐⭐⭐+ 普通人偏上</div></div>
+      <div class="overview-item"><div class="label">人均总计</div><div class="value price">~¥4,594</div></div>
+      <div class="overview-item"><div class="label">天数</div><div class="value">9天</div></div>
+      <div class="overview-item"><div class="label">交通方式</div><div class="value">✈️🚄🚌 飞机+高铁+大巴</div></div>
+      <div class="overview-item"><div class="label">城市</div><div class="value">6城5省</div></div>
+    </div>
+
+    <h3 style="margin: 20px 0 12px;">💡 省钱策略</h3>
+    <table class="schedule-table">
+      <thead><tr><th>策略</th><th>原价</th><th>省钱版</th></tr></thead>
+      <tbody>
+        <tr><td>住宿降级（青旅/经济型双人间）</td><td>200-230/晚</td><td>60-150/晚</td></tr>
+        <tr><td>砍掉松赞林寺 → 纳帕海免费替代</td><td>¥90</td><td>¥0</td></tr>
+        <tr><td>黄果树不坐扶梯，步行下谷底</td><td>¥50</td><td>¥0</td></tr>
+        <tr><td>漓江竹筏 → 徒步精华段20km</td><td>¥128</td><td>¥20</td></tr>
+        <tr><td>砍掉印象·刘三姐</td><td>¥238</td><td>¥0</td></tr>
+        <tr><td>餐饮控制（多粉面小吃）</td><td>日均80-100</td><td>日均55-65</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin: 20px 0 12px;">📊 预算汇总</h3>
+    <div class="budget-bar-container">
+      <div class="budget-bar"><div class="budget-fill" style="width: 83.5%;">¥4,594 / ¥5,500</div></div>
+      <div class="budget-label"><span>已用 83.5%</span><span>剩余 ¥906 弹性空间</span></div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros"><h3>✅ 优点</h3><ul>
+        <li>预算控制最好（4,594，剩余906弹性）</li>
+        <li>景点不缩水（6城+2大瀑布+漓江全保留）</li>
+        <li>漓江徒步比竹筏更深度，还省108</li>
+        <li>纳帕海免费且同样出片</li>
+        <li>海口白捡日全天仅花107</li>
+        <li>弹性空间大，可灵活升级</li>
+      </ul></div>
+      <div class="cons"><h3>❌ 缺点</h3><ul>
+        <li>住宿体验降级（青旅/经济型）</li>
+        <li>餐饮有所克制（日均55-65）</li>
+        <li>砍掉松赞林寺，人文体验有损失</li>
+        <li>漓江徒步20km，Day8体力消耗大</li>
+        <li>没有印象·刘三姐</li>
+        <li>景区日需自带干粮</li>
+      </ul></div>
+    </div>
+    <h3 class="collapsible" onclick="toggle(this)">🎫 需要预订的机酒（12项）</h3>
+    <div class="collapse-body">
+    <table class="booking-table">
+      <thead><tr><th>#</th><th>预订项目</th><th>日期</th><th>参考价/人</th><th>预订链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>✈️ 北京→丽江</td><td>5.14</td><td class="price">¥700+</td><td><a href="https://flights.ctrip.com/booking/BJS-LJG-day-1.html" target="_blank">携程</a> · <a href="https://flight.qunar.com" target="_blank">去哪儿</a></td></tr>
+        <tr><td>2</td><td>🚄 丽江→香格里拉</td><td>5.17</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>3</td><td>🏨 香格里拉青旅/经济客栈（2晚）</td><td>5.17-5.18</td><td class="price">¥100-150/晚</td><td><a href="https://hotels.ctrip.com/hotel/121052944.html" target="_blank">山而栖青年公馆⭐</a> · <a href="https://hotels.ctrip.com/hotels/6890483.html" target="_blank">小扣柴扉</a></td></tr>
+        <tr><td>4</td><td>🚄 香格里拉→丽江</td><td>5.19</td><td class="price">¥70</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>5</td><td>✈️ 丽江→贵阳</td><td>5.19</td><td class="price">¥400+</td><td><a href="https://flights.ctrip.com/booking/LJG-KWE-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>6</td><td>🏨 贵阳经济型酒店（2晚）</td><td>5.19-5.20</td><td class="price">¥80-120/晚</td><td><a href="https://hotels.ctrip.com/hotels/48670051.html" target="_blank">恒8连锁⭐</a> · <a href="https://hotels.ctrip.com/hotels/18012568.html" target="_blank">燕舍民宿</a></td></tr>
+        <tr><td>7</td><td>✈️ 贵阳→南宁（经海口32h转机）</td><td>5.21</td><td class="price">¥800+</td><td><a href="https://flights.ctrip.com/booking/KWE-NNG-day-1.html" target="_blank">携程</a></td></tr>
+        <tr><td>8</td><td>🏨 海口（航司免费）</td><td>5.21</td><td class="price">¥0</td><td>购票时确认</td></tr>
+        <tr><td>9</td><td>🏨 大新/德天附近（1晚）</td><td>5.22</td><td class="price">¥50-80/晚</td><td><a href="https://m.ctrip.com/html5/hotel/hoteldetail/125315849.html" target="_blank">澜舟阁</a> · <a href="https://hotels.ctrip.com/hotel/daxin7531" target="_blank">携程·大新</a></td></tr>
+        <tr><td>10</td><td>🚄 南宁→桂林</td><td>5.23</td><td class="price">¥112</td><td><a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306</a></td></tr>
+        <tr><td>11</td><td>🏨 桂林经济型酒店（2晚）</td><td>5.23-5.24</td><td class="price">¥75-100/晚</td><td><a href="https://hotels.ctrip.com/hotels/443798.html" target="_blank">汉庭优佳</a> · <a href="https://m.ctrip.com/webapp/hotel/guilin28" target="_blank">携程·桂林</a></td></tr>
+        <tr><td>12</td><td>✈️ 桂林→北京</td><td>5.25</td><td class="price">¥500+</td><td><a href="https://m.ctrip.com/html5/flight/kwl-bjs-day-1.html" target="_blank">携程</a></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== 通用链接 ==================== -->
+<div id="links" class="tab-content">
+<div class="section-title">🔗 通用预订链接</div>
+<div class="links-grid">
+  <div class="link-card">
+    <h4>✈️ 机票比价</h4>
+    <a href="https://flights.ctrip.com" target="_blank">携程机票</a>
+    <div class="desc">国内最大OTA，航线全</div>
+    <a href="https://flight.qunar.com" target="_blank">去哪儿机票</a>
+    <div class="desc">比价功能强，常有低价</div>
+    <a href="https://www.cn.kayak.com" target="_blank">KAYAK</a>
+    <div class="desc">全球比价，适合找特价</div>
+  </div>
+  <div class="link-card">
+    <h4>🚄 火车票</h4>
+    <a href="https://kyfw.12306.cn/otn/leftTicket/init" target="_blank">12306官网</a>
+    <div class="desc">唯一官方购票渠道</div>
+    <a href="https://trains.ctrip.com" target="_blank">携程火车票</a>
+    <div class="desc">可抢票，有时有优惠券</div>
+  </div>
+  <div class="link-card">
+    <h4>🏨 住宿平台</h4>
+    <a href="https://hotels.ctrip.com" target="_blank">携程酒店</a>
+    <div class="desc">国内最全，评价可靠</div>
+    <a href="https://hotel.meituan.com" target="_blank">美团酒店</a>
+    <div class="desc">经济型常有低价</div>
+    <a href="https://www.booking.com" target="_blank">Booking</a>
+    <div class="desc">免费取消政策好</div>
+    <a href="https://www.tujia.com" target="_blank">途家民宿</a>
+    <div class="desc">民宿/整租选择多</div>
+  </div>
+  <div class="link-card">
+    <h4>🚗 租车平台</h4>
+    <a href="https://car.ctrip.com/zanche/lijiang" target="_blank">携程租车·丽江</a>
+    <div class="desc">比价多家租车公司</div>
+    <a href="https://www.1hai.cn/" target="_blank">一嗨租车</a>
+    <div class="desc">全国连锁，网点多</div>
+    <a href="https://www.zuche.com/" target="_blank">神州租车</a>
+    <div class="desc">车况好，服务规范</div>
+  </div>
+  <div class="link-card">
+    <h4>🎫 景点门票</h4>
+    <div class="desc">普达措 → 微信搜"普达措国家公园"公众号</div>
+    <div class="desc">松赞林寺 → 微信搜"松赞林景区"公众号</div>
+    <div class="desc">黄果树 → 微信搜"安旅通"小程序</div>
+    <div class="desc">德天瀑布 → 微信搜"德天跨国瀑布"公众号</div>
+    <div class="desc">漓江竹筏 → 微信搜"桂林阳朔游船票哥"</div>
+  </div>
+  <div class="link-card">
+    <h4>💡 预订时间建议</h4>
+    <div class="desc">✈️ 机票：出发前2-3个月关注，设价格提醒</div>
+    <div class="desc">🚄 高铁：提前15天12306开售</div>
+    <div class="desc">🏨 住宿：提前1个月预订锁价</div>
+    <div class="desc">🎫 门票：普达措/黄果树必须提前公众号预约</div>
+  </div>
+</div>
+</div>
+
+</div><!-- container -->
+
+<div class="footer">
+  <p>📝 生成于 2026年3月 · 部分价格可能随时间变动，建议出发前1-2个月确认最新价格</p>
+  <p>🌏 丽江婚礼后 · 蜜月旅行方案全集 · 共7套方案</p>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.tabs').offsetTop - 10, behavior: 'smooth' });
+}
+function toggle(el) {
+  el.classList.toggle('open');
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.collapse-body').forEach(el => el.classList.add('open'));
+  document.querySelectorAll('.collapsible').forEach(el => el.classList.add('open'));
+});
+</script>
+
+</body>
+</html>

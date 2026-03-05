@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌴 云南+海南蜜月旅行方案合集</title>
+<style>
+:root {
+  --coral: #FF6B6B;
+  --sky: #4ECDC4;
+  --warm: #FFE66D;
+  --dark: #2C3E50;
+  --light: #F8F9FA;
+  --gray: #6C757D;
+  --white: #FFFFFF;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.7;
+}
+.header {
+  background: linear-gradient(135deg, var(--coral), #ee5a6f, var(--sky));
+  color: white;
+  padding: 50px 20px 40px;
+  text-align: center;
+}
+.header h1 { font-size: 2.2em; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.header p { font-size: 1.1em; opacity: 0.9; }
+.container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 0;
+  background: var(--light);
+  padding: 15px 0;
+  z-index: 100;
+  border-bottom: 2px solid #eee;
+}
+.tab-btn {
+  padding: 10px 18px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.tab-btn:hover { border-color: var(--coral); color: var(--coral); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--coral), #ee5a6f);
+  color: white;
+  border-color: transparent;
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  margin-bottom: 25px;
+  transition: box-shadow 0.3s;
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+.card h2 { color: var(--coral); margin-bottom: 8px; font-size: 1.5em; }
+.card h3 { color: var(--dark); margin: 20px 0 12px; font-size: 1.2em; border-left: 4px solid var(--sky); padding-left: 12px; }
+
+/* Overview badge */
+.overview-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 15px 0 20px;
+}
+.badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+.badge-energy { background: #FFF3E0; color: #E65100; }
+.badge-budget { background: #E8F5E9; color: #2E7D32; }
+.badge-cities { background: #E3F2FD; color: #1565C0; }
+.badge-focus { background: #F3E5F5; color: #7B1FA2; }
+
+/* Route Map Canvas */
+.route-map-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+}
+.route-map-container h4 {
+  margin-bottom: 12px;
+  color: var(--dark);
+  font-size: 1em;
+}
+canvas.route-map {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  max-width: 100%;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9em;
+}
+th {
+  background: linear-gradient(135deg, var(--sky), #45b7aa);
+  color: white;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+tr:hover td { background: #f8f9fa; }
+tr:last-child td { border-bottom: none; }
+
+/* Stamina bar */
+.stamina-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+.stamina-track {
+  flex: 1;
+  max-width: 200px;
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.stamina-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.6s ease;
+}
+
+/* Links section */
+.link-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: #f0f7ff;
+  border: 1px solid #d0e3ff;
+  border-radius: 8px;
+  margin: 4px;
+  font-size: 0.85em;
+  text-decoration: none;
+  color: #1565C0;
+  transition: all 0.2s;
+}
+.link-card:hover { background: #d0e3ff; transform: translateY(-1px); }
+
+/* Tips */
+.tip {
+  padding: 12px 16px;
+  background: #FFF8E1;
+  border-left: 4px solid var(--warm);
+  border-radius: 0 8px 8px 0;
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+/* Compare table */
+.compare-table { overflow-x: auto; }
+.compare-table table { min-width: 900px; font-size: 0.82em; }
+.compare-table th { position: sticky; left: 0; z-index: 2; white-space: nowrap; }
+.compare-table td:first-child { font-weight: 600; background: #f8f9fa; position: sticky; left: 0; z-index: 1; }
+
+/* Collapsible */
+.collapsible-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+.collapsible-header::after { content: '▼'; font-size: 0.8em; transition: transform 0.3s; color: var(--gray); }
+.collapsible-header.open::after { transform: rotate(180deg); }
+.collapsible-body { display: none; padding: 15px 0; }
+.collapsible-body.open { display: block; animation: fadeIn 0.3s; }
+
+/* Budget pie */
+.budget-chart { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 15px 0; }
+.pie-container { position: relative; width: 160px; height: 160px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.5em; }
+  .tabs { gap: 5px; }
+  .tab-btn { padding: 8px 12px; font-size: 0.8em; }
+  .card { padding: 20px 15px; }
+  .overview-badges { gap: 6px; }
+  table { font-size: 0.8em; }
+  td, th { padding: 8px 6px; }
+}
+
+@media print {
+  .tabs, .tab-btn { display: none !important; }
+  .tab-content { display: block !important; page-break-inside: avoid; }
+  .header { background: #333 !important; -webkit-print-color-adjust: exact; }
+  .collapsible-body { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌴 云南 + 海南蜜月旅行方案合集</h1>
+  <p>5.16 - 5.31 | 情侣二人 | 北京出发 | 必玩：香格里拉 + 海南 | 5.19后预算 ≤ 5,500元/人</p>
+</div>
+
+<div class="container">
+  <!-- Tabs -->
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="overview">📊 总览对比</button>
+    <button class="tab-btn" data-tab="plan1">🎯 方案一</button>
+    <button class="tab-btn" data-tab="plan2">🏔️ 方案二</button>
+    <button class="tab-btn" data-tab="plan3">🍜 方案三</button>
+    <button class="tab-btn" data-tab="plan4">🏝️ 方案四</button>
+    <button class="tab-btn" data-tab="plan5">🪖 方案五</button>
+    <button class="tab-btn" data-tab="plan6">🌸 方案六</button>
+    <button class="tab-btn" data-tab="plan7">🧘 方案七</button>
+    <button class="tab-btn" data-tab="plan8">⚡ 方案八</button>
+    <button class="tab-btn" data-tab="plan9">⛵ 方案九</button>
+    <button class="tab-btn" data-tab="tips">📋 通用信息</button>
+  </div>
+
+  <!-- ========== OVERVIEW ========== -->
+  <div class="tab-content active" id="overview">
+    <div class="card">
+      <h2>📌 固定行程（所有方案共用）</h2>
+      <table>
+        <tr><th>日期</th><th>安排</th></tr>
+        <tr><td>5.16 周五</td><td>在家收拾行李</td></tr>
+        <tr><td>5.17 周六</td><td>北京→丽江（飞机 JD5181，23:00到达）</td></tr>
+        <tr><td>5.18 周日</td><td>目的地婚礼准备</td></tr>
+        <tr><td>5.19 周一</td><td>目的地婚礼当天</td></tr>
+        <tr><td>5.30 周五</td><td>在家休息</td></tr>
+        <tr><td>5.31 周六</td><td>在家休息</td></tr>
+      </table>
+      <p style="margin-top:10px;color:var(--coral);font-weight:600;">可自由规划窗口：5.20（周二）~ 5.29（周四），共 10 天</p>
+    </div>
+
+    <div class="card">
+      <h2>📊 九套方案对比</h2>
+      <div class="compare-table">
+        <table>
+          <tr>
+            <th>维度</th><th>一 🎯 原版</th><th>二 🏔️ 自然</th><th>三 🍜 美食</th><th>四 🏝️ 蜜月</th><th>五 🪖 特种兵</th><th>六 🌸 小众</th><th>七 🧘 佛系</th><th>八 ⚡ 优化</th><th>九 ⛵ 出海</th>
+          </tr>
+          <tr><td>体力评级</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐</td><td>⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐</td></tr>
+          <tr><td>城市数量</td><td>6城</td><td>3城</td><td>6城</td><td>2城</td><td>7城</td><td>6城</td><td>2城</td><td>7城</td><td>3城</td></tr>
+          <tr><td>人均预算</td><td>¥5,200</td><td>¥4,917</td><td>¥4,930</td><td>¥5,331</td><td>¥4,840</td><td>¥4,810</td><td>¥5,444</td><td>¥5,410</td><td>¥3,518+出海</td></tr>
+          <tr><td>自然风景</td><td>★★★</td><td>★★★★★</td><td>★★</td><td>★★★★</td><td>★★★★</td><td>★★★★★</td><td>★★★</td><td>★★★★</td><td>★★★★</td></tr>
+          <tr><td>美食指数</td><td>★★★</td><td>★★★</td><td>★★★★★</td><td>★★★</td><td>★★★</td><td>★★★★</td><td>★★★</td><td>★★★★</td><td>★★★</td></tr>
+          <tr><td>海南时间</td><td>1天</td><td>5天</td><td>3天</td><td>7天</td><td>5天</td><td>5天</td><td>7天</td><td>4天</td><td>6天</td></tr>
+          <tr><td>出海体验</td><td>无</td><td>无</td><td>无</td><td>可选</td><td>无</td><td>无</td><td>可选</td><td>无</td><td>⛵🎣🤿</td></tr>
+          <tr><td>适合人群</td><td>精力充沛</td><td>自然爱好</td><td>吃货情侣</td><td>蜜月度假</td><td>体力怪兽</td><td>文艺探索</td><td>极致躺平</td><td>效率优化</td><td>海上冒险</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== PLAN TEMPLATE (repeated for each) ========== -->
+
+  <!-- PLAN 1 -->
+  <div class="tab-content" id="plan1">
+    <div class="card">
+      <h2>🎯 方案一：人工原版方案</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐⭐ 暴走达人</span>
+        <span class="badge badge-budget">¥5,200/人</span>
+        <span class="badge badge-cities">6城</span>
+        <span class="badge badge-focus">多城市跳跃</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:80%;background:linear-gradient(90deg,#FFE66D,#FF6B6B)"></div></div><span>4/5</span></div>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map1" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>行程总览</h3>
+      <table>
+        <tr><th>日期</th><th>城市</th><th>安排</th></tr>
+        <tr><td>5.20</td><td>丽江</td><td>丽江古城游玩</td></tr>
+        <tr><td>5.21</td><td>丽江→香格里拉</td><td>高铁 ¥70，抵达后游玩</td></tr>
+        <tr><td>5.22</td><td>香格里拉</td><td>全天游玩</td></tr>
+        <tr><td>5.23上午</td><td>香格里拉→丽江</td><td>高铁回丽江 ¥70</td></tr>
+        <tr><td>5.23下午</td><td>丽江→贵阳</td><td>飞机 ¥400+，15:00抵达</td></tr>
+        <tr><td>5.24</td><td>贵阳</td><td>全天游玩</td></tr>
+        <tr><td>5.25</td><td>贵阳→海口(转机)</td><td>飞机 ¥800+，32h转机含住宿</td></tr>
+        <tr><td>5.26</td><td>海口→南宁</td><td>晚23:00抵达南宁</td></tr>
+        <tr><td>5.27</td><td>南宁</td><td>全天游玩</td></tr>
+        <tr><td>5.28</td><td>南宁→桂林</td><td>高铁 ¥112，桂林游玩</td></tr>
+        <tr><td>5.29</td><td>桂林→北京</td><td>飞机 ¥500+</td></tr>
+      </table>
+      <h3>预算明细（人均）</h3>
+      <table>
+        <tr><th>项目</th><th>明细</th><th>费用</th></tr>
+        <tr><td>大交通</td><td>高铁+机票</td><td>¥1,950</td></tr>
+        <tr><td>住宿</td><td>10晚 均价¥150</td><td>¥1,500</td></tr>
+        <tr><td>餐饮</td><td>10天 日均¥100</td><td>¥1,000</td></tr>
+        <tr><td>门票</td><td>各景点</td><td>¥500</td></tr>
+        <tr><td>其他</td><td>市内交通+备用</td><td>¥250</td></tr>
+        <tr style="font-weight:700;color:var(--coral)"><td>合计</td><td></td><td>约 ¥5,200</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- PLAN 2 -->
+  <div class="tab-content" id="plan2">
+    <div class="card">
+      <h2>🏔️ 方案二：滇藏秘境 + 椰风海韵</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐ 普通人</span>
+        <span class="badge badge-budget">¥4,917/人</span>
+        <span class="badge badge-cities">3城</span>
+        <span class="badge badge-focus">看遍大自然风景</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:60%;background:linear-gradient(90deg,#4ECDC4,#FFE66D)"></div></div><span>3/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">精简城市，只去丽江→香格里拉→三亚→北京，深度感受自然之美。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map2" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 玉龙雪山 + 蓝月谷</td><td>包车 ¥50</td><td>¥400</td></tr>
+        <tr><td>5.21</td><td>🚂 丽江→香格里拉，独克宗古城</td><td>高铁 ¥70</td><td>¥300</td></tr>
+        <tr><td>5.22</td><td>🌿 普达措国家公园全天</td><td>景区大巴</td><td>¥380</td></tr>
+        <tr><td>5.23</td><td>🐂 纳帕海环湖 + 松赞林寺</td><td>包车 ¥40</td><td>¥350</td></tr>
+        <tr><td>5.24</td><td>✈️ 香格里拉→三亚（经昆明）</td><td>高铁+机票 ¥670</td><td>¥920</td></tr>
+        <tr><td>5.25</td><td>🏖️ 蜈支洲岛全天</td><td>轮渡</td><td>¥550</td></tr>
+        <tr><td>5.26</td><td>🌊 亚龙湾森林公园 + 沙滩</td><td>打车 ¥30</td><td>¥400</td></tr>
+        <tr><td>5.27</td><td>🌅 椰梦长廊 + 第一市场海鲜</td><td>市内 ¥20</td><td>¥370</td></tr>
+        <tr><td>5.28</td><td>🌴 南山文化区 + 天涯海角</td><td>公交 ¥20</td><td>¥380</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>机票 ¥700</td><td>¥750</td></tr>
+      </table>
+      <h3>预算明细（人均）</h3>
+      <table>
+        <tr><th>项目</th><th>费用</th></tr>
+        <tr><td>大交通</td><td>¥1,440</td></tr>
+        <tr><td>住宿</td><td>¥1,540</td></tr>
+        <tr><td>餐饮</td><td>¥1,000</td></tr>
+        <tr><td>门票</td><td>¥737</td></tr>
+        <tr><td>其他</td><td>¥200</td></tr>
+        <tr style="font-weight:700;color:var(--coral)"><td>合计</td><td>约 ¥4,917</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306高铁</a>
+        <a class="link-card" href="https://hotel.meituan.com/" target="_blank">🏨 美团住宿</a>
+        <a class="link-card" href="http://www.wuzhizhou.com/" target="_blank">🎫 蜈支洲岛官网</a>
+        <a class="link-card" href="https://piao.ctrip.com/" target="_blank">🎫 携程门票</a>
+        <a class="link-card" href="https://www.dianping.com/" target="_blank">🍜 大众点评</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 3 -->
+  <div class="tab-content" id="plan3">
+    <div class="card">
+      <h2>🍜 方案三：西南美食环线</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐⭐ 暴走达人</span>
+        <span class="badge badge-budget">¥4,930/人</span>
+        <span class="badge badge-cities">6城</span>
+        <span class="badge badge-focus">尝尽美食</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:80%;background:linear-gradient(90deg,#FFE66D,#FF6B6B)"></div></div><span>4/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">串联云南+海南两大美食重镇，景点为辅、美食为主。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map3" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🍲 丽江美食日：腊排骨+鸡豆凉粉</td><td>步行</td><td>¥300</td></tr>
+        <tr><td>5.21</td><td>🚂 丽江→香格里拉，藏式火锅</td><td>高铁 ¥70</td><td>¥330</td></tr>
+        <tr><td>5.22</td><td>🏔️ 松赞林寺 + 尼西土鸡</td><td>包车 ¥40</td><td>¥400</td></tr>
+        <tr><td>5.23</td><td>✈️ 香格里拉→昆明，汽锅鸡+米线</td><td>机票 ¥400</td><td>¥600</td></tr>
+        <tr><td>5.24</td><td>🍄 昆明篆新市场+野生菌火锅</td><td>地铁</td><td>¥320</td></tr>
+        <tr><td>5.25</td><td>✈️ 昆明→海口，泰龙城夜市</td><td>机票 ¥450</td><td>¥700</td></tr>
+        <tr><td>5.26</td><td>🦀 海口老爸茶+文昌鸡+夜市</td><td>公交</td><td>¥300</td></tr>
+        <tr><td>5.27</td><td>🚄 海口→三亚，第一市场海鲜</td><td>高铁 ¥100</td><td>¥450</td></tr>
+        <tr><td>5.28</td><td>🏖️ 后海村+藤桥排骨+免税店</td><td>打车 ¥30</td><td>¥450</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>机票 ¥700</td><td>¥800</td></tr>
+      </table>
+      <h3>🍽️ 必吃清单</h3>
+      <table>
+        <tr><th>城市</th><th>必吃</th><th>推荐店</th></tr>
+        <tr><td>丽江</td><td>腊排骨火锅、鸡豆凉粉</td><td>钰洁腊排骨</td></tr>
+        <tr><td>香格里拉</td><td>牦牛肉火锅、尼西土鸡</td><td>阿若康巴</td></tr>
+        <tr><td>昆明</td><td>过桥米线、野生菌火锅</td><td>建新园 / 福照楼</td></tr>
+        <tr><td>海口</td><td>文昌鸡、清补凉、老爸茶</td><td>龙泉人椰子鸡</td></tr>
+        <tr><td>三亚</td><td>海鲜大餐、椰子鸡</td><td>第一市场+小胡子</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://hotel.meituan.com/" target="_blank">🏨 美团住宿</a>
+        <a class="link-card" href="https://www.dianping.com/" target="_blank">🍜 大众点评</a>
+        <a class="link-card" href="https://www.meituan.com/" target="_blank">🍜 美团团购</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 4 -->
+  <div class="tab-content" id="plan4">
+    <div class="card">
+      <h2>🏝️ 方案四：海岛深度蜜月</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐ 小趴菜</span>
+        <span class="badge badge-budget">¥5,331/人</span>
+        <span class="badge badge-cities">2城</span>
+        <span class="badge badge-focus">浪漫度假</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:40%;background:linear-gradient(90deg,#4ECDC4,#FFE66D)"></div></div><span>2/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">只去香格里拉(2天)+三亚(7天)，每天睡到自然醒，不赶景点。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map4" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 丽江→香格里拉，古城漫步</td><td>高铁 ¥70</td><td>¥380</td></tr>
+        <tr><td>5.21</td><td>🌿 普达措慢节奏徒步</td><td>包车 ¥40</td><td>¥400</td></tr>
+        <tr><td>5.22</td><td>✈️ 香格里拉→三亚，入住海景酒店</td><td>高铁+机票 ¥720</td><td>¥1,020</td></tr>
+        <tr><td>5.23</td><td>🛋️ 酒店泳池+SPA+海边晚餐</td><td>酒店内</td><td>¥450</td></tr>
+        <tr><td>5.24</td><td>🏖️ 蜈支洲岛情侣游</td><td>轮渡</td><td>¥550</td></tr>
+        <tr><td>5.25</td><td>🌅 亚龙湾森林公园+沙滩</td><td>打车 ¥30</td><td>¥430</td></tr>
+        <tr><td>5.26</td><td>🌊 后海村学冲浪</td><td>打车 ¥25</td><td>¥430</td></tr>
+        <tr><td>5.27</td><td>🛍️ 免税店/南山/随心</td><td>打车</td><td>¥400</td></tr>
+        <tr><td>5.28</td><td>📸 情侣旅拍+椰梦长廊</td><td>市内</td><td>¥500</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>机票 ¥700</td><td>¥750</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://hotel.ctrip.com/" target="_blank">🏨 携程酒店</a>
+        <a class="link-card" href="http://www.wuzhizhou.com/" target="_blank">🎫 蜈支洲岛</a>
+        <a class="link-card" href="https://www.dianping.com/" target="_blank">🏄 冲浪/旅拍</a>
+        <a class="link-card" href="https://www.meituan.com/" target="_blank">💆 美团SPA</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 5 -->
+  <div class="tab-content" id="plan5">
+    <div class="card">
+      <h2>🪖 方案五：特种兵环岛极限打卡</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐⭐⭐ 特种兵</span>
+        <span class="badge badge-budget">¥4,840/人</span>
+        <span class="badge badge-cities">7城</span>
+        <span class="badge badge-focus">极限打卡</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:100%;background:linear-gradient(90deg,#FF6B6B,#c0392b)"></div></div><span>5/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">10天跑7城：丽江→香格里拉→昆明→海口→万宁→三亚→北京。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map5" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 玉龙雪山速刷+束河古镇</td><td>包车 ¥50</td><td>¥370</td></tr>
+        <tr><td>5.21</td><td>🚂 香格里拉一日刷</td><td>高铁 ¥70</td><td>¥330</td></tr>
+        <tr><td>5.22</td><td>🌿 普达措+纳帕海，晚回丽江</td><td>包车+高铁 ¥70</td><td>¥400</td></tr>
+        <tr><td>5.23</td><td>✈️ 丽江→昆明→海口</td><td>机票 ¥500</td><td>¥700</td></tr>
+        <tr><td>5.24</td><td>🏛️ 海口打卡：五公祠+博物馆+夜市</td><td>公交</td><td>¥250</td></tr>
+        <tr><td>5.25</td><td>🚄 海口→万宁，日月湾冲浪</td><td>高铁 ¥80</td><td>¥360</td></tr>
+        <tr><td>5.26</td><td>🚄 万宁→三亚，南湾猴岛</td><td>高铁 ¥50</td><td>¥380</td></tr>
+        <tr><td>5.27</td><td>🏖️ 蜈支洲岛全天</td><td>轮渡</td><td>¥500</td></tr>
+        <tr><td>5.28</td><td>🏔️ 南山+天涯海角+免税店</td><td>公交+打车</td><td>¥400</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>机票 ¥700</td><td>¥750</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://hotel.meituan.com/" target="_blank">🏨 美团特价</a>
+        <a class="link-card" href="http://www.wuzhizhou.com/" target="_blank">🎫 蜈支洲岛</a>
+        <a class="link-card" href="https://www.dianping.com/" target="_blank">🏄 日月湾冲浪</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 6 -->
+  <div class="tab-content" id="plan6">
+    <div class="card">
+      <h2>🌸 方案六：滇南秘境 + 环海南岛</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐ 普通人</span>
+        <span class="badge badge-budget">¥4,810/人</span>
+        <span class="badge badge-cities">6城</span>
+        <span class="badge badge-focus">小众探索</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:60%;background:linear-gradient(90deg,#4ECDC4,#FFE66D)"></div></div><span>3/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">避开大众路线：香格里拉→大理→海口→文昌→陵水→三亚。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map6" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🚂 丽江→香格里拉，独克宗古城</td><td>高铁 ¥70</td><td>¥280</td></tr>
+        <tr><td>5.21</td><td>🌿 普达措国家公园</td><td>包车 ¥40</td><td>¥320</td></tr>
+        <tr><td>5.22</td><td>🚂 香格里拉→大理，大理古城</td><td>高铁 ¥140</td><td>¥370</td></tr>
+        <tr><td>5.23</td><td>🚲 洱海环湖骑行</td><td>电动车 ¥50</td><td>¥350</td></tr>
+        <tr><td>5.24</td><td>✈️ 大理→海口，苍山感通索道</td><td>机票 ¥500</td><td>¥750</td></tr>
+        <tr><td>5.25</td><td>🚀 海口→文昌，航天城+椰林</td><td>高铁 ¥30</td><td>¥280</td></tr>
+        <tr><td>5.26</td><td>🏖️ 文昌→陵水，清水湾+猴岛</td><td>高铁 ¥60</td><td>¥330</td></tr>
+        <tr><td>5.27</td><td>🌊 陵水→三亚，分界洲岛</td><td>高铁 ¥30</td><td>¥480</td></tr>
+        <tr><td>5.28</td><td>🏖️ 亚龙湾+免税店</td><td>市内</td><td>¥350</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>机票 ¥700</td><td>¥750</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://www.tujia.com/" target="_blank">🏨 途家民宿</a>
+        <a class="link-card" href="https://piao.ctrip.com/" target="_blank">🎫 分界洲岛</a>
+        <a class="link-card" href="https://www.meituan.com/" target="_blank">🚲 洱海租车</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 7 -->
+  <div class="tab-content" id="plan7">
+    <div class="card">
+      <h2>🧘 方案七：佛系慢旅极致放松</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐ 懒人模式</span>
+        <span class="badge badge-budget">¥5,444/人</span>
+        <span class="badge badge-cities">2城</span>
+        <span class="badge badge-focus">极致躺平</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:20%;background:#4ECDC4"></div></div><span>1/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">香格里拉(2天)+三亚(7天)，把三亚当度假村，核心就是「躺平」。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map7" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 丽江→香格里拉，随意逛古城</td><td>¥350</td></tr>
+        <tr><td>5.21</td><td>🌿 松赞林寺+纳帕海发呆</td><td>¥380</td></tr>
+        <tr><td>5.22</td><td>✈️ 香格里拉→三亚，入住度假酒店</td><td>¥1,100</td></tr>
+        <tr><td>5.23</td><td>🛋️ 泳池+沙滩+SPA+下午茶</td><td>¥450</td></tr>
+        <tr><td>5.24</td><td>🛋️ 睡到中午+沙滩阅读</td><td>¥400</td></tr>
+        <tr><td>5.25</td><td>🏖️ 随心日（蜈支洲岛或继续躺）</td><td>¥500</td></tr>
+        <tr><td>5.26</td><td>🌅 椰梦长廊骑行看日落</td><td>¥380</td></tr>
+        <tr><td>5.27</td><td>🛍️ 免税店+海鲜大餐</td><td>¥450</td></tr>
+        <tr><td>5.28</td><td>📸 海边散步拍照告别</td><td>¥380</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京</td><td>¥750</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://hotel.ctrip.com/" target="_blank">🏨 度假酒店</a>
+        <a class="link-card" href="https://www.cdfgsanya.com/" target="_blank">🛍️ cdf免税</a>
+        <a class="link-card" href="https://www.meituan.com/" target="_blank">💆 美团SPA</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 8 -->
+  <div class="tab-content" id="plan8">
+    <div class="card">
+      <h2>⚡ 方案八：优化环线高效升级</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐⭐ 暴走达人</span>
+        <span class="badge badge-budget">¥5,410/人</span>
+        <span class="badge badge-cities">7城</span>
+        <span class="badge badge-focus">多城市+美食+打卡</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:80%;background:linear-gradient(90deg,#FFE66D,#FF6B6B)"></div></div><span>4/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">方案一优化版：丽江→香格里拉→昆明→海口→三亚→桂林→北京。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map8" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 玉龙雪山/束河古镇</td><td>市内</td><td>¥350</td></tr>
+        <tr><td>5.21</td><td>🚂 丽江→香格里拉</td><td>高铁 ¥70</td><td>¥330</td></tr>
+        <tr><td>5.22</td><td>🌿 普达措+纳帕海</td><td>包车 ¥40</td><td>¥350</td></tr>
+        <tr><td>5.23</td><td>✈️ 香格里拉→昆明，篆新+汽锅鸡</td><td>高铁+机票 ¥420</td><td>¥650</td></tr>
+        <tr><td>5.24</td><td>✈️ 昆明→海口，滇池+骑楼老街</td><td>机票 ¥400</td><td>¥620</td></tr>
+        <tr><td>5.25</td><td>🏖️ 海口→三亚</td><td>高铁 ¥100</td><td>¥420</td></tr>
+        <tr><td>5.26</td><td>🏝️ 蜈支洲岛</td><td>轮渡</td><td>¥500</td></tr>
+        <tr><td>5.27</td><td>🌊 亚龙湾+森林公园</td><td>打车</td><td>¥400</td></tr>
+        <tr><td>5.28</td><td>✈️ 三亚→桂林，象鼻山+夜游</td><td>机票 ¥400</td><td>¥620</td></tr>
+        <tr><td>5.29</td><td>✈️ 桂林→北京，漓江竹筏</td><td>机票 ¥500</td><td>¥650</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://flights.ctrip.com/" target="_blank">✈️ 携程机票</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://hotel.meituan.com/" target="_blank">🏨 美团住宿</a>
+        <a class="link-card" href="https://piao.ctrip.com/" target="_blank">🎫 漓江竹筏</a>
+        <a class="link-card" href="https://piao.ctrip.com/" target="_blank">🎫 两江四湖夜游</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN 9 -->
+  <div class="tab-content" id="plan9">
+    <div class="card">
+      <h2>⛵ 方案九：出海探险 + 省钱环线</h2>
+      <div class="overview-badges">
+        <span class="badge badge-energy">⭐⭐⭐ 普通人</span>
+        <span class="badge badge-budget">¥3,518/人 + 出海¥3k/双人</span>
+        <span class="badge badge-cities">3城</span>
+        <span class="badge badge-focus">出海+极致省钱</span>
+      </div>
+      <div class="stamina-bar"><span>体力：</span><div class="stamina-track"><div class="stamina-fill" style="width:60%;background:linear-gradient(90deg,#4ECDC4,#FFE66D)"></div></div><span>3/5</span></div>
+      <p style="color:var(--gray);margin:10px 0">基础行程极致省钱，把预算花在出海体验上——帆船/海钓/潜水/游艇。</p>
+      <div class="route-map-container">
+        <h4>🗺️ 路线地图</h4>
+        <canvas id="map9" class="route-map" width="700" height="320"></canvas>
+      </div>
+      <h3>每日行程</h3>
+      <table>
+        <tr><th>日期</th><th>安排</th><th>交通</th><th>花费/人</th></tr>
+        <tr><td>5.20</td><td>🏔️ 丽江休整，束河古镇</td><td>步行</td><td>¥200</td></tr>
+        <tr><td>5.21</td><td>🚂 丽江→香格里拉，独克宗古城</td><td>高铁 ¥70</td><td>¥260</td></tr>
+        <tr><td>5.22</td><td>🌿 松赞林寺+纳帕海骑行</td><td>公交+骑行</td><td>¥280</td></tr>
+        <tr><td>5.23</td><td>✈️ 香格里拉→三亚（廉航）</td><td>高铁+机票 ¥570</td><td>¥740</td></tr>
+        <tr><td>5.24</td><td>⛵ 【出海日】帆船/海钓/潜水</td><td>市内</td><td>出海另算</td></tr>
+        <tr><td>5.25</td><td>🏖️ 大东海免费沙滩+第一市场</td><td>公交 ¥10</td><td>¥250</td></tr>
+        <tr><td>5.26</td><td>🌊 后海村赶海+咖啡馆</td><td>公交 ¥15</td><td>¥220</td></tr>
+        <tr><td>5.27</td><td>🌅 南山文化区+椰梦长廊</td><td>公交 ¥15</td><td>¥250</td></tr>
+        <tr><td>5.28</td><td>🛍️ 免税店+自由活动</td><td>公交</td><td>¥220</td></tr>
+        <tr><td>5.29</td><td>✈️ 三亚→北京（廉航）</td><td>机票 ¥550</td><td>¥580</td></tr>
+      </table>
+      <h3>⛵ 出海组合推荐（双人 ≤ ¥3,000）</h3>
+      <table>
+        <tr><th>组合</th><th>项目</th><th>双人价</th><th>体验</th></tr>
+        <tr><td>组合1 推荐</td><td>帆船+岸潜+海钓</td><td>¥1,400-2,200</td><td>★★★★★</td></tr>
+        <tr><td>组合2 浪漫</td><td>游艇+岸潜</td><td>¥1,900-3,100</td><td>★★★★</td></tr>
+        <tr><td>组合3 探索</td><td>帆船+蜈支洲深潜</td><td>¥1,400-2,200</td><td>★★★★★</td></tr>
+        <tr><td>组合4 极省</td><td>海钓+岸潜</td><td>¥800-1,200</td><td>★★★</td></tr>
+      </table>
+      <h3>🔗 购买链接</h3>
+      <div>
+        <a class="link-card" href="https://www.ch.com/" target="_blank">✈️ 春秋航空</a>
+        <a class="link-card" href="https://www.luckyair.net/" target="_blank">✈️ 祥鹏航空</a>
+        <a class="link-card" href="https://www.12306.cn/" target="_blank">🚂 12306</a>
+        <a class="link-card" href="https://hotel.meituan.com/" target="_blank">🏨 美团民宿</a>
+        <a class="link-card" href="https://www.dianping.com/" target="_blank">⛵ 大众点评出海</a>
+        <a class="link-card" href="https://www.meituan.com/" target="_blank">🤿 美团潜水</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tab-content" id="tips">
+    <div class="card">
+      <h2>📋 通用实用信息</h2>
+      <h3>必带物品</h3>
+      <table>
+        <tr><td>☀️ 防晒霜 SPF50+</td><td>🕶️ 墨镜+遮阳帽</td><td>🧥 薄外套（香格里拉）</td></tr>
+        <tr><td>🧥 厚外套（雪山/普达措）</td><td>👙 泳衣</td><td>👟 运动鞋+凉鞋</td></tr>
+        <tr><td>🔋 充电宝</td><td>💊 常用药+红景天</td><td>🪪 身份证+结婚证</td></tr>
+      </table>
+      <h3>天气预报（5月下旬）</h3>
+      <table>
+        <tr><th>城市</th><th>气温</th><th>特点</th><th>穿衣</th></tr>
+        <tr><td>丽江</td><td>10-25°C</td><td>早晚凉，紫外线强</td><td>薄外套+防晒</td></tr>
+        <tr><td>香格里拉</td><td>5-20°C</td><td>高原多变</td><td>厚外套必备</td></tr>
+        <tr><td>昆明</td><td>15-25°C</td><td>四季如春</td><td>薄长袖</td></tr>
+        <tr><td>海口</td><td>26-33°C</td><td>炎热潮湿</td><td>短袖+防晒</td></tr>
+        <tr><td>三亚</td><td>27-34°C</td><td>炎热偶阵雨</td><td>短袖+泳衣</td></tr>
+        <tr><td>桂林</td><td>22-30°C</td><td>温暖湿润</td><td>短袖</td></tr>
+      </table>
+      <h3>省钱技巧</h3>
+      <div class="tip">💡 机票提前2-3周在携程/去哪儿比价，关注春秋、祥鹏廉航</div>
+      <div class="tip">💡 住宿美团/携程对比，周中比周末便宜20-30%</div>
+      <div class="tip">💡 门票提前一天买电子票，比现场省10-20%</div>
+      <div class="tip">💡 三亚海鲜去第一市场自己买+加工店，比餐厅省50%</div>
+      <div class="tip">💡 免税店用cdf App提前选品到店提货</div>
+      <h3>避坑指南</h3>
+      <div class="tip" style="background:#FFEBEE;border-left-color:#FF6B6B">❌ 丽江古城"茶托"不要理</div>
+      <div class="tip" style="background:#FFEBEE;border-left-color:#FF6B6B">❌ 三亚景区门口海鲜贵且不新鲜</div>
+      <div class="tip" style="background:#FFEBEE;border-left-color:#FF6B6B">❌ 香格里拉不要剧烈运动（高反）</div>
+      <div class="tip" style="background:#FFEBEE;border-left-color:#FF6B6B">❌ 旅游景点特产价格翻倍</div>
+      <div class="tip">✅ 打车用高德/滴滴，不坐黑车</div>
+      <div class="tip">✅ 景点门票提前网上买</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+    drawAllMaps();
+  });
+});
+
+// City approximate coordinates on a simplified China map
+const cityCoords = {
+  '北京':    { x: 0.72, y: 0.18 },
+  '丽江':    { x: 0.22, y: 0.58 },
+  '香格里拉': { x: 0.18, y: 0.52 },
+  '昆明':    { x: 0.28, y: 0.65 },
+  '大理':    { x: 0.22, y: 0.62 },
+  '贵阳':    { x: 0.42, y: 0.60 },
+  '南宁':    { x: 0.40, y: 0.75 },
+  '桂林':    { x: 0.48, y: 0.65 },
+  '海口':    { x: 0.48, y: 0.88 },
+  '三亚':    { x: 0.46, y: 0.95 },
+  '文昌':    { x: 0.52, y: 0.88 },
+  '万宁':    { x: 0.52, y: 0.92 },
+  '陵水':    { x: 0.50, y: 0.94 },
+};
+
+const transportColors = {
+  '飞机': '#FF6B6B',
+  '高铁': '#4ECDC4',
+  '转机': '#FFB347',
+  '公交': '#95a5a6',
+};
+const transportDash = {
+  '飞机': [],
+  '高铁': [8, 4],
+  '转机': [4, 4],
+  '公交': [2, 4],
+};
+
+const plans = {
+  map1: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '贵阳', transport: '飞机' },
+      { from: '贵阳', to: '海口', transport: '转机' },
+      { from: '海口', to: '南宁', transport: '飞机' },
+      { from: '南宁', to: '桂林', transport: '高铁' },
+      { from: '桂林', to: '北京', transport: '飞机' },
+    ]
+  },
+  map2: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '三亚', transport: '飞机' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map3: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '昆明', transport: '飞机' },
+      { from: '昆明', to: '海口', transport: '飞机' },
+      { from: '海口', to: '三亚', transport: '高铁' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map4: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '三亚', transport: '飞机' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map5: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '海口', transport: '飞机' },
+      { from: '海口', to: '万宁', transport: '高铁' },
+      { from: '万宁', to: '三亚', transport: '高铁' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map6: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '大理', transport: '高铁' },
+      { from: '大理', to: '海口', transport: '飞机' },
+      { from: '海口', to: '文昌', transport: '高铁' },
+      { from: '文昌', to: '陵水', transport: '高铁' },
+      { from: '陵水', to: '三亚', transport: '高铁' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map7: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '三亚', transport: '飞机' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+  map8: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '昆明', transport: '飞机' },
+      { from: '昆明', to: '海口', transport: '飞机' },
+      { from: '海口', to: '三亚', transport: '高铁' },
+      { from: '三亚', to: '桂林', transport: '飞机' },
+      { from: '桂林', to: '北京', transport: '飞机' },
+    ]
+  },
+  map9: {
+    routes: [
+      { from: '丽江', to: '香格里拉', transport: '高铁' },
+      { from: '香格里拉', to: '丽江', transport: '高铁' },
+      { from: '丽江', to: '三亚', transport: '飞机' },
+      { from: '三亚', to: '北京', transport: '飞机' },
+    ]
+  },
+};
+
+function drawArrow(ctx, fromX, fromY, toX, toY, color, dash) {
+  const headLen = 10;
+  const dx = toX - fromX;
+  const dy = toY - fromY;
+  const angle = Math.atan2(dy, dx);
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const shortenFrom = 22;
+  const shortenTo = 22;
+  const startX = fromX + Math.cos(angle) * shortenFrom;
+  const startY = fromY + Math.sin(angle) * shortenFrom;
+  const endX = toX - Math.cos(angle) * shortenTo;
+  const endY = toY - Math.sin(angle) * shortenTo;
+
+  ctx.beginPath();
+  ctx.setLineDash(dash);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2.5;
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(endX, endY);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.moveTo(endX, endY);
+  ctx.lineTo(endX - headLen * Math.cos(angle - Math.PI / 6), endY - headLen * Math.sin(angle - Math.PI / 6));
+  ctx.lineTo(endX - headLen * Math.cos(angle + Math.PI / 6), endY - headLen * Math.sin(angle + Math.PI / 6));
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawTransportLabel(ctx, fromX, fromY, toX, toY, label, color) {
+  const midX = (fromX + toX) / 2;
+  const midY = (fromY + toY) / 2;
+  const icon = label === '飞机' ? '✈️' : label === '高铁' ? '🚄' : label === '转机' ? '🔄' : '🚌';
+  ctx.font = '12px sans-serif';
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.fillText(icon + ' ' + label, midX, midY - 8);
+}
+
+function drawMap(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+  const pad = 50;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Background
+  ctx.fillStyle = '#f8fbff';
+  ctx.fillRect(0, 0, W, H);
+
+  const plan = plans[canvasId];
+  if (!plan) return;
+
+  // Collect unique cities in order
+  const cityOrder = [];
+  const citySet = new Set();
+  plan.routes.forEach(r => {
+    if (!citySet.has(r.from)) { cityOrder.push(r.from); citySet.add(r.from); }
+    if (!citySet.has(r.to)) { cityOrder.push(r.to); citySet.add(r.to); }
+  });
+
+  // Compute positions using relative coords
+  const positions = {};
+  // Find bounding box of used cities
+  let minX = 1, maxX = 0, minY = 1, maxY = 0;
+  cityOrder.forEach(c => {
+    const co = cityCoords[c];
+    if (co) {
+      minX = Math.min(minX, co.x);
+      maxX = Math.max(maxX, co.x);
+      minY = Math.min(minY, co.y);
+      maxY = Math.max(maxY, co.y);
+    }
+  });
+  const rangeX = maxX - minX || 1;
+  const rangeY = maxY - minY || 1;
+
+  cityOrder.forEach(c => {
+    const co = cityCoords[c];
+    if (co) {
+      positions[c] = {
+        x: pad + ((co.x - minX) / rangeX) * (W - 2 * pad),
+        y: pad + ((co.y - minY) / rangeY) * (H - 2 * pad),
+      };
+    }
+  });
+
+  // Draw routes with offset for bidirectional
+  const routeKey = (a, b) => [a, b].sort().join('-');
+  const routeCounts = {};
+  plan.routes.forEach(r => {
+    const key = routeKey(r.from, r.to);
+    routeCounts[key] = (routeCounts[key] || 0) + 1;
+  });
+  const routeDrawn = {};
+
+  plan.routes.forEach((r, idx) => {
+    const from = positions[r.from];
+    const to = positions[r.to];
+    if (!from || !to) return;
+    const color = transportColors[r.transport] || '#999';
+    const dash = transportDash[r.transport] || [];
+
+    const key = routeKey(r.from, r.to);
+    const count = routeCounts[key];
+    routeDrawn[key] = (routeDrawn[key] || 0) + 1;
+    const drawIdx = routeDrawn[key];
+
+    let offsetX = 0, offsetY = 0;
+    if (count > 1) {
+      const perpAngle = Math.atan2(to.y - from.y, to.x - from.x) + Math.PI / 2;
+      const offsetDist = drawIdx === 1 ? -10 : 10;
+      offsetX = Math.cos(perpAngle) * offsetDist;
+      offsetY = Math.sin(perpAngle) * offsetDist;
+    }
+
+    drawArrow(ctx, from.x + offsetX, from.y + offsetY, to.x + offsetX, to.y + offsetY, color, dash);
+    drawTransportLabel(ctx, from.x + offsetX, from.y + offsetY, to.x + offsetX, to.y + offsetY, r.transport, color);
+  });
+
+  // Draw city nodes
+  cityOrder.forEach((c, i) => {
+    const pos = positions[c];
+    if (!pos) return;
+
+    // Glow
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 20, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(78, 205, 196, 0.15)';
+    ctx.fill();
+
+    // Circle
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, 14, 0, Math.PI * 2);
+    const isStart = i === 0;
+    const isEnd = c === '北京';
+    ctx.fillStyle = isStart ? '#FF6B6B' : isEnd ? '#4ECDC4' : '#fff';
+    ctx.strokeStyle = isStart ? '#FF6B6B' : isEnd ? '#4ECDC4' : '#2C3E50';
+    ctx.lineWidth = 2.5;
+    ctx.fill();
+    ctx.stroke();
+
+    // Order number
+    ctx.font = 'bold 11px sans-serif';
+    ctx.fillStyle = (isStart || isEnd) ? '#fff' : '#2C3E50';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    // Find the order index for this city (first appearance)
+    const orderIdx = cityOrder.indexOf(c) + 1;
+    ctx.fillText(orderIdx, pos.x, pos.y);
+
+    // City name
+    ctx.font = 'bold 13px "PingFang SC", "Microsoft YaHei", sans-serif';
+    ctx.fillStyle = '#2C3E50';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText(c, pos.x, pos.y + 18);
+  });
+
+  // Legend
+  const legendY = H - 20;
+  ctx.font = '11px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  let lx = 15;
+  [['✈️ 飞机', '#FF6B6B', []], ['🚄 高铁', '#4ECDC4', [8, 4]], ['🔄 转机', '#FFB347', [4, 4]]].forEach(([label, color, dash]) => {
+    ctx.beginPath();
+    ctx.setLineDash(dash);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.moveTo(lx, legendY);
+    ctx.lineTo(lx + 30, legendY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#555';
+    ctx.fillText(label, lx + 35, legendY);
+    lx += 100;
+  });
+  // Start/end markers
+  ctx.beginPath();
+  ctx.arc(lx + 6, legendY, 6, 0, Math.PI * 2);
+  ctx.fillStyle = '#FF6B6B';
+  ctx.fill();
+  ctx.fillStyle = '#555';
+  ctx.fillText('起点', lx + 16, legendY);
+  lx += 60;
+  ctx.beginPath();
+  ctx.arc(lx + 6, legendY, 6, 0, Math.PI * 2);
+  ctx.fillStyle = '#4ECDC4';
+  ctx.fill();
+  ctx.fillStyle = '#555';
+  ctx.fillText('终点', lx + 16, legendY);
+}
+
+function drawAllMaps() {
+  Object.keys(plans).forEach(id => drawMap(id));
+}
+
+// Initial draw + redraw on tab switch
+window.addEventListener('load', drawAllMaps);
+window.addEventListener('resize', drawAllMaps);
+</script>
+
+</body>
+</html>

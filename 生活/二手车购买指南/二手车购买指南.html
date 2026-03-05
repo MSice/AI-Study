@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二手SUV购买完全指南 | 7~9万预算</title>
+<style>
+  :root {
+    --bg-primary: #0f1117;
+    --bg-card: #1a1d27;
+    --bg-card-alt: #222636;
+    --text-primary: #e8eaf0;
+    --text-secondary: #9ca3b4;
+    --text-muted: #6b7280;
+    --accent-blue: #3b82f6;
+    --accent-green: #10b981;
+    --accent-orange: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #8b5cf6;
+    --border: #2d3348;
+    --highlight: #fbbf2420;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(135deg, #1e2a4a 0%, #0f1117 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { font-size: 2.2em; margin-bottom: 12px; background: linear-gradient(135deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero .subtitle { color: var(--text-secondary); font-size: 1.1em; }
+  .hero .tags { margin-top: 16px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .hero .tag { background: var(--bg-card); border: 1px solid var(--border); padding: 4px 14px; border-radius: 20px; font-size: 0.85em; color: var(--text-secondary); }
+
+  /* Navigation */
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15, 17, 23, 0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex; gap: 8px; overflow-x: auto;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .nav-bar a {
+    color: var(--text-secondary); text-decoration: none; font-size: 0.85em;
+    padding: 6px 14px; border-radius: 6px; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-bar a:hover { background: var(--bg-card); color: var(--accent-blue); }
+
+  /* Section */
+  .section { padding: 40px 0; }
+  .section-title {
+    font-size: 1.5em; margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-blue); display: inline-block;
+  }
+  .section-icon { margin-right: 8px; }
+
+  /* Cards */
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px; margin-bottom: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+  .card h3 { color: var(--accent-blue); margin-bottom: 12px; font-size: 1.15em; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+
+  /* Tables */
+  .table-wrapper { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  th {
+    background: var(--bg-card-alt); color: var(--accent-blue); font-weight: 600;
+    padding: 12px 14px; text-align: left; white-space: nowrap;
+    position: sticky; top: 0;
+  }
+  td { padding: 10px 14px; border-top: 1px solid var(--border); }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(59, 130, 246, 0.08); }
+  .text-green { color: var(--accent-green); }
+  .text-red { color: var(--accent-red); }
+  .text-orange { color: var(--accent-orange); }
+  .text-blue { color: var(--accent-blue); }
+  .text-purple { color: var(--accent-purple); }
+  .text-muted { color: var(--text-muted); }
+
+  /* Badges */
+  .badge {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 0.78em; font-weight: 600;
+  }
+  .badge-green { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+  .badge-orange { background: rgba(245,158,11,0.15); color: var(--accent-orange); }
+  .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+
+  /* Alert boxes */
+  .alert {
+    padding: 16px 20px; border-radius: 10px; margin: 16px 0;
+    border-left: 4px solid;
+  }
+  .alert-warning { background: rgba(245,158,11,0.1); border-color: var(--accent-orange); }
+  .alert-danger { background: rgba(239,68,68,0.1); border-color: var(--accent-red); }
+  .alert-info { background: rgba(59,130,246,0.1); border-color: var(--accent-blue); }
+  .alert-success { background: rgba(16,185,129,0.1); border-color: var(--accent-green); }
+  .alert strong { display: block; margin-bottom: 4px; }
+
+  /* Pros & Cons */
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .pros, .cons { padding: 20px; border-radius: 10px; }
+  .pros { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+  .cons { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+  .pros h4 { color: var(--accent-green); margin-bottom: 10px; }
+  .cons h4 { color: var(--accent-red); margin-bottom: 10px; }
+  .pros li, .cons li { margin: 6px 0; padding-left: 4px; list-style: none; }
+  .pros li::before { content: "✅ "; }
+  .cons li::before { content: "❌ "; }
+
+  /* Score bar */
+  .score-row { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
+  .score-label { width: 80px; font-size: 0.85em; color: var(--text-secondary); text-align: right; }
+  .score-bar-bg { flex: 1; height: 8px; background: var(--bg-primary); border-radius: 4px; overflow: hidden; }
+  .score-bar { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
+  .score-value { width: 30px; font-size: 0.85em; font-weight: 600; }
+
+  /* Flow chart */
+  .flow { display: flex; flex-wrap: wrap; gap: 0; align-items: center; justify-content: center; margin: 20px 0; }
+  .flow-step {
+    background: var(--bg-card-alt); border: 1px solid var(--border);
+    padding: 12px 18px; border-radius: 10px; text-align: center;
+    min-width: 140px; font-size: 0.88em;
+  }
+  .flow-step .step-num { display: block; color: var(--accent-blue); font-weight: 700; font-size: 0.8em; margin-bottom: 4px; }
+  .flow-arrow { color: var(--accent-blue); font-size: 1.4em; padding: 0 4px; }
+
+  /* Checklist */
+  .checklist { list-style: none; }
+  .checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 8px; }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon { color: var(--accent-blue); font-size: 1.1em; flex-shrink: 0; margin-top: 2px; }
+
+  /* Car card header */
+  .car-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; border-radius: 10px; margin-bottom: 16px;
+  }
+  .car-header.first { background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.05)); border: 1px solid rgba(245,158,11,0.3); }
+  .car-header.second { background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.05)); border: 1px solid rgba(59,130,246,0.3); }
+  .car-header.third { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.05)); border: 1px solid rgba(139,92,246,0.3); }
+  .car-rank { font-size: 2em; }
+  .car-info h3 { margin: 0 0 4px; font-size: 1.2em; }
+  .car-info p { color: var(--text-secondary); font-size: 0.9em; margin: 0; }
+  .car-price { margin-left: auto; text-align: right; }
+  .car-price .price { font-size: 1.5em; font-weight: 700; color: var(--accent-green); }
+  .car-price .label { font-size: 0.8em; color: var(--text-muted); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.5em; }
+    .pros-cons { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .car-header { flex-wrap: wrap; }
+    .car-price { margin-left: 0; margin-top: 8px; }
+    .nav-bar { justify-content: flex-start; }
+    th, td { padding: 8px 10px; font-size: 0.82em; }
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 40px 20px; margin-top: 40px;
+    border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85em;
+  }
+
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* Print styles - force background colors in PDF */
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+    body { background: var(--bg-primary) !important; }
+    .nav-bar { position: static; display: none; }
+    .hero { break-after: avoid; }
+    .card { break-inside: avoid; }
+    .table-wrapper { break-inside: avoid; }
+    .alert { break-inside: avoid; }
+    .pros-cons { break-inside: avoid; }
+    .car-header { break-inside: avoid; }
+    .flow { break-inside: avoid; }
+    @page { size: A4; margin: 10mm; }
+  }
+
+  /* Collapse */
+  details { margin: 10px 0; }
+  details summary {
+    cursor: pointer; padding: 10px 16px; background: var(--bg-card-alt);
+    border-radius: 8px; font-weight: 600; color: var(--text-primary);
+    list-style: none; display: flex; align-items: center; gap: 8px;
+  }
+  details summary::before { content: "▶"; font-size: 0.7em; transition: transform 0.2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .detail-content { padding: 16px; }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <h1>二手SUV购买完全指南</h1>
+  <p class="subtitle">预算 7~9 万 | 燃油SUV | 外地购车 → 北京上牌</p>
+  <div class="tags">
+    <span class="tag">预算 7~9 万</span>
+    <span class="tag">燃油车</span>
+    <span class="tag">大空间 SUV</span>
+    <span class="tag">北京用车</span>
+    <span class="tag">外地购买</span>
+  </div>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav-bar">
+  <a href="#overview">车型总览</a>
+  <a href="#compare">参数对比</a>
+  <a href="#config">配置PK</a>
+  <a href="#detail">详细优缺点</a>
+  <a href="#score">综合评分</a>
+  <a href="#tianjin">天津购车</a>
+  <a href="#inspect">验车指南</a>
+  <a href="#transfer">北京上牌</a>
+  <a href="#maintain">购后保养</a>
+  <a href="#conclusion">最终建议</a>
+</nav>
+
+<div class="container">
+
+<!-- ==================== 1. 车型总览 ==================== -->
+<section class="section" id="overview">
+  <h2 class="section-title"><span class="section-icon">🚗</span>第一部分：推荐车型总览</h2>
+
+  <div class="alert alert-warning">
+    <strong>⚠️ 预算说明</strong>
+    你的目标车型途观L 2023款，目前二手市场价 12~15 万，超出 7~9 万预算。以下方案综合了「预算内最优选」和「途观L替代方案」，帮你做出最佳决策。
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>推荐优先级</th>
+          <th>车型</th>
+          <th>品牌</th>
+          <th>建议年款</th>
+          <th>二手参考价</th>
+          <th>一句话定位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-orange">⭐ 首选</span></td>
+          <td><strong>长安CS75 PLUS</strong></td>
+          <td>国产</td>
+          <td>2023款 1.5T</td>
+          <td class="text-green"><strong>7.4~8.6万</strong></td>
+          <td>配置王者，性价比之选</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">备选 1</span></td>
+          <td><strong>哈弗H6</strong></td>
+          <td>国产</td>
+          <td>2023款 1.5T</td>
+          <td class="text-green"><strong>5.6~7.0万</strong></td>
+          <td>国民SUV，预算最友好</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-purple">备选 2</span></td>
+          <td><strong>途观L</strong></td>
+          <td>合资（德系）</td>
+          <td>2019~2020款</td>
+          <td class="text-orange"><strong>7.9~10.5万</strong></td>
+          <td>合资品质，面子担当</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">谨慎</span></td>
+          <td>奇瑞瑞虎8</td>
+          <td>国产</td>
+          <td>2023款</td>
+          <td>6.5~8.0万</td>
+          <td class="text-muted">空间大但质量隐患多</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">❌ 不推荐</span></td>
+          <td>日产奇骏（三缸）</td>
+          <td>合资（日系）</td>
+          <td>2021~2022款</td>
+          <td>8~10万</td>
+          <td class="text-red">三缸机口碑崩盘</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== 2. 参数对比 ==================== -->
+<section class="section" id="compare">
+  <h2 class="section-title"><span class="section-icon">📊</span>第二部分：核心参数对比</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th style="color:#f59e0b">⭐ CS75 PLUS<br><small>2023款 1.5T 尊贵型</small></th>
+          <th style="color:#3b82f6">哈弗H6<br><small>2023款 1.5T 冠军版</small></th>
+          <th style="color:#8b5cf6">途观L<br><small>2020款 330TSI 豪华版</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>新车指导价</strong></td>
+          <td>12.99万</td>
+          <td>10.89万</td>
+          <td>25.38万</td>
+        </tr>
+        <tr>
+          <td><strong>二手参考价</strong></td>
+          <td class="text-green"><strong>7.4~8.6万</strong></td>
+          <td class="text-green"><strong>5.6~7.0万</strong></td>
+          <td class="text-orange"><strong>7.9~10.5万</strong></td>
+        </tr>
+        <tr>
+          <td><strong>发动机</strong></td>
+          <td>蓝鲸1.5T<br>188马力 / 300N·m</td>
+          <td>GW4G15M 1.5T<br>150马力 / 218N·m</td>
+          <td>EA888 2.0T<br>186马力 / 320N·m</td>
+        </tr>
+        <tr>
+          <td><strong>变速箱</strong></td>
+          <td class="text-green"><strong>爱信8AT</strong></td>
+          <td>7速湿式双离合</td>
+          <td>7速湿式双离合</td>
+        </tr>
+        <tr>
+          <td><strong>车长</strong></td>
+          <td>4710mm</td>
+          <td>4645mm</td>
+          <td class="text-green"><strong>4735mm</strong></td>
+        </tr>
+        <tr>
+          <td><strong>轴距</strong></td>
+          <td>2710mm</td>
+          <td>2680mm</td>
+          <td class="text-green"><strong>2791mm</strong></td>
+        </tr>
+        <tr>
+          <td><strong>整备质量</strong></td>
+          <td class="text-green"><strong>1510kg</strong></td>
+          <td>1580kg</td>
+          <td>1650kg</td>
+        </tr>
+        <tr>
+          <td><strong>工信部油耗</strong></td>
+          <td>6.96L</td>
+          <td>7.68L</td>
+          <td class="text-green"><strong>6.7L</strong></td>
+        </tr>
+        <tr>
+          <td><strong>真实油耗</strong></td>
+          <td>8~10L</td>
+          <td class="text-red"><strong>10~14L</strong></td>
+          <td>8~10L</td>
+        </tr>
+        <tr>
+          <td><strong>油箱</strong></td>
+          <td>58L</td>
+          <td>55L</td>
+          <td class="text-green"><strong>60L</strong></td>
+        </tr>
+        <tr>
+          <td><strong>排放标准</strong></td>
+          <td class="text-green">国六B ✅</td>
+          <td class="text-green">国六B ✅</td>
+          <td class="text-orange">国六A ⚠️ 需确认</td>
+        </tr>
+        <tr>
+          <td><strong>三年保值率</strong></td>
+          <td>~61%</td>
+          <td>~55%</td>
+          <td class="text-green"><strong>~56%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">空间对比</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>空间维度</th><th style="color:#f59e0b">CS75 PLUS</th><th style="color:#3b82f6">哈弗H6</th><th style="color:#8b5cf6">途观L</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>后排腿部空间</td><td>良好（两拳）</td><td>良好（两拳）</td><td class="text-green"><strong>优秀（两拳+）</strong></td></tr>
+        <tr><td>后排地台</td><td class="text-green"><strong>纯平</strong></td><td>轻微凸起</td><td class="text-red">明显凸起</td></tr>
+        <tr><td>后备箱容积</td><td>620L</td><td>600L</td><td class="text-green"><strong>495~1780L</strong></td></tr>
+        <tr><td>后排放倒</td><td>支持4/6放倒</td><td>支持4/6放倒</td><td>支持4/6放倒</td></tr>
+        <tr><td>空间综合评分</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">养车成本估算（年均 / 北京用车）</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>费用项</th><th style="color:#f59e0b">CS75 PLUS</th><th style="color:#3b82f6">哈弗H6</th><th style="color:#8b5cf6">途观L</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>油费（1.5万km/年）</td><td>~10,500元</td><td class="text-red">~13,000元</td><td>~10,500元</td></tr>
+        <tr><td>保养</td><td class="text-green"><strong>~2,000元</strong>（首任终身免费）</td><td>~2,200元</td><td>~2,500元</td></tr>
+        <tr><td>保险</td><td>~3,800元</td><td>~3,500元</td><td>~4,500元</td></tr>
+        <tr><td>停车+杂费</td><td>~8,000元</td><td>~8,000元</td><td>~8,000元</td></tr>
+        <tr><td><strong>年均合计</strong></td><td class="text-green"><strong>~24,300元</strong></td><td>~26,700元</td><td>~25,500元</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== 3. 配置PK ==================== -->
+<section class="section" id="config">
+  <h2 class="section-title"><span class="section-icon">⚙️</span>第三部分：配置逐项PK</h2>
+
+  <h3 style="margin-bottom:16px;">安全配置</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>配置项</th><th style="color:#f59e0b">CS75 PLUS</th><th style="color:#3b82f6">哈弗H6</th><th style="color:#8b5cf6">途观L</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>主/副驾气囊</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>前排侧气囊</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>前后头部气帘</td><td class="text-green">✅ 前+后</td><td class="text-orange">✅ 仅前排</td><td class="text-green">✅ 前+后</td></tr>
+        <tr><td>ESP车身稳定</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>胎压监测（数值显示）</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-red">❌ 间接式</td></tr>
+        <tr><td>主动刹车 AEB</td><td class="text-green"><strong>✅</strong></td><td class="text-green"><strong>✅</strong></td><td class="text-red"><strong>❌</strong></td></tr>
+        <tr><td>前方碰撞预警</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-red">❌</td></tr>
+        <tr><td>车道偏离预警</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-red">❌</td></tr>
+        <tr><td>车道保持辅助</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-red">❌</td></tr>
+        <tr><td>全速自适应巡航 ACC</td><td class="text-green"><strong>✅</strong></td><td class="text-red">❌ 定速巡航</td><td class="text-red">❌ 定速巡航</td></tr>
+        <tr><td>疲劳驾驶提示</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-red">❌</td></tr>
+        <tr><td>L2级辅助驾驶</td><td class="text-green"><strong>✅</strong></td><td class="text-green"><strong>✅</strong></td><td class="text-red"><strong>❌</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">舒适与便利配置</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>配置项</th><th style="color:#f59e0b">CS75 PLUS</th><th style="color:#3b82f6">哈弗H6</th><th style="color:#8b5cf6">途观L</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>全景天窗</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>360°全景影像</td><td class="text-green"><strong>✅</strong></td><td class="text-green"><strong>✅</strong></td><td class="text-red">❌ 仅倒车影像</td></tr>
+        <tr><td>自动泊车</td><td class="text-red">❌</td><td class="text-red">❌</td><td class="text-green"><strong>✅</strong></td></tr>
+        <tr><td>无钥匙进入+启动</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>座椅材质</td><td>仿皮</td><td>仿皮</td><td class="text-green"><strong>真皮</strong></td></tr>
+        <tr><td>主驾电动调节</td><td>6向</td><td>6向</td><td class="text-green"><strong>12向</strong></td></tr>
+        <tr><td>前排座椅加热</td><td class="text-green">✅</td><td class="text-red">❌</td><td class="text-green">✅</td></tr>
+        <tr><td>方向盘加热</td><td class="text-red">❌</td><td class="text-red">❌</td><td class="text-green"><strong>✅</strong></td></tr>
+        <tr><td>自动空调</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green"><strong>✅ 三区</strong></td></tr>
+        <tr><td>后排独立空调</td><td class="text-red">❌</td><td class="text-red">❌</td><td class="text-green"><strong>✅</strong></td></tr>
+        <tr><td>手机无线充电</td><td class="text-green"><strong>✅</strong></td><td class="text-green"><strong>✅</strong></td><td class="text-red">❌</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">多媒体与智能</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>配置项</th><th style="color:#f59e0b">CS75 PLUS</th><th style="color:#3b82f6">哈弗H6</th><th style="color:#8b5cf6">途观L</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>中控屏尺寸</td><td class="text-green"><strong>12.3英寸</strong></td><td class="text-green"><strong>12.3英寸</strong></td><td>8英寸</td></tr>
+        <tr><td>液晶仪表</td><td class="text-green"><strong>12.3英寸</strong></td><td>7英寸</td><td>10.2英寸</td></tr>
+        <tr><td>CarPlay / CarLife</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>语音识别</td><td class="text-green"><strong>连续对话</strong></td><td class="text-green">✅</td><td>基础</td></tr>
+        <tr><td>OTA远程升级</td><td class="text-green"><strong>✅</strong></td><td class="text-green"><strong>✅</strong></td><td class="text-red">❌</td></tr>
+        <tr><td>扬声器</td><td>8个</td><td>6个</td><td>8个</td></tr>
+        <tr><td>LED大灯</td><td class="text-green">✅</td><td class="text-green">✅</td><td class="text-green">✅</td></tr>
+        <tr><td>感应雨刷</td><td class="text-green">✅</td><td class="text-red">❌</td><td class="text-green">✅</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-info" style="margin-top:20px;">
+    <strong>💡 配置对比结论</strong>
+    安全配置：CS75 PLUS ≈ 哈弗H6 ＞＞ 途观L（途观L缺失主动刹车、车道保持等关键安全功能）<br>
+    舒适配置：途观L（真皮+加热+三区空调）＞ CS75 PLUS ＞ 哈弗H6<br>
+    智能配置：CS75 PLUS ＞ 哈弗H6 ＞＞ 途观L
+  </div>
+</section>
+
+<!-- ==================== 4. 详细优缺点 ==================== -->
+<section class="section" id="detail">
+  <h2 class="section-title"><span class="section-icon">🔍</span>第四部分：全网车主真实优缺点</h2>
+
+  <!-- CS75 PLUS -->
+  <div class="card">
+    <div class="car-header first">
+      <div class="car-rank">⭐</div>
+      <div class="car-info">
+        <h3>首选：长安CS75 PLUS</h3>
+        <p>2023款 第三代 1.5T 自动尊贵型 | 蓝鲸1.5T + 爱信8AT</p>
+      </div>
+      <div class="car-price">
+        <div class="label">二手参考价</div>
+        <div class="price">7.4~8.6万</div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>优点（全网好评 TOP 8）</h4>
+        <ul>
+          <li><strong>配置越级</strong>：7~8万买到L2辅助驾驶+全速ACC+360全景+12.3寸双联屏，同价位无对手</li>
+          <li><strong>动力充沛</strong>：蓝鲸1.5T 188马力+爱信8AT黄金组合，推背感明显，超车有信心</li>
+          <li><strong>变速箱平顺</strong>：8AT比双离合平顺太多，低速跟车无顿挫，堵车不焦虑</li>
+          <li><strong>空间够用</strong>：后排地台纯平，180cm身高前后排都有两拳空间</li>
+          <li><strong>保养便宜</strong>：首任车主终身免费保养（一年两次），二保仅420元</li>
+          <li><strong>保值率不错</strong>：国产SUV中排前列，三年保值率约61%</li>
+          <li><strong>外观年轻</strong>：隐藏式门把手、贯穿尾灯、蜂窝中网，回头率高</li>
+          <li><strong>97%车主满意</strong>：再选一次仍会购买的比例极高</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>缺点（全网吐槽 TOP 7）</h4>
+        <ul>
+          <li><strong>实际油耗偏高</strong>：城市拥堵10L+，比工信部标称高30%~40%</li>
+          <li><strong>隔音一般</strong>：80km/h以上风噪胎噪明显，需要调高音乐</li>
+          <li><strong>车机偶尔卡顿</strong>：多任务运行时反应慢，偶有死机</li>
+          <li><strong>内饰异响</strong>：部分车主反映中控台/门板有异响</li>
+          <li><strong>售后服务参差</strong>：4S店服务水平不一，部分地区体验差</li>
+          <li><strong>中控黑边宽</strong>：大屏周围黑边影响视觉效果</li>
+          <li><strong>车质网满意度偏低</strong>（1.6分）：投诉集中在变速箱顿挫、格栅变形</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert alert-success">
+      <strong>🎯 适合人群</strong>
+      预算有限但想要高配置、注重科技感和驾驶辅助的年轻家庭用户。城市通勤+偶尔跑高速的最佳选择。
+    </div>
+  </div>
+
+  <!-- 哈弗H6 -->
+  <div class="card">
+    <div class="car-header second">
+      <div class="car-rank">🔵</div>
+      <div class="car-info">
+        <h3>备选1：哈弗H6</h3>
+        <p>2023款 国潮版 1.5T 自动冠军版 | 1.5T + 7DCT</p>
+      </div>
+      <div class="car-price">
+        <div class="label">二手参考价</div>
+        <div class="price">5.6~7.0万</div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>优点（全网好评 TOP 7）</h4>
+        <ul>
+          <li><strong>价格最低</strong>：5.6~7万买到2023款，预算压力最小</li>
+          <li><strong>空间实用</strong>：后排和后备箱都够用，家用搬东西没问题</li>
+          <li><strong>配置不低</strong>：360全景、L2辅助驾驶、皮质座椅都有</li>
+          <li><strong>国民口碑</strong>：累计销量超400万辆，维修配件遍地都是</li>
+          <li><strong>三大件稳定</strong>：开3~5年发动机变速箱无大修案例多</li>
+          <li><strong>底盘舒适</strong>：双横臂后悬挂，过滤颠簸比麦弗逊好</li>
+          <li><strong>19寸大轮毂</strong>：视觉效果好，抓地力强</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>缺点（全网吐槽 TOP 7）</h4>
+        <ul>
+          <li><strong>油耗是硬伤</strong>：真实车主10.5~14L/百公里，"300块油跑不到200公里"</li>
+          <li><strong>动力偏弱</strong>：150马力推1580kg车身，满载/爬坡/开空调吃力</li>
+          <li><strong>隔音很差</strong>：胎噪、风噪、发动机噪音三重暴击</li>
+          <li><strong>7速双离合顿挫</strong>：低速1→2挡有明显顿挫感</li>
+          <li><strong>底盘生锈</strong>：部分车主反映传动轴和底盘防锈处理差</li>
+          <li><strong>电器小毛病</strong>：车机黑屏、倒车影像不显示、电瓶耗电快</li>
+          <li><strong>内饰异响多</strong>：中控饰板咯吱响是通病</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert alert-info">
+      <strong>🎯 适合人群</strong>
+      预算紧张（6~7万搞定）、主要城市通勤、不太在意油耗和动力的实用主义者。配件好找，修车方便。
+    </div>
+  </div>
+
+  <!-- 途观L -->
+  <div class="card">
+    <div class="car-header third">
+      <div class="car-rank">🟣</div>
+      <div class="car-info">
+        <h3>备选2：途观L</h3>
+        <p>2019~2020款 330TSI 两驱智动豪华版 | EA888 2.0T + 7DSG</p>
+      </div>
+      <div class="car-price">
+        <div class="label">二手参考价</div>
+        <div class="price">7.9~10.5万</div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>优点（全网好评 TOP 8）</h4>
+        <ul>
+          <li><strong>品牌溢价</strong>：大众合资品牌，社交场合不掉面子</li>
+          <li><strong>动力最强</strong>：2.0T 186马力+320N·m，三车中动力参数最好</li>
+          <li><strong>底盘最扎实</strong>：高速稳如磐石，德系底盘调校功底深厚</li>
+          <li><strong>空间最大</strong>：轴距2791mm三车最长，后备箱放倒达1780L</li>
+          <li><strong>真皮+加热</strong>：真皮座椅、方向盘加热、三区空调，冬天幸福感拉满</li>
+          <li><strong>可靠性好</strong>：车主反馈一年无故障，五年底盘不生锈</li>
+          <li><strong>保值率最高</strong>：合资SUV保值率优势明显</li>
+          <li><strong>高速油耗低</strong>：跑高速仅6~7L/百公里</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>缺点（全网吐槽 TOP 8）</h4>
+        <ul>
+          <li><strong>智能配置落后</strong>：8寸小屏、无主动刹车、无车道保持、无360全景</li>
+          <li><strong>排放标准风险</strong>：2019~2020款多为国六A，迁入北京需逐车确认</li>
+          <li><strong>烧机油隐患</strong>：2023款已解决，但2019~2020款仍有风险</li>
+          <li><strong>双离合低速顿挫</strong>：堵车时1→2挡顿挫是大众通病</li>
+          <li><strong>内饰塑料感强</strong>：硬塑料多，与原价位不匹配</li>
+          <li><strong>车漆薄</strong>：轻微剐蹭就露底漆</li>
+          <li><strong>隔音一般</strong>：高速风噪胎噪明显</li>
+          <li><strong>二手价偏高</strong>：7~9万预算只能买到2019~2020款，车龄5~7年</li>
+        </ul>
+      </div>
+    </div>
+    <div class="alert alert-warning">
+      <strong>🎯 适合人群</strong>
+      看重品牌面子、空间和高速驾驶体验，能接受智能配置落后的务实型买家。注意排放标准和烧机油风险。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. 综合评分 ==================== -->
+<section class="section" id="score">
+  <h2 class="section-title"><span class="section-icon">📈</span>第五部分：综合评分对比</h2>
+
+  <div class="card-grid">
+    <!-- CS75 PLUS 评分 -->
+    <div class="card">
+      <h3 style="color:#f59e0b;">⭐ CS75 PLUS — 综合 7.9 分</h3>
+      <div class="score-row"><span class="score-label">空间</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+      <div class="score-row"><span class="score-label">动力</span><div class="score-bar-bg"><div class="score-bar" style="width:85%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.5</span></div>
+      <div class="score-row"><span class="score-label">配置</span><div class="score-bar-bg"><div class="score-bar" style="width:95%;background:var(--accent-green)"></div></div><span class="score-value text-green">9.5</span></div>
+      <div class="score-row"><span class="score-label">油耗</span><div class="score-bar-bg"><div class="score-bar" style="width:70%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">7.0</span></div>
+      <div class="score-row"><span class="score-label">可靠性</span><div class="score-bar-bg"><div class="score-bar" style="width:75%;background:var(--accent-green)"></div></div><span class="score-value text-green">7.5</span></div>
+      <div class="score-row"><span class="score-label">保值率</span><div class="score-bar-bg"><div class="score-bar" style="width:75%;background:var(--accent-green)"></div></div><span class="score-value text-green">7.5</span></div>
+      <div class="score-row"><span class="score-label">隔音</span><div class="score-bar-bg"><div class="score-bar" style="width:65%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">6.5</span></div>
+      <div class="score-row"><span class="score-label">安全</span><div class="score-bar-bg"><div class="score-bar" style="width:90%;background:var(--accent-green)"></div></div><span class="score-value text-green">9.0</span></div>
+      <div class="score-row"><span class="score-label">养车成本</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+    </div>
+
+    <!-- 哈弗H6 评分 -->
+    <div class="card">
+      <h3 style="color:#3b82f6;">🔵 哈弗H6 — 综合 6.9 分</h3>
+      <div class="score-row"><span class="score-label">空间</span><div class="score-bar-bg"><div class="score-bar" style="width:75%;background:var(--accent-green)"></div></div><span class="score-value text-green">7.5</span></div>
+      <div class="score-row"><span class="score-label">动力</span><div class="score-bar-bg"><div class="score-bar" style="width:60%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">6.0</span></div>
+      <div class="score-row"><span class="score-label">配置</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+      <div class="score-row"><span class="score-label">油耗</span><div class="score-bar-bg"><div class="score-bar" style="width:50%;background:var(--accent-red)"></div></div><span class="score-value text-red">5.0</span></div>
+      <div class="score-row"><span class="score-label">可靠性</span><div class="score-bar-bg"><div class="score-bar" style="width:75%;background:var(--accent-green)"></div></div><span class="score-value text-green">7.5</span></div>
+      <div class="score-row"><span class="score-label">保值率</span><div class="score-bar-bg"><div class="score-bar" style="width:70%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">7.0</span></div>
+      <div class="score-row"><span class="score-label">隔音</span><div class="score-bar-bg"><div class="score-bar" style="width:55%;background:var(--accent-red)"></div></div><span class="score-value text-red">5.5</span></div>
+      <div class="score-row"><span class="score-label">安全</span><div class="score-bar-bg"><div class="score-bar" style="width:85%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.5</span></div>
+      <div class="score-row"><span class="score-label">养车成本</span><div class="score-bar-bg"><div class="score-bar" style="width:70%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">7.0</span></div>
+    </div>
+
+    <!-- 途观L 评分 -->
+    <div class="card">
+      <h3 style="color:#8b5cf6;">🟣 途观L — 综合 7.3 分</h3>
+      <div class="score-row"><span class="score-label">空间</span><div class="score-bar-bg"><div class="score-bar" style="width:90%;background:var(--accent-green)"></div></div><span class="score-value text-green">9.0</span></div>
+      <div class="score-row"><span class="score-label">动力</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+      <div class="score-row"><span class="score-label">配置</span><div class="score-bar-bg"><div class="score-bar" style="width:55%;background:var(--accent-red)"></div></div><span class="score-value text-red">5.5</span></div>
+      <div class="score-row"><span class="score-label">油耗</span><div class="score-bar-bg"><div class="score-bar" style="width:75%;background:var(--accent-green)"></div></div><span class="score-value text-green">7.5</span></div>
+      <div class="score-row"><span class="score-label">可靠性</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+      <div class="score-row"><span class="score-label">保值率</span><div class="score-bar-bg"><div class="score-bar" style="width:80%;background:var(--accent-green)"></div></div><span class="score-value text-green">8.0</span></div>
+      <div class="score-row"><span class="score-label">隔音</span><div class="score-bar-bg"><div class="score-bar" style="width:70%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">7.0</span></div>
+      <div class="score-row"><span class="score-label">安全</span><div class="score-bar-bg"><div class="score-bar" style="width:60%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">6.0</span></div>
+      <div class="score-row"><span class="score-label">养车成本</span><div class="score-bar-bg"><div class="score-bar" style="width:65%;background:var(--accent-orange)"></div></div><span class="score-value text-orange">6.5</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. 天津购车 ==================== -->
+<section class="section" id="tianjin">
+  <h2 class="section-title"><span class="section-icon">🏙️</span>第六部分：天津购车专题</h2>
+
+  <div class="alert alert-success">
+    <strong>💡 为什么推荐去天津买？</strong>
+    距北京仅1.5小时高铁/自驾，当天可往返。空港市场300+商家，议价空间大。一站式过户服务效率高。比北京便宜约1~2万。
+  </div>
+
+  <h3 style="margin-bottom:16px;">天津四大二手车市场对比</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>市场名称</th><th>地址</th><th>规模 / 特点</th><th>推荐</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>空港二手车交易市场</strong></td>
+          <td>自贸区空港经济区汽车园中路8号</td>
+          <td>占地10万㎡，300+经纪公司驻场，年交易7万+辆<br>一站式过户（车管所/物价局现场办公）<br>5A诚信单位，12000㎡综合交易大厅</td>
+          <td><span class="badge badge-green">⭐ 强烈推荐</span></td>
+        </tr>
+        <tr>
+          <td><strong>环渤海汽车城</strong></td>
+          <td>解放南路613号</td>
+          <td>中心城区，区位好，综合性汽车服务市场<br>交通便利，周边配套成熟</td>
+          <td><span class="badge badge-blue">推荐</span></td>
+        </tr>
+        <tr>
+          <td><strong>运达旧机动车交易市场</strong></td>
+          <td>河东区卫国道185号</td>
+          <td>老牌市场，车源多，价格相对实惠</td>
+          <td><span class="badge badge-blue">可选</span></td>
+        </tr>
+        <tr>
+          <td><strong>王兰庄旧机动车交易市场</strong></td>
+          <td>西青区卫津南路</td>
+          <td>价格偏低，适合淘车，但需要更仔细验车</td>
+          <td><span class="badge badge-orange">谨慎</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">各城市途观L价格对比</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>购买城市</th><th>2019~2020款参考价</th><th>2023款参考价</th><th>距北京车程</th><th>综合推荐</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>北京</td><td>9~11万</td><td>14~15.5万</td><td>—</td><td class="text-red">价格最高</td>
+        </tr>
+        <tr style="background:rgba(16,185,129,0.08)">
+          <td><strong>天津</strong></td><td class="text-green"><strong>7.9~10.5万</strong></td><td class="text-green"><strong>12.5~14万</strong></td><td>1.5h</td><td><span class="badge badge-green">⭐ 首选</span></td>
+        </tr>
+        <tr>
+          <td>河北（石家庄/保定）</td><td>8~10万</td><td>12.5~14万</td><td>2~3h</td><td><span class="badge badge-blue">推荐</span></td>
+        </tr>
+        <tr>
+          <td>山东（济南/青岛）</td><td>7.5~9.5万</td><td>12~13.5万</td><td>4~5h</td><td>价格最低但距离远</td>
+        </tr>
+        <tr>
+          <td>东北（沈阳/大连）</td><td>7~9万</td><td>11.5~13万</td><td>6~8h</td><td class="text-orange">注意盐雾腐蚀</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">天津空港市场实际在售途观L车源</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>年款配置</th><th>里程</th><th>过户次数</th><th>报价</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>2020款 330TSI 两驱豪华版</td><td>5.7万km</td><td>0次</td><td class="text-green"><strong>11.8万</strong></td></tr>
+        <tr><td>2020款 330TSI 两驱豪华版</td><td>7.2万km</td><td>0次</td><td class="text-green"><strong>10.88万</strong></td></tr>
+        <tr><td>2019款 380TSI 四驱豪华版</td><td>6.2万km</td><td>0次</td><td class="text-green"><strong>10.98万</strong></td></tr>
+        <tr><td>2018款 330TSI 两驱豪华版</td><td>4.1万km</td><td>0次</td><td><strong>10.58万</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color:var(--text-muted); font-size:0.85em; margin-top:8px;">* 数据来源：天津二手车直卖网（tj2cars.com），价格随行就市，仅供参考</p>
+</section>
+
+<!-- ==================== 7. 验车指南 ==================== -->
+<section class="section" id="inspect">
+  <h2 class="section-title"><span class="section-icon">🔧</span>第七部分：验车避坑指南</h2>
+
+  <div class="alert alert-danger">
+    <strong>⚠️ 核心原则</strong>
+    建议花 300~500 元请专业验车师随行。以下清单可作为你自己初步筛选的依据，但专业设备检测不可替代。
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🔧 发动机检查（最重要）</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>冷车启动是否抖动、异响</li>
+        <li><span class="check-icon">☐</span>热车怠速是否平稳（700~800rpm）</li>
+        <li><span class="check-icon">☐</span>机油尺：液位正常、颜色不过黑</li>
+        <li><span class="check-icon">☐</span>机油盖内侧：无白色乳化物</li>
+        <li><span class="check-icon">☐</span>排气管：不冒蓝烟（烧机油）或白烟</li>
+        <li><span class="check-icon">☐</span>发动机舱：无渗油痕迹</li>
+        <li><span class="check-icon">☐</span>正时链条无哒哒异响</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>⚙️ 变速箱检查</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>冷车D挡起步是否有明显顿挫</li>
+        <li><span class="check-icon">☐</span>低速1→2→3挡切换是否平顺</li>
+        <li><span class="check-icon">☐</span>急加速降挡是否干脆</li>
+        <li><span class="check-icon">☐</span>倒挡是否有异响或延迟</li>
+        <li><span class="check-icon">☐</span>变速箱油是否按时更换（查保养记录）</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🛞 底盘与悬挂</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>四个减震器是否漏油（趴下看）</li>
+        <li><span class="check-icon">☐</span>过减速带是否有异响</li>
+        <li><span class="check-icon">☐</span>方向盘是否跑偏（松手测试）</li>
+        <li><span class="check-icon">☐</span>轮胎磨损是否均匀</li>
+        <li><span class="check-icon">☐</span>底盘有无刮蹭、变形、焊接痕迹</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🎨 车身与漆面</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>漆膜仪测全车（正常100~160μm，＞200=喷过漆）</li>
+        <li><span class="check-icon">☐</span>各面板缝隙是否均匀</li>
+        <li><span class="check-icon">☐</span>引擎盖翼子板螺丝有无拧动痕迹</li>
+        <li><span class="check-icon">☐</span>车门铰链螺丝有无拧动痕迹</li>
+        <li><span class="check-icon">☐</span>后备箱备胎槽有无泥沙/水渍</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>💧 识别泡水车</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>安全带拉到底，底部有无水渍/泥沙线</li>
+        <li><span class="check-icon">☐</span>座椅滑轨是否有锈蚀</li>
+        <li><span class="check-icon">☐</span>掀开地毯看有无霉味或水渍</li>
+        <li><span class="check-icon">☐</span>车灯是否起雾、仪表是否异常</li>
+        <li><span class="check-icon">☐</span>OBD读取是否有大量历史故障码</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🚨 识别事故车 / 调表车</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">☐</span>A/B/C柱有无切割、焊接痕迹</li>
+        <li><span class="check-icon">☐</span>前后纵梁有无变形、修复痕迹</li>
+        <li><span class="check-icon">☐</span>全车玻璃生产日期是否一致</li>
+        <li><span class="check-icon">☐</span>查维保记录（里程是否连续递增）</li>
+        <li><span class="check-icon">☐</span>方向盘/挡把/座椅磨损与里程是否匹配</li>
+        <li><span class="check-icon">☐</span>刹车盘磨损程度（6万km出现明显沟槽）</li>
+        <li><span class="check-icon">☐</span>OBD读取ECU内部里程数据</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">三款车各自重点检查项</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>车型</th><th>特别注意的通病</th><th>重点检查</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#f59e0b"><strong>CS75 PLUS</strong></td>
+          <td>变速箱顿挫、前格栅高温变形、车机卡顿、内饰异响</td>
+          <td>低速试驾感受换挡、检查前脸格栅、测试车机多任务</td>
+        </tr>
+        <tr>
+          <td style="color:#3b82f6"><strong>哈弗H6</strong></td>
+          <td>油耗异常高、底盘生锈、电瓶耗电快、车机黑屏</td>
+          <td>底盘防锈情况、电瓶电压测试、实际油耗核实</td>
+        </tr>
+        <tr>
+          <td style="color:#8b5cf6"><strong>途观L</strong></td>
+          <td>烧机油（2019~2020款）、颗粒捕捉器堵塞、双离合顿挫</td>
+          <td>机油消耗量、尾气颜色、OBD读GPF数据、排放标准确认</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== 8. 北京上牌 ==================== -->
+<section class="section" id="transfer">
+  <h2 class="section-title"><span class="section-icon">📋</span>第八部分：外地买车 → 北京上牌流程</h2>
+
+  <h3 style="margin-bottom:16px;">购买渠道对比</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>渠道</th><th>优点</th><th>缺点</th><th>推荐指数</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>个人车源</strong><br><small>闲鱼/朋友圈</small></td>
+          <td>价格最低，无中间商</td>
+          <td>风险最高，无售后保障</td>
+          <td>⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>本地车商</strong><br><small>二手车市场</small></td>
+          <td>车源集中，可现场看车</td>
+          <td>可能有套路，需砍价</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>瓜子/懂车帝</strong><br><small>线上平台</small></td>
+          <td>有检测报告，流程规范</td>
+          <td>服务费2%~4%</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>品牌认证二手车</strong><br><small>官方渠道</small></td>
+          <td>质量有保障，有延保</td>
+          <td>价格最高，车源少</td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">完整流程</h3>
+  <div class="flow">
+    <div class="flow-step"><span class="step-num">第1步</span>确认北京<br>小客车指标</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第2步</span>线上筛选<br>外地车源</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第3步</span>实地看车<br>带验车师</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第4步</span>谈价签合同<br>注明车况</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第5步</span>当地过户<br>+提档</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第6步</span>档案邮寄<br>到北京</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step"><span class="step-num">第7步</span>北京验车<br>选号上牌</div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-step" style="border-color:var(--accent-green)"><span class="step-num" style="color:var(--accent-green)">完成</span>全面保养<br>开心用车 🚗</div>
+  </div>
+
+  <div class="card-grid" style="margin-top:24px;">
+    <div class="card">
+      <h3>📄 买方需准备</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">📌</span>身份证原件</li>
+        <li><span class="check-icon">📌</span>北京居住证（非京籍）</li>
+        <li><span class="check-icon">📌</span>小客车指标确认书打印件</li>
+        <li><span class="check-icon">📌</span>北京交强险保单</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>📄 卖方 / 车辆材料</h3>
+      <ul class="checklist">
+        <li><span class="check-icon">📌</span>车辆登记证书（绿本）</li>
+        <li><span class="check-icon">📌</span>行驶证</li>
+        <li><span class="check-icon">📌</span>原车主身份证复印件</li>
+        <li><span class="check-icon">📌</span>二手车交易发票</li>
+        <li><span class="check-icon">📌</span>车辆档案密封袋</li>
+        <li><span class="check-icon">📌</span>购置税完税证明</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:30px; margin-bottom:16px;">费用与时间</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>项目</th><th>费用</th><th>耗时</th></tr></thead>
+      <tbody>
+        <tr><td>当地过户+提档</td><td>200~500元</td><td>1天</td></tr>
+        <tr><td>临时牌照</td><td>~10元</td><td>当场</td></tr>
+        <tr><td>档案邮寄</td><td>~30元</td><td>3~5天</td></tr>
+        <tr><td>北京车辆检测</td><td>100~200元</td><td>半天</td></tr>
+        <tr><td>牌照+行驶证</td><td>~145元</td><td>当场</td></tr>
+        <tr><td><strong>总计</strong></td><td class="text-green"><strong>~500~900元</strong></td><td><strong>5~7个工作日</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-danger" style="margin-top:20px;">
+    <strong>⚠️ 关键注意事项</strong>
+    <ol style="margin-top:8px; padding-left:20px;">
+      <li><strong>排放标准是铁门槛</strong>：北京要求国六B，2023款CS75 PLUS和H6没问题；途观L 2019~2020款需逐车确认</li>
+      <li><strong>临牌有效期30天</strong>：务必在有效期内完成北京落户</li>
+      <li><strong>改装件会导致验车不通过</strong>：确认车辆原厂状态</li>
+      <li><strong>贷款车无法过户</strong>：确认绿本上无抵押记录</li>
+      <li><strong>保险衔接</strong>：提档后尽快变更为北京保单</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== 9. 购后保养 ==================== -->
+<section class="section" id="maintain">
+  <h2 class="section-title"><span class="section-icon">🛠️</span>第九部分：购买后第一周必做清单</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>优先级</th><th>项目</th><th>预估费用</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-red">🔴 必做</span></td>
+          <td>全合成机油 + 机滤更换</td>
+          <td>500~700元</td>
+          <td>不管上任车主什么时候换的，买来先换</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">🔴 必做</span></td>
+          <td>变速箱油检查/更换</td>
+          <td>800~1,200元</td>
+          <td>双离合/AT变速箱对油品敏感</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">🔴 必做</span></td>
+          <td>刹车油检查/更换</td>
+          <td>200~300元</td>
+          <td>关乎安全，含水量超标必须换</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">🔴 必做</span></td>
+          <td>防冻液检查</td>
+          <td>0~200元</td>
+          <td>冰点测试，北京冬天必须达标</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-orange">🟡 建议</span></td>
+          <td>空调滤芯 + 空气滤芯</td>
+          <td>100~200元</td>
+          <td>便宜但影响健康</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-orange">🟡 建议</span></td>
+          <td>火花塞检查/更换</td>
+          <td>200~400元</td>
+          <td>影响油耗和动力</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-orange">🟡 建议</span></td>
+          <td>四轮定位</td>
+          <td>200~300元</td>
+          <td>确保轮胎均匀磨损</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-orange">🟡 建议</span></td>
+          <td>全车杀菌除味</td>
+          <td>100~200元</td>
+          <td>臭氧杀菌即可</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">🟢 可选</span></td>
+          <td>底盘装甲/防锈</td>
+          <td>500~800元</td>
+          <td>北方用车建议做（尤其哈弗H6）</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-blue">🟢 可选</span></td>
+          <td>全车贴膜</td>
+          <td>2,000~5,000元</td>
+          <td>看个人需求</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== 10. 最终建议 ==================== -->
+<section class="section" id="conclusion">
+  <h2 class="section-title"><span class="section-icon">🎯</span>第十部分：最终购买建议</h2>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>你的情况</th><th>推荐车型</th><th>理由</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:rgba(245,158,11,0.08)">
+          <td><strong>想要配置高 + 动力好 + 8AT平顺</strong></td>
+          <td class="text-orange"><strong>⭐ CS75 PLUS</strong></td>
+          <td>综合实力最均衡，7~8万买到的体验最好</td>
+        </tr>
+        <tr>
+          <td><strong>预算卡得紧，6~7万搞定</strong></td>
+          <td class="text-blue"><strong>哈弗H6</strong></td>
+          <td>最便宜，配件好找，但要接受油耗和动力短板</td>
+        </tr>
+        <tr>
+          <td><strong>看重品牌 + 空间 + 高速稳定性</strong></td>
+          <td class="text-purple"><strong>途观L</strong></td>
+          <td>合资品质，但配置落后且需注意排放和烧机油</td>
+        </tr>
+        <tr>
+          <td><strong>经常跑高速/长途</strong></td>
+          <td>途观L ＞ CS75 ＞ H6</td>
+          <td>途观L底盘和高速稳定性最好</td>
+        </tr>
+        <tr>
+          <td><strong>主要城市通勤</strong></td>
+          <td>CS75 ＞ H6 ＞ 途观L</td>
+          <td>CS75的ACC+车道保持在堵车时最省心</td>
+        </tr>
+        <tr>
+          <td><strong>北方冬天用车</strong></td>
+          <td>途观L ＞ CS75 ＞ H6</td>
+          <td>方向盘加热+座椅加热+三区空调，冬天最舒服</td>
+        </tr>
+        <tr>
+          <td><strong>新手练手</strong></td>
+          <td>H6 ＞ CS75 ＞ 途观L</td>
+          <td>H6最便宜，刮蹭心疼程度最低</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-success" style="margin-top:24px;">
+    <strong>📌 购车行动路线</strong>
+    <div class="flow" style="margin-top:12px;">
+      <div class="flow-step"><span class="step-num">1</span>确认北京指标</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">2</span>懂车帝/瓜子<br>筛选车源</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">3</span>电话初筛</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">4</span>天津/河北<br>实地看车</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">5</span>带验车师<br>详细检查</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">6</span>谈价签合同</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="step-num">7</span>当地过户提档</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step" style="border-color:var(--accent-green)"><span class="step-num" style="color:var(--accent-green)">8</span>北京上牌<br>全面保养 🚗</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="footer">
+  <p>⚠️ 免责声明：以上价格均为参考区间，实际价格受车况、里程、地区、市场供需等因素影响。</p>
+  <p>建议在瓜子二手车、懂车帝、汽车之家等平台查询实时行情，并以实际交易价格为准。</p>
+  <p style="margin-top:12px; color:var(--text-muted);">生成时间：2026年3月 | 数据来源：瓜子二手车、懂车帝、汽车之家、车质网、天津二手车直卖网</p>
+</div>
+
+</body>
+</html>
