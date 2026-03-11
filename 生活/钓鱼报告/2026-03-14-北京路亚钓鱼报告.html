@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>北京路亚钓鱼水层分析报告 - 2026年3月14日</title>
+<style>
+  :root {
+    --primary: #0077B6;
+    --primary-dark: #023E8A;
+    --water-light: #CAF0F8;
+    --water-dark: #03045E;
+    --high-activity: #E63946;
+    --mid-activity: #F4A261;
+    --low-activity: #2A9D8F;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #555;
+    --border-radius: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #e0f2f1 100%);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 16px;
+  }
+
+  /* Header */
+  .report-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 32px 28px;
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+  .report-header h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .report-header .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    position: relative;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    position: relative;
+  }
+  .header-meta .tag {
+    background: rgba(255,255,255,0.15);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin: 28px 0 16px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary);
+  }
+
+  /* Venue selector tabs */
+  .venue-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .venue-tab {
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid var(--primary);
+    background: white;
+    color: var(--primary);
+    transition: all 0.3s;
+  }
+  .venue-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  .venue-tab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,119,182,0.3);
+  }
+  .venue-content { display: none; }
+  .venue-content.active { display: block; }
+
+  /* Water profile */
+  .water-profile-wrapper {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .water-profile {
+    flex: 1;
+    min-width: 320px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: relative;
+  }
+  .water-profile-inner {
+    display: flex;
+    min-height: 480px;
+  }
+
+  /* Depth scale */
+  .depth-scale {
+    width: 50px;
+    background: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 4px;
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    font-weight: 600;
+    border-right: 2px solid #ddd;
+  }
+  .depth-scale span { display: block; }
+
+  /* Water layers */
+  .water-layers {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .water-layer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    position: relative;
+    min-height: 80px;
+  }
+  .water-layer-surface { background: linear-gradient(180deg, #E0F7FA 0%, #B2EBF2 100%); }
+  .water-layer-upper { background: linear-gradient(180deg, #B2EBF2 0%, #4FC3F7 100%); }
+  .water-layer-mid { background: linear-gradient(180deg, #4FC3F7 0%, #0288D1 100%); }
+  .water-layer-mid-lower { background: linear-gradient(180deg, #0288D1 0%, #01579B 100%); }
+  .water-layer-bottom { background: linear-gradient(180deg, #01579B 0%, var(--water-dark) 100%); }
+
+  .layer-label {
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+  .water-layer-surface .layer-label { color: rgba(0,0,0,0.4); }
+
+  /* Fish in water */
+  .fish-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.9);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    animation: swim 3s ease-in-out infinite;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .fish-item .emoji { font-size: 22px; }
+  .fish-item .name { color: var(--text); }
+  .activity-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+  }
+  .activity-high { background: var(--high-activity); }
+  .activity-mid { background: var(--mid-activity); }
+  .activity-low { background: var(--low-activity); }
+
+  @keyframes swim {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+  }
+
+  /* Migration arrow */
+  .migration-note {
+    display: block;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    margin-top: 4px;
+    padding: 3px 8px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+    border-left: 3px dashed #F4A261;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Env panel */
+  .env-panel {
+    width: 180px;
+    background: #f8fafc;
+    padding: 16px 12px;
+    border-left: 2px solid #e2e8f0;
+    font-size: 12px;
+  }
+  .env-panel h4 {
+    font-size: 13px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .env-item {
+    margin-bottom: 10px;
+  }
+  .env-item .label {
+    color: #888;
+    font-size: 11px;
+  }
+  .env-item .value {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 14px;
+  }
+  .temp-gradient {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .temp-bar {
+    height: 8px;
+    border-radius: 4px;
+    margin: 4px 0;
+    position: relative;
+  }
+  .temp-bar-label {
+    font-size: 10px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f4f8;
+  }
+  .card-header .fish-emoji { font-size: 36px; }
+  .card-header .fish-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+  .card-header .fish-sub {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .info-block {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+  }
+  .info-block.full-width {
+    grid-column: 1 / -1;
+  }
+  .info-block .label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .info-block .value {
+    font-size: 14px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Stars */
+  .stars { color: #F4A261; font-size: 18px; letter-spacing: 2px; }
+  .stars-empty { color: #ddd; }
+
+  /* Environment analysis */
+  .env-analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .env-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 20px;
+  }
+  .env-card h3 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .env-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* Fishing index */
+  .fishing-index {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .fishing-index h3 { font-size: 18px; margin-bottom: 12px; }
+  .index-score {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .index-bar-bg {
+    height: 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 6px;
+    margin: 16px auto;
+    max-width: 400px;
+    overflow: hidden;
+  }
+  .index-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease;
+  }
+  .index-conclusion {
+    font-size: 16px;
+    margin-top: 12px;
+    opacity: 0.9;
+  }
+
+  /* Strategy */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .strategy-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 20px;
+  }
+  .strategy-card h3 {
+    font-size: 15px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .strategy-card li {
+    font-size: 13px;
+    color: var(--text-light);
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .strategy-card li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .compare-table th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .compare-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  .compare-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  .compare-table .recommend {
+    background: #e8f5e9 !important;
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .report-footer {
+    text-align: center;
+    padding: 24px;
+    color: #999;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .water-profile-wrapper { flex-direction: column; }
+    .info-grid { grid-template-columns: 1fr; }
+    .env-panel { width: 100%; border-left: none; border-top: 2px solid #e2e8f0; }
+    .water-profile-inner { flex-direction: column; }
+    .depth-scale { width: 100%; flex-direction: row; border-right: none; border-bottom: 2px solid #ddd; padding: 8px; }
+    .report-header h1 { font-size: 20px; }
+    .index-score { font-size: 48px; }
+    .env-analysis-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Time period tabs */
+  .time-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    background: #e2e8f0;
+  }
+  .time-tab {
+    flex: 1;
+    padding: 8px 6px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    background: #e2e8f0;
+    border: none;
+    transition: all 0.3s;
+    border-right: 1px solid #d0d5dd;
+  }
+  .time-tab:last-child { border-right: none; }
+  .time-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  .time-tab:hover:not(.active) {
+    background: #cfd8e3;
+  }
+  .time-tab .tab-time { display: block; font-size: 11px; opacity: 0.7; }
+
+  /* Timeline chart */
+  .timeline-chart {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 24px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+  }
+  .timeline-chart h3 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+  }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr);
+    gap: 0;
+    min-width: 600px;
+  }
+  .tl-header {
+    padding: 8px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .tl-header:first-child {
+    border-radius: 8px 0 0 0;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .tl-header:last-child { border-radius: 0 8px 0 0; border-right: none; }
+  .tl-depth {
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .tl-cell {
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 18px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+  }
+  .tl-cell:last-child { border-right: none; }
+  .tl-cell .tl-fish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  .tl-cell .tl-fish .tl-label {
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: white;
+    line-height: 1.2;
+  }
+  .tl-arrow {
+    font-size: 12px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    opacity: 0.7;
+  }
+  .tl-row-surface .tl-depth, .tl-row-surface .tl-cell { background: #B2EBF2; color: #333; }
+  .tl-row-upper .tl-depth, .tl-row-upper .tl-cell { background: #4FC3F7; }
+  .tl-row-mid .tl-depth, .tl-row-mid .tl-cell { background: #0288D1; }
+  .tl-row-midlow .tl-depth, .tl-row-midlow .tl-cell { background: #01579B; }
+  .tl-row-bottom .tl-depth, .tl-row-bottom .tl-cell { background: #03045E; }
+
+  /* Water profile time-aware: hide/show fish by time */
+  .water-profile .time-fish { display: none; }
+  .water-profile .time-fish.time-active { display: block; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .fish-item { animation: none; }
+    .card:hover { transform: none; }
+    .venue-tab { border: 1px solid #ccc; }
+    .report-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fishing-index { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .water-layer-surface, .water-layer-upper, .water-layer-mid, .water-layer-mid-lower, .water-layer-bottom {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="report-header">
+    <h1>🎣 北京路亚钓鱼 · 水层分析报告</h1>
+    <div class="subtitle">基于环境参数的智能鱼情分析 & 策略推荐</div>
+    <div class="header-meta">
+      <span class="tag">📅 2026年3月14日 周六</span>
+      <span class="tag">📍 北京</span>
+      <span class="tag">🌡️ 5~12°C 阴天</span>
+      <span class="tag">🧭 东北风2级</span>
+      <span class="tag">📊 气压 ~1028hPa（推断值）</span>
+      <span class="tag">🎯 路亚</span>
+    </div>
+  </div>
+
+  <!-- Venue Tabs -->
+  <div class="venue-tabs">
+    <div class="venue-tab active" onclick="switchVenue('bass')">🐟 钓鱼猴路亚基地 · 鲈鱼</div>
+    <div class="venue-tab" onclick="switchVenue('catfish')">🐱 猫会 · 鲶鱼</div>
+  </div>
+
+  <!-- ==================== 钓场1：钓鱼猴 - 鲈鱼 ==================== -->
+  <div id="venue-bass" class="venue-content active">
+    <h2 class="section-title">一、水层剖面图 — 钓鱼猴路亚基地（水深 &lt;3m）</h2>
+
+    <!-- 时段水层变化时间轴 -->
+    <div class="timeline-chart">
+      <h3>🕐 鲈鱼全天水层迁移时间轴</h3>
+      <div class="timeline-grid">
+        <div class="tl-header">水层 \ 时段</div>
+        <div class="tl-header">🌅 早晨<br><span style="font-size:10px;">7:00~9:00</span></div>
+        <div class="tl-header">☀️ 上午<br><span style="font-size:10px;">9:00~11:00</span></div>
+        <div class="tl-header">🔆 午间<br><span style="font-size:10px;">11:00~14:00</span></div>
+        <div class="tl-header">🌤️ 下午<br><span style="font-size:10px;">14:00~16:30</span></div>
+        <div class="tl-header">🌇 傍晚<br><span style="font-size:10px;">16:30~18:00</span></div>
+
+        <div class="tl-depth tl-row-surface">水面 0~0.5m</div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+
+        <div class="tl-depth tl-row-upper">上层 0.5~1.0m</div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">少量</span></div>
+          <span class="tl-arrow">⬆️</span>
+        </div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+
+        <div class="tl-depth tl-row-mid">中层 1.0~1.5m</div>
+        <div class="tl-cell tl-row-mid"></div>
+        <div class="tl-cell tl-row-mid">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">少量</span></div>
+          <span class="tl-arrow">⬆️</span>
+        </div>
+        <div class="tl-cell tl-row-mid">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#F4A261;">活跃</span></div>
+        </div>
+        <div class="tl-cell tl-row-mid">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">少量</span></div>
+        </div>
+        <div class="tl-cell tl-row-mid"></div>
+
+        <div class="tl-depth tl-row-midlow">中下层 1.5~2.0m</div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">低</span></div>
+        </div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#F4A261;">中</span></div>
+        </div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐟🐟</span><span class="tl-label" style="background:#E63946;">主群</span></div>
+        </div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#F4A261;">中</span></div>
+        </div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">低</span></div>
+          <span class="tl-arrow">⬇️</span>
+        </div>
+
+        <div class="tl-depth tl-row-bottom">底层 2.0~3.0m</div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐟🐟</span><span class="tl-label" style="background:#2A9D8F;">主群蛰伏</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">部分</span></div>
+          <span class="tl-arrow">⬆️</span>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">少量</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐟</span><span class="tl-label" style="background:#2A9D8F;">部分</span></div>
+          <span class="tl-arrow">⬇️</span>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐟🐟</span><span class="tl-label" style="background:#2A9D8F;">回底蛰伏</span></div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; font-size: 12px; color: #888; line-height: 1.8;">
+        <strong>迁移规律解读：</strong>早晨水温最低(~5°C)，鲈鱼几乎全部蛰伏在2~3m底层；随着气温上升，上午开始有个体从底层上浮至中下层试探性觅食；<strong style="color: var(--high-activity);">午间11:00~14:00是黄金窗口</strong>，水温达到日峰值(~8°C)，鲈鱼主群上浮至1.5~2.0m中下层活跃觅食，部分激进个体甚至上探到1.0m中层；下午水温开始回落，鱼群逐渐下沉；傍晚降温后迅速回底蛰伏。
+      </div>
+    </div>
+
+    <!-- 带时段切换的水层剖面图 -->
+    <div class="water-profile-wrapper">
+      <div class="water-profile" id="bass-profile">
+        <div class="time-tabs">
+          <div class="time-tab" onclick="switchBassTime('early')" data-time="early">🌅 早晨<span class="tab-time">7~9点</span></div>
+          <div class="time-tab" onclick="switchBassTime('morning')" data-time="morning">☀️ 上午<span class="tab-time">9~11点</span></div>
+          <div class="time-tab active" onclick="switchBassTime('noon')" data-time="noon">🔆 午间<span class="tab-time">11~14点</span></div>
+          <div class="time-tab" onclick="switchBassTime('afternoon')" data-time="afternoon">🌤️ 下午<span class="tab-time">14~16:30</span></div>
+          <div class="time-tab" onclick="switchBassTime('evening')" data-time="evening">🌇 傍晚<span class="tab-time">16:30~18</span></div>
+        </div>
+        <div class="water-profile-inner">
+          <div class="depth-scale">
+            <span>0m<br>水面</span>
+            <span>0.5m</span>
+            <span>1.0m</span>
+            <span>1.5m</span>
+            <span>2.0m</span>
+            <span>2.5m</span>
+            <span>3.0m<br>塘底</span>
+          </div>
+          <div class="water-layers">
+            <!-- 水面层 0-0.5m -->
+            <div class="water-layer water-layer-surface">
+              <span class="layer-label">水面层 0~0.5m</span>
+            </div>
+            <!-- 上层 0.5-1.0m -->
+            <div class="water-layer water-layer-upper" style="min-height: 85px;">
+              <span class="layer-label">上层 0.5~1.0m</span>
+              <!-- 午间：少量激进个体上探 -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 0.2s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（激进个体）</span>
+                  <span class="activity-badge activity-mid">🟡 中活性</span>
+                </div>
+                <div class="migration-note">⬆️ 午间水温峰值，少量大个体上探至上层巡游觅食</div>
+              </div>
+            </div>
+            <!-- 中层 1.0-1.5m -->
+            <div class="water-layer water-layer-mid" style="background: linear-gradient(180deg, #4FC3F7 0%, #29B6F6 100%); min-height: 90px;">
+              <span class="layer-label">中层 1.0~1.5m</span>
+              <!-- 上午：少量上浮试探 -->
+              <div class="time-fish" data-time="morning">
+                <div class="fish-item" style="animation-delay: 0.3s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（先锋个体）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬆️ 水温回升中，少量个体开始从底层上浮试探</div>
+              </div>
+              <!-- 午间：部分活跃个体 -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（活跃群）</span>
+                  <span class="activity-badge activity-mid">🟡 中活性</span>
+                </div>
+                <div class="migration-note">⬆️ 水温达峰值~8°C，活跃个体上浮至中层主动觅食</div>
+              </div>
+              <!-- 下午：少量 -->
+              <div class="time-fish" data-time="afternoon">
+                <div class="fish-item" style="animation-delay: 0.3s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（少量）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬇️ 水温开始回落，鱼群逐渐下沉</div>
+              </div>
+            </div>
+            <!-- 中下层 1.5-2.0m -->
+            <div class="water-layer water-layer-mid" style="min-height: 100px;">
+              <span class="layer-label">中下层 1.5~2.0m</span>
+              <!-- 早晨：少量 -->
+              <div class="time-fish" data-time="early">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（极少量）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">水温极低~5°C，仅极少数个体在此层缓慢游动</div>
+              </div>
+              <!-- 上午：主要活动层 -->
+              <div class="time-fish" data-time="morning">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈</span>
+                  <span class="activity-badge activity-mid">🟡 中活性</span>
+                </div>
+                <div class="migration-note">⬆️ 水温升至~7°C，部分鲈鱼从底层上浮至此层觅食</div>
+              </div>
+              <!-- 午间：主群！ -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈（主群）</span>
+                  <span class="activity-badge activity-high">🔴 高活性</span>
+                </div>
+                <div class="migration-note">🔥 黄金时段！水温峰值~8°C，主群集中在此层积极觅食，咬口最佳</div>
+              </div>
+              <!-- 下午 -->
+              <div class="time-fish" data-time="afternoon">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈</span>
+                  <span class="activity-badge activity-mid">🟡 中活性</span>
+                </div>
+                <div class="migration-note">⬇️ 水温开始下降，活性降低但仍有觅食行为</div>
+              </div>
+              <!-- 傍晚 -->
+              <div class="time-fish" data-time="evening">
+                <div class="fish-item" style="animation-delay: 0.5s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（少量）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬇️ 快速降温，大部分鱼已回底，仅少量滞留</div>
+              </div>
+            </div>
+            <!-- 底层 2.0-3.0m -->
+            <div class="water-layer water-layer-mid-lower" style="min-height: 120px;">
+              <span class="layer-label">底层 2.0~3.0m</span>
+              <!-- 早晨：主群蛰伏 -->
+              <div class="time-fish" data-time="early">
+                <div class="fish-item" style="animation-delay: 1s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈（主群蛰伏）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬇️ 夜间水温降至最低~5°C，几乎全部鲈鱼贴底蛰伏，不觅食</div>
+              </div>
+              <!-- 上午：部分仍在底层 -->
+              <div class="time-fish" data-time="morning">
+                <div class="fish-item" style="animation-delay: 1s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈（部分）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬆️ 部分个体开始上浮，但多数仍贴底</div>
+              </div>
+              <!-- 午间：少量 -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 1s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">鲈鱼（少量贴底）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">大部分已上浮至中下层，仅少量体弱个体仍贴底</div>
+              </div>
+              <!-- 下午 -->
+              <div class="time-fish" data-time="afternoon">
+                <div class="fish-item" style="animation-delay: 1s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈（部分回底）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬇️ 水温回落，部分鱼开始回沉至底层</div>
+              </div>
+              <!-- 傍晚 -->
+              <div class="time-fish" data-time="evening">
+                <div class="fish-item" style="animation-delay: 1s;">
+                  <span class="emoji">🐟</span>
+                  <span class="name">大口黑鲈（主群回底）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬇️ 傍晚降温明显，鲈鱼迅速回底蛰伏，鱼口关闭</div>
+              </div>
+            </div>
+          </div>
+          <!-- 环境参数面板 -->
+          <div class="env-panel" id="bass-env-panel">
+            <h4>🌊 环境参数</h4>
+            <div class="env-item">
+              <div class="label">当前时段</div>
+              <div class="value" id="bass-time-label">🔆 午间 11~14点</div>
+            </div>
+            <div class="env-item">
+              <div class="label">估算水温</div>
+              <div class="value" id="bass-temp">7~8°C</div>
+            </div>
+            <div class="env-item">
+              <div class="label">鱼群水层</div>
+              <div class="value" id="bass-layer">中下层 1.5~2.0m</div>
+            </div>
+            <div class="env-item">
+              <div class="label">活性评级</div>
+              <div class="value" id="bass-activity">🔴 高活性</div>
+            </div>
+            <div class="env-item">
+              <div class="label">气压</div>
+              <div class="value">~1028 hPa</div>
+            </div>
+            <div class="env-item">
+              <div class="label">咬口概率</div>
+              <div class="value" id="bass-bite">⭐⭐⭐⭐ 较高</div>
+            </div>
+            <div class="temp-gradient">
+              <div class="label" style="margin-bottom: 6px;">水温梯度</div>
+              <div class="temp-bar-label"><span>表层 <span id="bass-t-top">~8°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #4FC3F7, #81D4FA); width: 70%;"></div>
+              <div class="temp-bar-label"><span>中层 <span id="bass-t-mid">~7°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #29B6F6, #4FC3F7); width: 60%;"></div>
+              <div class="temp-bar-label"><span>底层 <span id="bass-t-bot">~6°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #0288D1, #29B6F6); width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 鲈鱼详细分析卡片 -->
+    <h2 class="section-title">二、鱼种详细分析 — 大口黑鲈</h2>
+    <div class="card">
+      <div class="card-header">
+        <span class="fish-emoji">🐟</span>
+        <div>
+          <div class="fish-name">大口黑鲈 (Largemouth Bass)</div>
+          <div class="fish-sub">钓鱼猴路亚基地 · 人工鱼塘 · 水深 &lt;3m</div>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-block">
+          <div class="label">📍 当前水层</div>
+          <div class="value">中下层 1.5~2.5m<br><small style="color:#888;">部分个体贴底 2.5~3.0m</small></div>
+        </div>
+        <div class="info-block">
+          <div class="label">🔥 活性分析</div>
+          <div class="value">
+            <span class="activity-badge activity-mid" style="font-size:12px;">🟡 中活性</span><br>
+            <small style="color:#888;">气压1028hPa偏高有利鱼口，但水温仅6~8°C偏低，鲈鱼代谢慢、追饵意愿一般。阴天光照弱，鲈鱼会比晴天更愿意巡游觅食，整体中等活性。</small>
+          </div>
+        </div>
+        <div class="info-block full-width">
+          <div class="label">🔄 水层迁移说明（含时段变化）</div>
+          <div class="value">
+            常规水层为中层(1.0~2.0m)。当前水温偏低（<10°C），鲈鱼整体下沉0.5~1个水层。<br><br>
+            <strong>📌 全天水层迁移路径：</strong><br>
+            <span style="color:#2A9D8F;">🌅 早晨(7~9点)</span> 底层2.0~3.0m蛰伏 → 
+            <span style="color:#F4A261;">☀️ 上午(9~11点)</span> 部分上浮至中下层1.5~2.0m → 
+            <span style="color:#E63946;">🔆 午间(11~14点)</span> <strong>主群集中在1.5~2.0m，部分上探至1.0m</strong> → 
+            <span style="color:#F4A261;">🌤️ 下午(14~16:30)</span> 逐渐回沉至1.5~2.5m → 
+            <span style="color:#2A9D8F;">🌇 傍晚(16:30~18点)</span> 迅速回底2.0~3.0m蛰伏<br><br>
+            <small style="color:#888;">迁移驱动因素：水温随日照变化（浅水塘升温快），午间水温达峰值~8°C触发鲈鱼上浮觅食。气压偏高有利于底层溶氧，鱼不会因缺氧被迫上浮。</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🎣 推荐拟饵</div>
+          <div class="value">
+            <strong>首选：</strong>铅头钩 + 卷尾蛆（3~4寸，自然色/烟灰色）<br>
+            <strong>备选1：</strong>Jerkbait 悬停米诺（7~9cm，缓沉型）<br>
+            <strong>备选2：</strong>倒钓钓组（T-rig）+ 小龙虾型软饵<br>
+            <small style="color:#888;">低温下鲈鱼追饵距离短，需要慢速、贴底、长时间停顿的呈现方式</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🎯 推荐钓法 & 手法</div>
+          <div class="value">
+            <strong>铅头钩跳底：</strong>抛投到位后沉底，轻挑竿尖让饵跳起10~20cm后自由落下，停顿3~5秒，反复操作<br>
+            <strong>Jerkbait 抽停：</strong>短促抽两下 → 停顿5~8秒（关键！），模拟受伤小鱼悬停<br>
+            <small style="color:#888;">早春核心：慢！停顿时间要比夏天长2~3倍</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🧵 装备搭配</div>
+          <div class="value">
+            <strong>竿：</strong>M调或ML调路亚竿，6.6~7.0尺<br>
+            <strong>轮：</strong>纺车轮 2500~3000 或水滴轮<br>
+            <strong>线：</strong>PE线 0.8~1.0号 + 碳氟前导线 6~8lb<br>
+            <small style="color:#888;">低温鱼口轻，用稍软的竿子更容易感知咬口</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">⏰ 最佳时段</div>
+          <div class="value">
+            <strong>🌟 黄金时段：</strong>10:00~14:00<br>
+            <small style="color:#888;">早春阴天，水温在午间达到峰值（~8°C），鲈鱼活性最高。早晚水温过低（<6°C），鱼口极差。</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">⭐ 成功率预估</div>
+          <div class="value">
+            <span class="stars">★★★</span><span class="stars-empty">★★</span> 3/5<br>
+            <small style="color:#888;">气压条件好但水温偏低，鱼塘密度有保障，耐心慢搜有机会上鱼，但不会爆连。</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 钓场2：猫会 - 鲶鱼 ==================== -->
+  <div id="venue-catfish" class="venue-content">
+    <h2 class="section-title">一、水层剖面图 — 猫会（水深 4m+，50m×90m）</h2>
+
+    <!-- 时段水层变化时间轴 -->
+    <div class="timeline-chart">
+      <h3>🕐 鲶鱼全天水层迁移时间轴</h3>
+      <div class="timeline-grid">
+        <div class="tl-header">水层 \ 时段</div>
+        <div class="tl-header">🌅 早晨<br><span style="font-size:10px;">7:00~9:00</span></div>
+        <div class="tl-header">☀️ 上午<br><span style="font-size:10px;">9:00~11:00</span></div>
+        <div class="tl-header">🔆 午间<br><span style="font-size:10px;">11:00~14:00</span></div>
+        <div class="tl-header">🌤️ 下午<br><span style="font-size:10px;">14:00~16:30</span></div>
+        <div class="tl-header">🌇 傍晚<br><span style="font-size:10px;">16:30~18:00</span></div>
+
+        <div class="tl-depth tl-row-surface">水面 0~0.5m</div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+        <div class="tl-cell tl-row-surface"></div>
+
+        <div class="tl-depth tl-row-upper">上层 0.5~1.0m</div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+        <div class="tl-cell tl-row-upper"></div>
+
+        <div class="tl-depth tl-row-mid">中层 1.0~2.0m</div>
+        <div class="tl-cell tl-row-mid"></div>
+        <div class="tl-cell tl-row-mid"></div>
+        <div class="tl-cell tl-row-mid"></div>
+        <div class="tl-cell tl-row-mid"></div>
+        <div class="tl-cell tl-row-mid"></div>
+
+        <div class="tl-depth tl-row-midlow">中下层 2.0~3.0m</div>
+        <div class="tl-cell tl-row-midlow"></div>
+        <div class="tl-cell tl-row-midlow"></div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐱</span><span class="tl-label" style="background:#2A9D8F;">极少</span></div>
+          <span class="tl-arrow">⬆️</span>
+        </div>
+        <div class="tl-cell tl-row-midlow">
+          <div class="tl-fish"><span>🐱</span><span class="tl-label" style="background:#2A9D8F;">极少</span></div>
+        </div>
+        <div class="tl-cell tl-row-midlow"></div>
+
+        <div class="tl-depth tl-row-bottom">底层 3.0~4.0m+</div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐱🐱</span><span class="tl-label" style="background:#2A9D8F;">全部蛰伏</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐱🐱</span><span class="tl-label" style="background:#2A9D8F;">全部蛰伏</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐱</span><span class="tl-label" style="background:#F4A261;">主群微动</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐱</span><span class="tl-label" style="background:#F4A261;">主群微动</span></div>
+        </div>
+        <div class="tl-cell tl-row-bottom">
+          <div class="tl-fish"><span>🐱🐱</span><span class="tl-label" style="background:#2A9D8F;">回底蛰伏</span></div>
+        </div>
+      </div>
+      <div style="margin-top: 12px; font-size: 12px; color: #888; line-height: 1.8;">
+        <strong>迁移规律解读：</strong>鲶鱼是暖水性鱼类，当前水温(5~7°C)远低于活跃阈值(10°C)，全天水层变化幅度极小。早晨和傍晚全部蛰伏在4m+底层一动不动；<strong style="color: var(--mid-activity);">午间11:00~15:00</strong>水温微升至峰值(~7°C)，底层主群开始有微弱活动（原地小范围移动），极少数个体可能短暂上浮至2~3m层，但不会持续。整体迁移幅度远小于鲈鱼。
+      </div>
+    </div>
+
+    <!-- 带时段切换的水层剖面图 -->
+    <div class="water-profile-wrapper">
+      <div class="water-profile" id="catfish-profile">
+        <div class="time-tabs">
+          <div class="time-tab" onclick="switchCatfishTime('early')" data-time="early">🌅 早晨<span class="tab-time">7~9点</span></div>
+          <div class="time-tab" onclick="switchCatfishTime('morning')" data-time="morning">☀️ 上午<span class="tab-time">9~11点</span></div>
+          <div class="time-tab active" onclick="switchCatfishTime('noon')" data-time="noon">🔆 午间<span class="tab-time">11~14点</span></div>
+          <div class="time-tab" onclick="switchCatfishTime('afternoon')" data-time="afternoon">🌤️ 下午<span class="tab-time">14~16:30</span></div>
+          <div class="time-tab" onclick="switchCatfishTime('evening')" data-time="evening">🌇 傍晚<span class="tab-time">16:30~18</span></div>
+        </div>
+        <div class="water-profile-inner">
+          <div class="depth-scale">
+            <span>0m<br>水面</span>
+            <span>0.5m</span>
+            <span>1.0m</span>
+            <span>1.5m</span>
+            <span>2.0m</span>
+            <span>3.0m</span>
+            <span>4.0m+<br>塘底</span>
+          </div>
+          <div class="water-layers">
+            <!-- 水面层 -->
+            <div class="water-layer water-layer-surface">
+              <span class="layer-label">水面层 0~0.5m</span>
+            </div>
+            <!-- 上层 -->
+            <div class="water-layer water-layer-upper">
+              <span class="layer-label">上层 0.5~1.0m</span>
+            </div>
+            <!-- 中层 -->
+            <div class="water-layer water-layer-mid">
+              <span class="layer-label">中层 1.0~2.0m</span>
+            </div>
+            <!-- 中下层 -->
+            <div class="water-layer water-layer-mid-lower" style="min-height: 100px;">
+              <span class="layer-label">中下层 2.0~3.0m</span>
+              <!-- 午间：极少量上浮 -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 0.3s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（极少量巡游）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">⬆️ 午间水温微升，极少数个体短暂上浮至此层觅食</div>
+              </div>
+              <!-- 下午 -->
+              <div class="time-fish" data-time="afternoon">
+                <div class="fish-item" style="animation-delay: 0.3s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（极少量）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">水温仍在峰值附近，少量个体维持在此层</div>
+              </div>
+            </div>
+            <!-- 底层 -->
+            <div class="water-layer water-layer-bottom" style="min-height: 140px;">
+              <span class="layer-label">底层 3.0~4.0m+</span>
+              <!-- 早晨 -->
+              <div class="time-fish" data-time="early">
+                <div class="fish-item" style="animation-delay: 0.8s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（全部蛰伏）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">❄️ 水温最低~4°C，全部鲶鱼紧贴塘底泥层，完全不活动</div>
+              </div>
+              <!-- 上午 -->
+              <div class="time-fish" data-time="morning">
+                <div class="fish-item" style="animation-delay: 0.8s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（全部蛰伏）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">❄️ 深水升温极慢，底层水温仍~5°C，鲶鱼无活动迹象</div>
+              </div>
+              <!-- 午间 -->
+              <div class="time-fish time-active" data-time="noon">
+                <div class="fish-item" style="animation-delay: 0.8s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（主群微动）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">🌡️ 底层水温升至~5.5°C，主群开始有微弱活动，原地小范围移动，可能被动咬口</div>
+              </div>
+              <!-- 下午 -->
+              <div class="time-fish" data-time="afternoon">
+                <div class="fish-item" style="animation-delay: 0.8s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（主群微动）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">🌡️ 底层水温维持~5.5°C，仍有微弱活动，把饵送到嘴边有机会</div>
+              </div>
+              <!-- 傍晚 -->
+              <div class="time-fish" data-time="evening">
+                <div class="fish-item" style="animation-delay: 0.8s;">
+                  <span class="emoji">🐱</span>
+                  <span class="name">鲶鱼（全部蛰伏）</span>
+                  <span class="activity-badge activity-low">🟢 低活性</span>
+                </div>
+                <div class="migration-note">❄️ 降温后鲶鱼完全停止活动，回归蛰伏状态</div>
+              </div>
+            </div>
+          </div>
+          <!-- 环境参数面板 -->
+          <div class="env-panel" id="catfish-env-panel">
+            <h4>🌊 环境参数</h4>
+            <div class="env-item">
+              <div class="label">当前时段</div>
+              <div class="value" id="cat-time-label">🔆 午间 11~14点</div>
+            </div>
+            <div class="env-item">
+              <div class="label">估算水温</div>
+              <div class="value" id="cat-temp">5~7°C</div>
+            </div>
+            <div class="env-item">
+              <div class="label">鱼群水层</div>
+              <div class="value" id="cat-layer">底层 3.0~4.0m+</div>
+            </div>
+            <div class="env-item">
+              <div class="label">活性评级</div>
+              <div class="value" id="cat-activity">🟢 低活性</div>
+            </div>
+            <div class="env-item">
+              <div class="label">气压</div>
+              <div class="value">~1028 hPa</div>
+            </div>
+            <div class="env-item">
+              <div class="label">咬口概率</div>
+              <div class="value" id="cat-bite">⭐⭐ 较低</div>
+            </div>
+            <div class="temp-gradient">
+              <div class="label" style="margin-bottom: 6px;">水温梯度</div>
+              <div class="temp-bar-label"><span>表层 <span id="cat-t-top">~7°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #4FC3F7, #81D4FA); width: 65%;"></div>
+              <div class="temp-bar-label"><span>中层 <span id="cat-t-mid">~6°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #29B6F6, #4FC3F7); width: 55%;"></div>
+              <div class="temp-bar-label"><span>底层 <span id="cat-t-bot">~5.5°C</span></span></div>
+              <div class="temp-bar" style="background: linear-gradient(90deg, #01579B, #0288D1); width: 45%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 鲶鱼详细分析卡片 -->
+    <h2 class="section-title">二、鱼种详细分析 — 鲶鱼</h2>
+    <div class="card">
+      <div class="card-header">
+        <span class="fish-emoji">🐱</span>
+        <div>
+          <div class="fish-name">鲶鱼 (Catfish)</div>
+          <div class="fish-sub">猫会 · 人工鱼塘 · 水深 4m+ · 面积 50m×90m</div>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-block">
+          <div class="label">📍 当前水层</div>
+          <div class="value">底层 3.0~4.0m+<br><small style="color:#888;">少量巡游个体在 2.0~3.0m</small></div>
+        </div>
+        <div class="info-block">
+          <div class="label">🔥 活性分析</div>
+          <div class="value">
+            <span class="activity-badge activity-low" style="font-size:12px;">🟢 低活性</span><br>
+            <small style="color:#888;">鲶鱼是典型的暖水性鱼类，适宜水温15~28°C。当前水温仅5~7°C，远低于活跃阈值（10°C），鲶鱼处于半冬眠状态，代谢极低，主动觅食意愿很弱。气压虽好但无法弥补温度劣势。</small>
+          </div>
+        </div>
+        <div class="info-block full-width">
+          <div class="label">🔄 水层迁移说明（含时段变化）</div>
+          <div class="value">
+            鲶鱼常规活动水层为中下层至底层。当前水温极低(5~7°C)，远低于活跃阈值(10°C)，全天水层变化幅度极小。<br><br>
+            <strong>📌 全天水层迁移路径：</strong><br>
+            <span style="color:#2A9D8F;">🌅 早晨~☀️ 上午(7~11点)</span> 全部蛰伏在4m+塘底，完全不活动 → 
+            <span style="color:#F4A261;">🔆 午间(11~14点)</span> 底层主群开始微弱活动（原地小范围移动），<strong>极少数个体短暂上浮至2~3m</strong> → 
+            <span style="color:#F4A261;">🌤️ 下午(14~16:30)</span> 维持微弱活动，仍以底层为主 → 
+            <span style="color:#2A9D8F;">🌇 傍晚(16:30~18点)</span> 完全停止活动，回归蛰伏<br><br>
+            <small style="color:#888;">与鲈鱼的关键区别：鲶鱼是暖水鱼，低温耐受力差，即使午间水温升至峰值也仅~7°C，远不够触发大规模上浮。迁移幅度仅0.5~1m，且只有极少数个体参与。深水塘(4m+)升温更慢，进一步限制了鲶鱼的活动。</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🎣 推荐拟饵</div>
+          <div class="value">
+            <strong>首选：</strong>铅头钩（14~21g）+ 大号卷尾蛆/T尾软饵（4~5寸，深色系）<br>
+            <strong>备选1：</strong>VIB 沉水颤泳（10~15g，慢速跳底）<br>
+            <strong>备选2：</strong>大号亮片（匀速慢收贴底搜索）<br>
+            <small style="color:#888;">鲶鱼靠嗅觉和侧线感知猎物，低温下需要大振幅、慢速度的饵来刺激反应</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🎯 推荐钓法 & 手法</div>
+          <div class="value">
+            <strong>跳底搜索法：</strong>铅头钩沉底 → 大幅挑竿让饵跳起30~50cm → 自由落底 → 停顿8~10秒 → 重复。覆盖式搜索塘底<br>
+            <strong>慢拖底：</strong>饵沉底后极慢速收线，让饵贴底缓慢移动，模拟底栖生物<br>
+            <small style="color:#888;">核心策略：把饵送到鱼嘴边！鲶鱼不会远距离追饵，需要精准投放到深水区</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">🧵 装备搭配</div>
+          <div class="value">
+            <strong>竿：</strong>MH调或H调路亚竿，7.0~7.6尺（需要远投到深水区）<br>
+            <strong>轮：</strong>纺车轮 3000~4000 或水滴轮<br>
+            <strong>线：</strong>PE线 1.5~2.0号 + 碳氟前导线 12~16lb<br>
+            <small style="color:#888;">鲶鱼嘴大力猛，线组要比鲈鱼粗一档；需要远投能力覆盖50m宽的水面</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">⏰ 最佳时段</div>
+          <div class="value">
+            <strong>🌟 黄金时段：</strong>11:00~15:00<br>
+            <small style="color:#888;">午间是全天水温最高的时段，鲶鱼可能短暂活跃。但坦白说，3月中旬北京的水温对鲶鱼来说仍然太低，全天鱼口都不会太好。</small>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="label">⭐ 成功率预估</div>
+          <div class="value">
+            <span class="stars">★★</span><span class="stars-empty">★★★</span> 2/5<br>
+            <small style="color:#888;">水温是硬伤。鲶鱼在7°C以下几乎停口，即使鱼塘密度不错，上鱼也主要靠运气和耐心。建议作为备选钓场。</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 两钓场对比 ==================== -->
+  <h2 class="section-title">钓场对比 & 推荐</h2>
+  <div class="card">
+    <table class="compare-table">
+      <tr>
+        <th>对比项</th>
+        <th>🐟 钓鱼猴（鲈鱼）</th>
+        <th>🐱 猫会（鲶鱼）</th>
+      </tr>
+      <tr class="recommend">
+        <td><strong>综合推荐</strong></td>
+        <td><strong>⭐ 首选推荐</strong></td>
+        <td>备选</td>
+      </tr>
+      <tr>
+        <td>目标鱼活性</td>
+        <td>🟡 中活性</td>
+        <td>🟢 低活性</td>
+      </tr>
+      <tr>
+        <td>水温适宜度</td>
+        <td>偏低但可接受（鲈鱼7°C可开口）</td>
+        <td>过低（鲶鱼需10°C+）</td>
+      </tr>
+      <tr>
+        <td>成功率</td>
+        <td>★★★☆☆ (3/5)</td>
+        <td>★★☆☆☆ (2/5)</td>
+      </tr>
+      <tr>
+        <td>水深</td>
+        <td>&lt;3m（浅水塘，饵容易到位）</td>
+        <td>4m+（深水，需要重饵远投）</td>
+      </tr>
+      <tr>
+        <td>操作难度</td>
+        <td>中等（标准路亚手法）</td>
+        <td>较高（需精准贴底搜索）</td>
+      </tr>
+      <tr>
+        <td>建议时长</td>
+        <td>主钓 4~5 小时</td>
+        <td>尝试 2~3 小时</td>
+      </tr>
+    </table>
+    <div style="padding: 12px; background: #e8f5e9; border-radius: 8px; margin-top: 12px;">
+      <strong>💡 建议行程安排：</strong>上午先去<strong>钓鱼猴路亚基地</strong>钓鲈鱼（10:00~15:00），如果下午还有精力，再转场<strong>猫会</strong>试试鲶鱼（15:30~17:30）。鲈鱼在当前水温下开口概率明显高于鲶鱼。
+    </div>
+  </div>
+
+  <!-- ==================== 环境综合分析 ==================== -->
+  <h2 class="section-title">三、环境综合分析</h2>
+  <div class="env-analysis-grid">
+    <div class="env-card">
+      <h3>📊 气压分析</h3>
+      <p>
+        <strong>当前气压：~1028 hPa</strong>（推断值，基于北京3月中旬历史数据）<br>
+        <strong>趋势：</strong>稳定偏高<br><br>
+        气压高于1015hPa且稳定，属于<strong>有利条件</strong>。高气压下水中溶氧充足，鱼类呼吸顺畅，底层鱼（鲈鱼、鲶鱼）更愿意待在正常水层觅食，不会因缺氧上浮。这是今天最大的利好因素。
+      </p>
+    </div>
+    <div class="env-card">
+      <h3>🌡️ 气温与水温</h3>
+      <p>
+        <strong>气温：</strong>5~12°C（日温差7°C，尚可接受）<br>
+        <strong>水温估算：</strong><br>
+        · 钓鱼猴（浅水塘）：6~8°C（浅水受气温影响大）<br>
+        · 猫会（深水塘）：5~7°C（深水温度更低且变化滞后）<br><br>
+        水温是今天最大的限制因素。鲈鱼在7°C左右仍有一定觅食行为（产前期），但鲶鱼在7°C以下基本停口。午间12:00~14:00水温达到日峰值，是最关键的作钓窗口。
+      </p>
+    </div>
+    <div class="env-card">
+      <h3>💨 溶氧分析</h3>
+      <p>
+        <strong>溶氧水平：</strong>中等偏高<br><br>
+        高气压 + 低水温 = 水中溶解氧含量较高（冷水溶氧能力强）。各水层溶氧分布较均匀，不存在因缺氧导致鱼上浮的情况。阴天无强光照，浮游植物光合作用弱，但对溶氧影响有限。整体溶氧条件<strong>良好</strong>，不是限制因素。
+      </p>
+    </div>
+    <div class="env-card">
+      <h3>🧭 风向影响</h3>
+      <p>
+        <strong>东北风2级</strong>（轻风）<br><br>
+        风力较小，对抛投影响不大。东北风在3月属于冷风，会略微压低水面温度。<br>
+        <strong>钓位建议：</strong>选择<strong>下风口</strong>（西南侧岸边），风会将水面浮游生物和暖水推向下风口，小鱼聚集 → 掠食鱼跟进。但2级风影响有限，钓位选择更应优先考虑水深和结构物。
+      </p>
+    </div>
+  </div>
+
+  <!-- 综合钓鱼指数 -->
+  <div class="fishing-index">
+    <h3>🎯 综合钓鱼指数</h3>
+    <div class="index-score">58</div>
+    <div style="font-size: 14px; opacity: 0.8;">/ 100</div>
+    <div class="index-bar-bg">
+      <div class="index-bar-fill" style="width: 58%; background: linear-gradient(90deg, #F4A261, #E9C46A);"></div>
+    </div>
+    <div style="font-size: 13px; opacity: 0.7; margin-top: 8px;">
+      气压适宜度 0.85 × 0.35 + 温度适宜度 0.35 × 0.25 + 时段 0.6 × 0.2 + 风力 0.7 × 0.1 + 天气 0.6 × 0.1 = 0.58
+    </div>
+    <div class="index-conclusion">
+      🎣 <strong>可以出钓，但需要耐心。</strong>气压条件优秀，水温是最大短板。主攻鲈鱼，抓住午间窗口期，慢搜慢停是关键。
+    </div>
+  </div>
+
+  <!-- ==================== 策略建议 ==================== -->
+  <h2 class="section-title">四、策略建议</h2>
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <h3>📍 钓位选择</h3>
+      <ul>
+        <li><strong>钓鱼猴：</strong>优先选择塘内有结构物（石堆、木桩、水草残根）的区域，鲈鱼低温时紧贴障碍物</li>
+        <li>选择水深 2m 左右的位置，避开太浅的岸边</li>
+        <li><strong>猫会：</strong>选择能抛投到最深处（4m+）的钓位，鲶鱼扎堆在最深的底部</li>
+        <li>两个钓场都优先选西南侧（下风口）岸边</li>
+      </ul>
+    </div>
+    <div class="strategy-card">
+      <h3>⏰ 时间规划</h3>
+      <ul>
+        <li><strong>09:30</strong> 到达钓鱼猴路亚基地，整理装备</li>
+        <li><strong>10:00~15:00</strong> 主钓鲈鱼（核心窗口 11:00~14:00）</li>
+        <li><strong>15:30</strong> 转场猫会（如有意愿）</li>
+        <li><strong>15:30~17:30</strong> 尝试路亚鲶鱼</li>
+        <li><strong>17:30</strong> 收竿（傍晚降温后鱼口会迅速变差）</li>
+        <li>不建议太早出发，早上水温太低（<6°C）基本没口</li>
+      </ul>
+    </div>
+    <div class="strategy-card">
+      <h3>🔄 备选方案</h3>
+      <ul>
+        <li>如果鲈鱼前2小时完全没口 → 换更小的饵（2寸软虫），放慢节奏到极致</li>
+        <li>如果 Jerkbait 无反应 → 换铅头钩跳底，逐层搜索从底往上找鱼层</li>
+        <li>如果钓鱼猴整体不开口 → 提前转场猫会，用大饵碰运气搏大鲶鱼</li>
+        <li>如果两个钓场都不理想 → 这个季节正常现象，享受抛竿练习的过程</li>
+      </ul>
+    </div>
+    <div class="strategy-card">
+      <h3>⚠️ 注意事项</h3>
+      <ul>
+        <li><strong>保暖！</strong>阴天5~12°C，站在水边体感更冷，穿厚外套+防风衣</li>
+        <li>带手套（露指钓鱼手套），低温下手指僵硬影响操作</li>
+        <li>人工鱼塘注意遵守钓场规则（是否限竿、是否需要放鱼等）</li>
+        <li>提前电话确认两个钓场周六是否正常营业</li>
+        <li>路亚注意安全：抛投前确认身后无人，佩戴偏光镜保护眼睛</li>
+        <li>3月北京风沙较大，带护目镜/偏光镜很有必要</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="report-footer">
+    <p>📋 本报告由 AI 钓鱼分析系统生成 | 数据基于 2026年3月14日北京天气预报</p>
+    <p>⚠️ 气压值为根据北京3月中旬历史数据推断，非实时数据 | 水温为估算值</p>
+    <p>🐟 祝你爆护！早春路亚，耐心是最好的饵料 🎣</p>
+  </div>
+</div>
+
+<script>
+function switchVenue(venue) {
+  document.querySelectorAll('.venue-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.venue-tab').forEach(el => el.classList.remove('active'));
+  if (venue === 'bass') {
+    document.getElementById('venue-bass').classList.add('active');
+    document.querySelectorAll('.venue-tab')[0].classList.add('active');
+  } else {
+    document.getElementById('venue-catfish').classList.add('active');
+    document.querySelectorAll('.venue-tab')[1].classList.add('active');
+  }
+}
+
+var bassTimeData = {
+  early:     { label: '🌅 早晨 7~9点',     temp: '5~6°C',  layer: '底层 2.0~3.0m',    activity: '🟢 低活性（蛰伏）', bite: '⭐ 极低',       tTop: '~6°C', tMid: '~5°C', tBot: '~5°C' },
+  morning:   { label: '☀️ 上午 9~11点',     temp: '6~7°C',  layer: '中下层~底层',       activity: '🟢 低→中活性',      bite: '⭐⭐ 偏低',     tTop: '~7°C', tMid: '~6°C', tBot: '~5.5°C' },
+  noon:      { label: '🔆 午间 11~14点',    temp: '7~8°C',  layer: '中下层 1.5~2.0m',   activity: '🔴 高活性（黄金期）', bite: '⭐⭐⭐⭐ 较高', tTop: '~8°C', tMid: '~7°C', tBot: '~6°C' },
+  afternoon: { label: '🌤️ 下午 14~16:30',  temp: '7~8°C',  layer: '中下层 1.5~2.5m',   activity: '🟡 中活性',          bite: '⭐⭐⭐ 中等',   tTop: '~8°C', tMid: '~7°C', tBot: '~6°C' },
+  evening:   { label: '🌇 傍晚 16:30~18点', temp: '5~6°C',  layer: '底层 2.0~3.0m',    activity: '🟢 低活性（回底）',  bite: '⭐ 极低',       tTop: '~6°C', tMid: '~5.5°C', tBot: '~5°C' }
+};
+
+var catTimeData = {
+  early:     { label: '🌅 早晨 7~9点',     temp: '4~5°C',  layer: '底层 4.0m+ 蛰伏',  activity: '🟢 低活性（冬眠态）', bite: '☆ 几乎为零',   tTop: '~5°C', tMid: '~4.5°C', tBot: '~4°C' },
+  morning:   { label: '☀️ 上午 9~11点',     temp: '4~6°C',  layer: '底层 4.0m+ 蛰伏',  activity: '🟢 低活性（冬眠态）', bite: '☆ 几乎为零',   tTop: '~6°C', tMid: '~5°C', tBot: '~4.5°C' },
+  noon:      { label: '🔆 午间 11~14点',    temp: '5~7°C',  layer: '底层 3.0~4.0m+',   activity: '🟢 低活性（微动）',   bite: '⭐⭐ 较低',     tTop: '~7°C', tMid: '~6°C', tBot: '~5.5°C' },
+  afternoon: { label: '🌤️ 下午 14~16:30',  temp: '5~7°C',  layer: '底层 3.0~4.0m+',   activity: '🟢 低活性（微动）',   bite: '⭐⭐ 较低',     tTop: '~7°C', tMid: '~6°C', tBot: '~5.5°C' },
+  evening:   { label: '🌇 傍晚 16:30~18点', temp: '4~5°C',  layer: '底层 4.0m+ 蛰伏',  activity: '🟢 低活性（冬眠态）', bite: '☆ 几乎为零',   tTop: '~5°C', tMid: '~4.5°C', tBot: '~4°C' }
+};
+
+function switchBassTime(time) {
+  var profile = document.getElementById('bass-profile');
+  profile.querySelectorAll('.time-tab').forEach(function(t) { t.classList.remove('active'); });
+  profile.querySelector('.time-tab[data-time="' + time + '"]').classList.add('active');
+  profile.querySelectorAll('.time-fish').forEach(function(f) { f.classList.remove('time-active'); });
+  profile.querySelectorAll('.time-fish[data-time="' + time + '"]').forEach(function(f) { f.classList.add('time-active'); });
+  var d = bassTimeData[time];
+  document.getElementById('bass-time-label').textContent = d.label;
+  document.getElementById('bass-temp').textContent = d.temp;
+  document.getElementById('bass-layer').textContent = d.layer;
+  document.getElementById('bass-activity').textContent = d.activity;
+  document.getElementById('bass-bite').textContent = d.bite;
+  document.getElementById('bass-t-top').textContent = d.tTop;
+  document.getElementById('bass-t-mid').textContent = d.tMid;
+  document.getElementById('bass-t-bot').textContent = d.tBot;
+}
+
+function switchCatfishTime(time) {
+  var profile = document.getElementById('catfish-profile');
+  profile.querySelectorAll('.time-tab').forEach(function(t) { t.classList.remove('active'); });
+  profile.querySelector('.time-tab[data-time="' + time + '"]').classList.add('active');
+  profile.querySelectorAll('.time-fish').forEach(function(f) { f.classList.remove('time-active'); });
+  profile.querySelectorAll('.time-fish[data-time="' + time + '"]').forEach(function(f) { f.classList.add('time-active'); });
+  var d = catTimeData[time];
+  document.getElementById('cat-time-label').textContent = d.label;
+  document.getElementById('cat-temp').textContent = d.temp;
+  document.getElementById('cat-layer').textContent = d.layer;
+  document.getElementById('cat-activity').textContent = d.activity;
+  document.getElementById('cat-bite').textContent = d.bite;
+  document.getElementById('cat-t-top').textContent = d.tTop;
+  document.getElementById('cat-t-mid').textContent = d.tMid;
+  document.getElementById('cat-t-bot').textContent = d.tBot;
+}
+</script>
+
+</body>
+</html>
